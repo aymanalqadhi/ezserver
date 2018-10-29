@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ezserver"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/ayman/Projects/ezserver"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/ayman/Projects/ezserver"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ezserver">
+				<Option output="/home/ayman/Projects/ezserver/bin/ezserver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ayman/Projects/ezserver/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ayman/Projects/ezserver/include"/>
+					<Add directory="/home/ayman/Projects/ezserver/shared"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 ezserver"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ezserver/fast">
+				<Option output="/home/ayman/Projects/ezserver/bin/ezserver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ayman/Projects/ezserver/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ayman/Projects/ezserver/include"/>
+					<Add directory="/home/ayman/Projects/ezserver/shared"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 ezserver/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/ayman/Projects/ezserver"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/ayman/Projects/ezserver/include/application.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/bootstrapper.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/config/configuration.hpp">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/introp/plugins_loader.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/services/console_logger.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/services/filesystem.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/services/services_manager.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/utils/time.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/iapplication.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/ibootstrapper.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/introp/iplugin.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/introp/iplugins_loader.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/services/ifilesystem.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/services/ilogger.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/services/iservice.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/application.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/bootstrapper.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/introp/plugins_loader.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/main.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/services/console_logger.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/services/filesystem.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/services/services_manager.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/utils/time.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

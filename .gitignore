@@ -1,0 +1,8 @@
+# Ignore builds
+bin/
+CMakeFiles/
+cmake-build-debug/
+
+# Ignore IDE files
+.vscode/
+.idea/
