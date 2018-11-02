@@ -14,28 +14,22 @@ std::ostream& ezserver::services::ConsoleLogger::Log(const LoggingLevel &level) 
     switch(level)
     {
         case LoggingLevel::kTrace:
-            *this->writing_stream_ << termcolor::grey << timestamp << "[Trace] " << termcolor::reset;
-            break;
+            return *this->writing_stream_ << termcolor::grey << timestamp << "[Trace] " << termcolor::reset;
 
         case LoggingLevel::kDebug:
-            *this->writing_stream_ << termcolor::grey << termcolor::bold << timestamp << "[Debug] " << termcolor::reset;
-            break;
+            return *this->writing_stream_ << termcolor::grey << termcolor::bold << timestamp << "[Debug] " << termcolor::reset;
 
         case LoggingLevel::kInformation:
-            *this->writing_stream_ << termcolor::cyan << termcolor::bold << timestamp << "[Info] " << termcolor::reset;;
-            break;
+            return *this->writing_stream_ << termcolor::cyan << termcolor::bold << timestamp << "[Info] " << termcolor::reset;
 
         case LoggingLevel::kWarning:
-            *this->writing_stream_ << termcolor::yellow << termcolor::bold << timestamp << "[Warning] " << termcolor::reset;;;
-            break;
+            return *this->writing_stream_ << termcolor::yellow << termcolor::bold << timestamp << "[Warning] " << termcolor::reset;
 
         case LoggingLevel::kError:
-            *this->writing_stream_ << termcolor::red << timestamp << "[Error] " << termcolor::reset;
-            break;
+            return *this->writing_stream_ << termcolor::red << timestamp << "[Error] " << termcolor::reset;
 
         case LoggingLevel::kFatal:
-            *this->writing_stream_ << termcolor::red << termcolor::bold << timestamp << "[Fatal] " << termcolor::reset;;
-            break;
+            return *this->writing_stream_ << termcolor::red << termcolor::bold << timestamp << "[Fatal] " << termcolor::reset;
     }
 
     return *this->writing_stream_;

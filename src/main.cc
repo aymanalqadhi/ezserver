@@ -43,23 +43,23 @@ int main(int argc, const char *argv[])
     {
         auto bootstrapper = inj.create<ezserver::Bootstrapper>();
         auto logger = inj.create<std::shared_ptr<ezserver::shared::services::ILogger>>();
+
+        // Try to run the application bootstrapper, and catch any unhandled exception
+        // and exit after showing a message to the user through the logger
+        try
+        {
+            // Run the application's bootstrapper
+            bootstrapper.Run();
+        }
+        catch (const std::exception &ex)
+        {
+            logger->Log(ezserver::shared::services::LoggingLevel::kFatal) << ex.what() << std::endl;
+            exit(EXIT_FAILURE);
+        }
     }
     catch (const std::exception& ex)
     {
         std::cerr << termcolor::red << termcolor::bold << "Fatal: " << termcolor::reset << ex.what();
-        exit(EXIT_FAILURE);
-    }
-
-    // Try to run the application bootstrapper, and catch any unhandled exception
-    // and exit after showing a message to the user through the logger
-    try
-    {
-        // Run the application's bootstrapper
-        bootstrapper.Run();
-    }
-    catch (const std::exception &ex)
-    {
-        logger->Log(ezserver::shared::services::LoggingLevel::kFatal) << ex.what() << std::endl;
         exit(EXIT_FAILURE);
     }
 
