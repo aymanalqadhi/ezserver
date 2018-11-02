@@ -7,7 +7,7 @@
 bool ezserver::Bootstrapper::Bootstrap()
 {
     // Start by initializing the application core services
-    std::cout << termcolor::bold << termcolor::cyan << "Initializing Services..." << termcolor::reset << std::endl;
+    std::cout << termcolor::bold << termcolor::cyan << "[+] Initializing Services..." << termcolor::reset << std::endl;
     if (!LoadServices())
         throw std::runtime_error("Could not load services!");
 
@@ -103,7 +103,5 @@ bool ezserver::Bootstrapper::Run()
     LOG(logger_.lock(), Information) << "Bootstrapping Completed!" << std::endl;
 
     // Startup the application
-    this->application_.lock()->Startup();
-
-    return true;
+    return this->application_.lock()->Startup();
 }

@@ -1,5 +1,6 @@
 #include <config/configuration.h>
 #include <config/named_config.h>
+#include <config/constants.h>
 
 #include <application.h>
 #include <bootstrapper.h>
@@ -8,12 +9,19 @@
 #include <services/filesystem.h>
 #include <introp/plugins_loader.h>
 
+#include <termcolor/termcolor.hpp>
+
 /// Parses the command line & configuartion file options
 std::unique_ptr<boost::program_options::variables_map> ParseOptions(const int /* argc */, const char *[] /* argv */);
 
+// ================================================================ //
+
 int main(int argc, const char *argv[])
 {
+    // Process command line arguemnts
     auto map = ParseOptions(argc, argv);
+
+    // Create the DI injector
     const auto inj = boost::di::make_injector(
         // Binds the main app configuration
         boost::di::bind<boost::program_options::variables_map>.to(*map),
@@ -26,11 +34,19 @@ int main(int argc, const char *argv[])
         ezserver::config::named::config_module(*map)
     );
 
+    // Show the splash screen
+    std::cout << termcolor::blue << std::endl << APP_SPLASH_LOGO << std::endl
+              << termcolor::bold << APP_SPLASH_CAPTION << termcolor::reset << std::endl << std::endl;
+
+    // Create the application boostrapper & logger from the DI injector
     auto bootstrapper = inj.create<ezserver::Bootstrapper>();
     auto logger = inj.create<std::shared_ptr<ezserver::shared::services::ILogger>>();
 
+    // Try to run the application bootstrapper, and catch any unhandled exception
+    // and exit after showing a message to the user through the logger
     try
     {
+        // Run the application's bootstrapper
         bootstrapper.Run();
     }
     catch (const std::exception &ex)
@@ -42,6 +58,16 @@ int main(int argc, const char *argv[])
     return EXIT_SUCCESS;
 }
 
+// ================================================================ //
+
+/**
+ * Parses the application options
+ *
+ * @param argc  The application arguments count
+ * @param argv  The application arguemtns array
+ *
+ * @return The parsed map
+ */
 std::unique_ptr<boost::program_options::variables_map> ParseOptions(const int argc, const char *argv[])
 {
     auto options = ezserver::config::GetOptionsAggrgator();

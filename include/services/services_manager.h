@@ -6,7 +6,6 @@
 
 #include <boost/di.hpp>
 #include <unordered_map>
-#include <memory>
 
 /// Services namespace
 namespace ezserver::services
