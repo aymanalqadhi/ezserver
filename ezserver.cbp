@@ -94,7 +94,7 @@
 		<Unit filename="/home/ayman/Projects/ezserver/include/bootstrapper.h">
 			<Option target="ezserver"/>
 		</Unit>
-		<Unit filename="/home/ayman/Projects/ezserver/include/config/configuration.hpp">
+		<Unit filename="/home/ayman/Projects/ezserver/include/config/configuration.h">
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/include/config/constants.h">
