@@ -27,6 +27,16 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/ayman/Projects/ezserver"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="ezserver">
 				<Option output="/home/ayman/Projects/ezserver/bin/ezserver" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ayman/Projects/ezserver/bin"/>
@@ -77,16 +87,6 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/ayman/Projects/ezserver"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 		</Build>
 		<Unit filename="/home/ayman/Projects/ezserver/include/application.h">
 			<Option target="ezserver"/>
@@ -95,6 +95,12 @@
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/include/config/configuration.hpp">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/config/constants.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/config/named_config.h">
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/include/introp/plugins_loader.h">
@@ -137,6 +143,9 @@
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/src/bootstrapper.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/config/configuration.cc">
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/src/introp/plugins_loader.cc">

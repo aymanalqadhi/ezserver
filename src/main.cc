@@ -1,4 +1,6 @@
-#include <config/configuration.hpp>
+#include <config/configuration.h>
+#include <config/named_config.h>
+
 #include <application.h>
 #include <bootstrapper.h>
 #include <services/services_manager.h>
@@ -20,7 +22,8 @@ int main(int argc, const char *argv[])
         ezserver::services::services_manager_module(),
         ezserver::services::consolelogger_module(),
         ezserver::services::filesystem_module(),
-        ezserver::application_module()
+        ezserver::application_module(),
+        ezserver::config::named::config_module(*map)
     );
 
     auto bootstrapper = inj.create<ezserver::Bootstrapper>();
