@@ -18,7 +18,7 @@ std::unique_ptr<boost::program_options::variables_map> ParseOptions(const int /*
 
 int main(int argc, const char *argv[])
 {
-    // Process command line arguemnts
+    // Process command line arguments
     auto map = ParseOptions(argc, argv);
 
     // Create the DI injector
@@ -38,7 +38,7 @@ int main(int argc, const char *argv[])
     std::cout << termcolor::blue << std::endl << APP_SPLASH_LOGO << std::endl
               << termcolor::bold << APP_SPLASH_CAPTION << termcolor::reset << std::endl << std::endl;
 
-    // Try to create the application boostrapper & logger from the DI injector
+    // Try to create the application bootstrapper & logger from the DI injector
     try
     {
         auto bootstrapper = inj.create<ezserver::Bootstrapper>();
