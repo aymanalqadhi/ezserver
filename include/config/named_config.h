@@ -15,8 +15,8 @@ namespace ezserver::config::named
      */
     auto config_module = [](const boost::program_options::variables_map& config){
         return boost::di::make_injector(
-                boost::di::bind<unsigned short>.named(Backlog).to(config["port"].as<unsigned short>()),
-                boost::di::bind<int>.named(Backlog).to(config["backlog"].as<int>())
+            boost::di::bind<unsigned short>.named(Backlog).to(config["port"].as<unsigned short>()),
+            boost::di::bind<int>.named(Backlog).to(config["backlog"].as<int>())
         );
     };
 }

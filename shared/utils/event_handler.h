@@ -32,15 +32,15 @@ namespace ezserver::shared::utils
          * Invokes all registerd handlers
          * @param payload
          */
-        virtual void Invoke(const TPayload& payload)
+        virtual void Invoke(const TSender& sender, const TPayload& payload)
         {
-            for (const auto&& cb : callbacks)
-                cb(payload);
+            for (const auto& cb : callbacks_)
+                cb(sender, payload);
         }
 
     private:
         /// The handlers container
-        std::vector<std::function<std::function<void(TSender, TPayload)>>> callbacks_;
+        std::vector<std::function<void(TSender, TPayload)>> callbacks_;
     };
 }
 

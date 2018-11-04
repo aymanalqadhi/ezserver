@@ -2,7 +2,7 @@
 #define EZSERVER_ITCP_LISTENER_H
 
 #include <net/itcp_client.h>
-#include <utils/event_handler.hpp>
+#include <utils/event_handler.h>
 
 #include <memory>
 
@@ -15,7 +15,6 @@ namespace ezserver::shared::net
     class ITcpListener : public std::enable_shared_from_this<ITcpListener>
     {
     public:
-
         /**
          * Starts the listener
          * @param backlog The maximum number of connection requests

@@ -108,6 +108,9 @@
 		<Unit filename="/home/ayman/Projects/ezserver/include/introp/plugins_loader.h">
 			<Option target="ezserver"/>
 		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/net/async_tcp_listener.h">
+			<Option target="ezserver"/>
+		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/include/services/console_logger.h">
 			<Option target="ezserver"/>
 		</Unit>
@@ -147,7 +150,7 @@
 		<Unit filename="/home/ayman/Projects/ezserver/shared/services/iservice.h">
 			<Option target="ezserver"/>
 		</Unit>
-		<Unit filename="/home/ayman/Projects/ezserver/shared/utils/event_handler.hpp">
+		<Unit filename="/home/ayman/Projects/ezserver/shared/utils/event_handler.h">
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/src/application.cc">
@@ -163,6 +166,9 @@
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/src/main.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/net/async_tcp_listener.cc">
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/src/services/console_logger.cc">

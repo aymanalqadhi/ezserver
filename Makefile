@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/ayman/Downloads/Packages/clion-2018.2.4/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/ayman/.jetbrains/clion-2018.2.4/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/ayman/Downloads/Packages/clion-2018.2.4/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/ayman/.jetbrains/clion-2018.2.4/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/ayman/Projects/ezserver
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/ayman/Downloads/Packages/clion-2018.2.4/bin/cmake/linux/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/ayman/.jetbrains/clion-2018.2.4/bin/cmake/linux/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/ayman/Downloads/Packages/clion-2018.2.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/ayman/.jetbrains/clion-2018.2.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -258,6 +258,33 @@ src/main.cc.s:
 	$(MAKE) -f CMakeFiles/ezserver.dir/build.make CMakeFiles/ezserver.dir/src/main.cc.s
 .PHONY : src/main.cc.s
 
+src/net/async_tcp_listener.o: src/net/async_tcp_listener.cc.o
+
+.PHONY : src/net/async_tcp_listener.o
+
+# target to build an object file
+src/net/async_tcp_listener.cc.o:
+	$(MAKE) -f CMakeFiles/ezserver.dir/build.make CMakeFiles/ezserver.dir/src/net/async_tcp_listener.cc.o
+.PHONY : src/net/async_tcp_listener.cc.o
+
+src/net/async_tcp_listener.i: src/net/async_tcp_listener.cc.i
+
+.PHONY : src/net/async_tcp_listener.i
+
+# target to preprocess a source file
+src/net/async_tcp_listener.cc.i:
+	$(MAKE) -f CMakeFiles/ezserver.dir/build.make CMakeFiles/ezserver.dir/src/net/async_tcp_listener.cc.i
+.PHONY : src/net/async_tcp_listener.cc.i
+
+src/net/async_tcp_listener.s: src/net/async_tcp_listener.cc.s
+
+.PHONY : src/net/async_tcp_listener.s
+
+# target to generate assembly for a file
+src/net/async_tcp_listener.cc.s:
+	$(MAKE) -f CMakeFiles/ezserver.dir/build.make CMakeFiles/ezserver.dir/src/net/async_tcp_listener.cc.s
+.PHONY : src/net/async_tcp_listener.cc.s
+
 src/services/console_logger.o: src/services/console_logger.cc.o
 
 .PHONY : src/services/console_logger.o
@@ -390,6 +417,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/net/async_tcp_listener.o"
+	@echo "... src/net/async_tcp_listener.i"
+	@echo "... src/net/async_tcp_listener.s"
 	@echo "... src/services/console_logger.o"
 	@echo "... src/services/console_logger.i"
 	@echo "... src/services/console_logger.s"

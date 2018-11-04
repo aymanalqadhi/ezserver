@@ -4,9 +4,12 @@
 
 #include <application.h>
 #include <bootstrapper.h>
+
 #include <services/services_manager.h>
 #include <services/console_logger.h>
 #include <services/filesystem.h>
+
+#include <net/async_tcp_listener.h>
 #include <introp/plugins_loader.h>
 
 #include <termcolor/termcolor.hpp>
@@ -31,6 +34,7 @@ int main(int argc, const char *argv[])
         ezserver::services::consolelogger_module(),
         ezserver::services::filesystem_module(),
         ezserver::application_module(),
+        ezserver::net::async_tcp_listener_module(),
         ezserver::config::named::config_module(*map)
     );
 
