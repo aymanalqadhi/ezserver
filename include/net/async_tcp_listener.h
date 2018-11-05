@@ -22,6 +22,9 @@ namespace ezserver::net
         /// Base class method override
         virtual bool Stop(bool force) override;
 
+        /// Base class method override
+        virtual bool Initialize() override;
+
         /**
          * Default DI constructor
          */
