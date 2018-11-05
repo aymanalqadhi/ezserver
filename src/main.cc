@@ -45,20 +45,28 @@ int main(int argc, const char *argv[])
     std::cout << termcolor::blue << std::endl << APP_SPLASH_LOGO << std::endl
               << termcolor::bold << APP_SPLASH_CAPTION << termcolor::reset << std::endl << std::endl;
 
-    // Try to create the application bootstrapper & logger from the DI injector
-    auto bootstrapper = inj.create<ezserver::Bootstrapper>();
-    auto logger = inj.create<std::shared_ptr<ezserver::shared::services::ILogger>>();
+
+    // A holder pointer for the application logger
+    std::shared_ptr<ezserver::shared::services::ILogger> logger;
 
     // Try to run the application bootstrapper, and catch any unhandled exception
     // and exit after showing a message to the user through the logger
     try
     {
+        // Try to create the application bootstrapper from the DI injector
+        auto bootstrapper = inj.create<ezserver::Bootstrapper>();
+        logger = inj.create<std::shared_ptr<ezserver::shared::services::ILogger>>();
+
         // Run the application's bootstrapper
         bootstrapper.Run();
     }
     catch (const std::exception &ex)
     {
-        logger->Log(ezserver::shared::services::LoggingLevel::kFatal) << ex.what() << std::endl;
+        if (logger != nullptr)
+            logger->Log(ezserver::shared::services::LoggingLevel::kFatal) << ex.what() << std::endl;
+        else
+            std::cout << termcolor::red << termcolor::bold << "[Fatal] " << termcolor::reset << ex.what() << std::endl;
+
         exit(EXIT_FAILURE);
     }
 

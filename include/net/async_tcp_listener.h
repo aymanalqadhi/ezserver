@@ -5,7 +5,10 @@
 
 #include <services/ilogger.h>
 #include <config/named_config.h>
+
 #include <boost/di.hpp>
+#include <boost/asio/io_context.hpp>
+#include <boost/asio/ip/tcp.hpp>
 
 namespace ezserver::net
 {

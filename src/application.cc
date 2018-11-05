@@ -9,12 +9,12 @@ bool ezserver::Application::Startup()
     std::cout << std::endl << termcolor::cyan << "\t-<( Welcome to EZ-SERVER! )>-" << std::endl << std::endl;
 
     // Start the listener
-    if (listener_.lock()->Start())
+    if (!listener_.lock()->Initialize() || !listener_.lock()->Start())
     {
         LOG(logger_.lock(), Error) << "Could not start the TCP listener!" << std::endl;
         return false;
     }
 
 
-    return true;
+    return false;
 }
