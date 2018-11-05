@@ -8,7 +8,13 @@ bool ezserver::Application::Startup()
     // Show welcome message
     std::cout << std::endl << termcolor::cyan << "\t-<( Welcome to EZ-SERVER! )>-" << std::endl << std::endl;
 
-    // Create a centeral io_context
-    
+    // Start the listener
+    if (listener_.lock()->Start())
+    {
+        LOG(logger_.lock(), Error) << "Could not start the TCP listener!" << std::endl;
+        return false;
+    }
+
+
     return true;
 }

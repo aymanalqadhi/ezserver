@@ -95,14 +95,16 @@ bool ezserver::Bootstrapper::LoadServices()
 
 //===========================================================================//
 
-bool ezserver::Bootstrapper::Run()
+void ezserver::Bootstrapper::Run()
 {
     // Bootstrap app main pieces
-    this->Bootstrap();
+    if (!this->Bootstrap())
+        throw new std::runtime_error("Could not bootstrap application!");
 
     // Notify completion
     LOG(logger_.lock(), Information) << "Bootstrapping Completed!" << std::endl;
 
     // Startup the application
-    return this->application_.lock()->Startup();
+    if (!this->application_.lock()->Startup())
+        throw std::runtime_error("Could not startup application!");
 }

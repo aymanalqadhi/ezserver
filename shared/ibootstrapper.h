@@ -33,7 +33,7 @@ namespace ezserver::shared
          * Runs the application
          * @return The operation result
          */
-        virtual bool Run() = 0;
+        virtual void Run() = 0;
     };
 }
 

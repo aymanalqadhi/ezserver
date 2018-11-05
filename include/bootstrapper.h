@@ -19,7 +19,7 @@ namespace ezserver
     class Bootstrapper : public ezserver::shared::IBootstrapper {
     public:
         /// Base class function override
-        virtual bool Run() override;
+        virtual void Run() override;
 
         /**
          * Default dependency injection constructor

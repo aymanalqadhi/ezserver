@@ -4,6 +4,7 @@
 #include "net/itcp_listener.h"
 
 #include <services/ilogger.h>
+#include <config/named_config.h>
 #include <boost/di.hpp>
 
 namespace ezserver::net
@@ -16,7 +17,7 @@ namespace ezserver::net
     {
     public:
         /// Base class method override
-        virtual bool Start(const unsigned short port, const int backlog) override;
+        virtual bool Start() override;
 
         /// Base class method override
         virtual bool Stop(bool force) override;
@@ -25,13 +26,21 @@ namespace ezserver::net
          * Default DI constructor
          */
         BOOST_DI_INJECT(AsyncTcpListener,
-            const std::shared_ptr<ezserver::shared::services::ILogger>& logger
-        ) : logger_(logger) {}
+            const std::shared_ptr<ezserver::shared::services::ILogger>& logger,
+            (named = ezserver::config::named::Port) const unsigned short& port,
+            (named = ezserver::config::named::Backlog) const int&backlog
+        ) : logger_(logger), port_(port), backlog_(backlog) {}
 
     private:
 
         /// A Service to manage app logs
         std::weak_ptr<ezserver::shared::services::ILogger> logger_;
+
+        /// The port to listen on
+        const unsigned short& port_;
+
+        /// The listener backlog
+        const int& backlog_;
     };
 
     /**

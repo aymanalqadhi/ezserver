@@ -2,9 +2,11 @@
 
 // ==================================================== //
 
-bool ezserver::net::AsyncTcpListener::Start(const unsigned short port, const int backlog)
+bool ezserver::net::AsyncTcpListener::Start()
 {
-    return false;
+    LOG(logger_.lock(), Information) << "Starting listener on port " << port_
+                                     << ", with a backlog of " << backlog_ << "..." << std::endl;
+    return true;
 }
 
 // ==================================================== //

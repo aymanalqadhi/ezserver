@@ -21,7 +21,7 @@ namespace ezserver::shared::net
          * @param port    The port to listen on
          * @return The operation result
          */
-        virtual bool Start(const unsigned short port, const int backlog) = 0;
+        virtual bool Start() = 0;
 
         /**
          * Stops the listener

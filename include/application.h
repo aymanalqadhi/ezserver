@@ -2,7 +2,10 @@
 #define EZSERVER_APPLICATION_H
 
 #include "iapplication.h"
+
 #include <services/ilogger.h>
+#include <net/itcp_listener.h>
+
 #include <boost/di.hpp>
 
 namespace ezserver
@@ -10,7 +13,8 @@ namespace ezserver
     /**
      * Main application class
      */
-    class Application : public ezserver::shared::IApplication {
+    class Application : public ezserver::shared::IApplication
+    {
     public:
         /// Base class method override
         virtual bool Startup() override;
@@ -18,12 +22,17 @@ namespace ezserver
         /**
          * Default DI constrcutor
          */
-        BOOST_DI_INJECT(Application, const std::shared_ptr<ezserver::shared::services::ILogger>& logger)
-            : logger_(logger) {}
+        BOOST_DI_INJECT(Application,
+            const std::shared_ptr<ezserver::shared::services::ILogger>& logger,
+            const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener)
+        : logger_(logger), listener_(listener) {}
 
     private:
         /// A Service to manage app logs
         std::weak_ptr<ezserver::shared::services::ILogger> logger_;
+
+        /// The application's main tcp listener
+        std::weak_ptr<ezserver::shared::net::ITcpListener> listener_;
     };
 
     /**
