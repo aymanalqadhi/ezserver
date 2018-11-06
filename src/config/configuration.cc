@@ -5,6 +5,11 @@
 boost::program_options::options_description ezserver::config::GetGeneralOptions() {
     boost::program_options::options_description general_options("Global Options");
     general_options.add_options()
+            (
+                "threads,t",
+                boost::program_options::value<std::size_t>()->default_value(64),
+                "Sets the maximum number of threads in the thread pool"
+            )
             ("version,v", "Displays the version of the app")
             ("help,h", "Displays a help message");
     return general_options;

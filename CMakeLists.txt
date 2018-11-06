@@ -24,7 +24,7 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY)
 
 add_executable(ezserver ${SOURCE_FILES} ${INCLUDE_FILES} ${SHARED_FILES})
 
-find_package(Boost COMPONENTS program_options filesystem system REQUIRED)
+find_package(Boost COMPONENTS program_options filesystem thread system REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 set(REQUIRED_LIBRARIES pthread dl)

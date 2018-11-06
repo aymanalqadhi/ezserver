@@ -38,7 +38,7 @@ namespace ezserver::net
             boost::asio::io_context& io,
             (named = ezserver::config::named::Port) const unsigned short& port,
             (named = ezserver::config::named::Backlog) const int&backlog
-        ) : logger_(logger), io_(io), port_(port), backlog_(backlog) {}
+        ) : logger_(logger), io_(io), port_(port), backlog_(backlog), is_started_(false) {}
 
         /**
          * Gets whether the listener is started or not
@@ -73,7 +73,7 @@ namespace ezserver::net
         bool AcceptNext();
 
         /// Handles incoming connections
-        void HandleAcceptedConnections(std::shared_ptr<boost::asio::ip::tcp::socket>&, boost::system::error_code&);
+        void HandleAcceptedConnections(std::shared_ptr<boost::asio::ip::tcp::socket>&, const boost::system::error_code&);
     };
 
     /**

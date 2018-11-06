@@ -16,6 +16,13 @@ namespace ezserver::shared::net
     class ITcpListener : public std::enable_shared_from_this<ITcpListener>
     {
     public:
+
+        /**
+         * Initializes the listener
+         * @return The operation result
+         */
+        virtual bool Initialize() = 0;
+
         /**
          * Starts the listener
          * @param backlog The maximum number of connection requests
@@ -31,11 +38,8 @@ namespace ezserver::shared::net
          */
         virtual bool Stop(bool force) = 0;
 
-        /**
-         * Initializes the listener
-         * @return The operation result
-         */
-        virtual bool Initialize() = 0;
+        /// Listens for a new connection
+        virtual bool AcceptNext() = 0;
 
         /**
          * Gets whether the listener is started or not
