@@ -138,6 +138,9 @@
 		<Unit filename="/home/ayman/Projects/ezserver/shared/introp/iplugins_loader.h">
 			<Option target="ezserver"/>
 		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/net/client_accepted_eventargs.h">
+			<Option target="ezserver"/>
+		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/shared/net/itcp_client.h">
 			<Option target="ezserver"/>
 		</Unit>
@@ -151,6 +154,9 @@
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/shared/services/iservice.h">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/shared/utils/event_args.h">
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/shared/utils/event_handler.h">

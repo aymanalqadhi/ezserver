@@ -4,6 +4,7 @@
 #include <net/itcp_client.h>
 #include <utils/event_handler.h>
 
+#include <boost/asio/ip/tcp.hpp>
 #include <memory>
 
 /// Shared Net Namespace
@@ -36,8 +37,17 @@ namespace ezserver::shared::net
          */
         virtual bool Initialize() = 0;
 
+        /**
+         * Gets whether the listener is started or not
+         * @return The listener listening status
+         */
+        virtual inline const bool IsStarted() const noexcept = 0;
+
         /// An event handler to be invoked when a new connection is accpeted
-        ezserver::shared::utils::EventHandler<std::shared_ptr<ITcpListener>, std::unique_ptr<ITcpClient>&&> OnConnectionAccepted;
+        ezserver::shared::utils::EventHandler
+            <const std::shared_ptr<ITcpListener>&,
+            std::shared_ptr<boost::asio::ip::tcp::socket>&,
+            const boost::system::error_code&> OnConnectionAccepted;
     };
 }
 

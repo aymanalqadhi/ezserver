@@ -1,5 +1,8 @@
 #include "net/async_tcp_listener.h"
+
 #include <net/async_tcp_client.h>
+#include <net/client_accepted_eventargs.h>
+#include <boost/asio/placeholders.hpp>
 
 // ==================================================== //
 
@@ -18,13 +21,7 @@ bool ezserver::net::AsyncTcpListener::Start()
 
         LOG(logger_.lock(), Debug) << "Listening On: " << listen_on << std::endl;
 
-        while (true)
-        {
-            auto sck = acceptor_->accept();
-            LOG(logger_.lock(), Information) << "Got Connection From: " << sck.remote_endpoint() << std::endl;
-        }
-
-        return true;
+        return AcceptNext();
     }
     catch(const std::exception& ex)
     {
@@ -44,7 +41,23 @@ bool ezserver::net::AsyncTcpListener::Stop(bool force)
 
 bool ezserver::net::AsyncTcpListener::AcceptNext()
 {
-    return true;
+    if (!IsStarted()) return false;
+
+    auto socket = std::make_shared<boost::asio::ip::tcp::socket>(io_);
+    auto args =
+    acceptor_->async_accept(
+        socket,
+        std::bind(
+            ezserver::shared::utils::EventHandler
+                <const std::shared_ptr<ITcpListener>&,
+                 std::shared_ptr<ezserver::shared::net::ITcpClient>&,
+                 const boost::system::error_code&>::Invoke,
+            this->OnConnectionAccepted,
+            shared_from_this(),
+            socket,
+            boost::asio::placeholders::error()
+        )
+    );
 }
 
 // ==================================================== //

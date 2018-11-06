@@ -38,6 +38,13 @@ namespace ezserver::net
             (named = ezserver::config::named::Backlog) const int&backlog
         ) : logger_(logger), io_(io), port_(port), backlog_(backlog) {}
 
+        /**
+         * Gets whether the listener is started or not
+         * @return The listener listening status
+         */
+        virtual inline const bool IsStarted() const noexcept override
+        { return is_started_; }
+
     private:
 
         /// A Service to manage app logs
@@ -54,6 +61,9 @@ namespace ezserver::net
 
         /// The low level tcp acceptor object
         std::shared_ptr<boost::asio::ip::tcp::acceptor> acceptor_;
+
+        /// Determines of the listener is started or not
+        std::atomic_bool is_started_;
 
         /*          Private Methods     */
 
