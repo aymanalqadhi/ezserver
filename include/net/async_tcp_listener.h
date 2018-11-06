@@ -10,6 +10,8 @@
 #include <boost/asio/io_context.hpp>
 #include <boost/asio/ip/tcp.hpp>
 
+#include <boost/system/error_code.hpp>
+
 namespace ezserver::net
 {
     /**
@@ -69,6 +71,9 @@ namespace ezserver::net
 
         /// Listens for a new connection
         bool AcceptNext();
+
+        /// Handles incoming connections
+        void HandleAcceptedConnections(std::shared_ptr<boost::asio::ip::tcp::socket>&, boost::system::error_code&);
     };
 
     /**

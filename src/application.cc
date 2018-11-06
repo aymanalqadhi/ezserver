@@ -16,7 +16,7 @@ bool ezserver::Application::Startup()
     }
 
 
-    listener_->OnConnectionAccepted += [](auto listener, auto client, auto error)
+    listener_->OnConnectionAccepted += [](auto listener, auto client)
     {
 
     };

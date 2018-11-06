@@ -11,7 +11,7 @@ namespace ezserver::shared::utils
      * @tparam TSender  The sender type
      * @tparam TPayload The payload type
      */
-    template<typename TSender, typename TPayload, typename TData>
+    template<typename TSender, typename TPayload>
     class EventHandler
     {
     public:
@@ -20,27 +20,27 @@ namespace ezserver::shared::utils
          * Registers a handler to this event
          * @param callback The handler to register
          */
-        virtual void RegisterHandler(const std::function<void(TSender, TPayload, TData)>& callback) { callbacks_.push_back(callback); }
+        virtual void RegisterHandler(const std::function<void(TSender, TPayload)>& callback) { callbacks_.push_back(callback); }
 
         /**
          * Registers a handler in C# way
          * @param handler The handler to register
          */
-        virtual void operator+=(const std::function<void(TSender, TPayload, TData)>& handler) { RegisterHandler(handler);  }
+        virtual void operator+=(const std::function<void(TSender, TPayload)>& handler) { RegisterHandler(handler);  }
 
         /**
          * Invokes all registerd handlers
          * @param payload
          */
-        virtual void Invoke(TSender sender, TPayload payload, TData data)
+        virtual void Invoke(TSender sender, TPayload payload)
         {
             for (const auto& cb : callbacks_)
-                cb(sender, payload, data);
+                cb(sender, payload);
         }
 
     private:
         /// The handlers container
-        std::vector<std::function<void(TSender, TPayload, TData)>> callbacks_;
+        std::vector<std::function<void(TSender, TPayload)>> callbacks_;
     };
 }
 

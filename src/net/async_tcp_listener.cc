@@ -2,7 +2,9 @@
 
 #include <net/async_tcp_client.h>
 #include <net/client_accepted_eventargs.h>
+
 #include <boost/asio/placeholders.hpp>
+#include <boost/bind.hpp>
 
 // ==================================================== //
 
@@ -44,20 +46,12 @@ bool ezserver::net::AsyncTcpListener::AcceptNext()
     if (!IsStarted()) return false;
 
     auto socket = std::make_shared<boost::asio::ip::tcp::socket>(io_);
-    auto args =
     acceptor_->async_accept(
-        socket,
-        std::bind(
-            ezserver::shared::utils::EventHandler
-                <const std::shared_ptr<ITcpListener>&,
-                 std::shared_ptr<ezserver::shared::net::ITcpClient>&,
-                 const boost::system::error_code&>::Invoke,
-            this->OnConnectionAccepted,
-            shared_from_this(),
-            socket,
-            boost::asio::placeholders::error()
-        )
+        *socket,
+        boost::bind(&AsyncTcpListener::HandleAcceptedConnections, this, socket, boost::asio::placeholders::error())
     );
+
+    return true;
 }
 
 // ==================================================== //
@@ -72,4 +66,22 @@ bool ezserver::net::AsyncTcpListener::Initialize()
         << ", with a backlog of " << backlog_ << std::endl;
 
     return true;
+}
+
+// =================================================== //
+
+void ezserver::net::AsyncTcpListener::HandleAcceptedConnections(
+    std::shared_ptr<boost::asio::ip::tcp::socket>& socket,
+    boost::system::error_code& error)
+{
+    if (error)
+    {
+        LOG(logger_.lock(), Error) << error.message() << std::endl;
+        return;
+    }
+
+    ezserver::shared::net::ITcpListener::OnConnectionAccepted.Invoke(
+        shared_from_this(),
+        socket
+    );
 }
