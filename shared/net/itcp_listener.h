@@ -37,7 +37,7 @@ namespace ezserver::shared::net
         virtual bool Initialize() = 0;
 
         /// An event handler to be invoked when a new connection is accpeted
-        ezserver::shared::utils::EventHandler<std::shared_ptr<ITcpListener>, std::shared_ptr<ITcpClient>> OnConnectionAccepted;
+        ezserver::shared::utils::EventHandler<std::shared_ptr<ITcpListener>, std::unique_ptr<ITcpClient>&&> OnConnectionAccepted;
     };
 }
 

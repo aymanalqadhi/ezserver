@@ -258,6 +258,33 @@ src/main.cc.s:
 	$(MAKE) -f CMakeFiles/ezserver.dir/build.make CMakeFiles/ezserver.dir/src/main.cc.s
 .PHONY : src/main.cc.s
 
+src/net/async_tcp_client.o: src/net/async_tcp_client.cc.o
+
+.PHONY : src/net/async_tcp_client.o
+
+# target to build an object file
+src/net/async_tcp_client.cc.o:
+	$(MAKE) -f CMakeFiles/ezserver.dir/build.make CMakeFiles/ezserver.dir/src/net/async_tcp_client.cc.o
+.PHONY : src/net/async_tcp_client.cc.o
+
+src/net/async_tcp_client.i: src/net/async_tcp_client.cc.i
+
+.PHONY : src/net/async_tcp_client.i
+
+# target to preprocess a source file
+src/net/async_tcp_client.cc.i:
+	$(MAKE) -f CMakeFiles/ezserver.dir/build.make CMakeFiles/ezserver.dir/src/net/async_tcp_client.cc.i
+.PHONY : src/net/async_tcp_client.cc.i
+
+src/net/async_tcp_client.s: src/net/async_tcp_client.cc.s
+
+.PHONY : src/net/async_tcp_client.s
+
+# target to generate assembly for a file
+src/net/async_tcp_client.cc.s:
+	$(MAKE) -f CMakeFiles/ezserver.dir/build.make CMakeFiles/ezserver.dir/src/net/async_tcp_client.cc.s
+.PHONY : src/net/async_tcp_client.cc.s
+
 src/net/async_tcp_listener.o: src/net/async_tcp_listener.cc.o
 
 .PHONY : src/net/async_tcp_listener.o
@@ -417,6 +444,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/net/async_tcp_client.o"
+	@echo "... src/net/async_tcp_client.i"
+	@echo "... src/net/async_tcp_client.s"
 	@echo "... src/net/async_tcp_listener.o"
 	@echo "... src/net/async_tcp_listener.i"
 	@echo "... src/net/async_tcp_listener.s"

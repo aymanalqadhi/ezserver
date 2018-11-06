@@ -33,20 +33,32 @@ namespace ezserver::net
          */
         BOOST_DI_INJECT(AsyncTcpListener,
             const std::shared_ptr<ezserver::shared::services::ILogger>& logger,
+            boost::asio::io_context& io,
             (named = ezserver::config::named::Port) const unsigned short& port,
             (named = ezserver::config::named::Backlog) const int&backlog
-        ) : logger_(logger), port_(port), backlog_(backlog) {}
+        ) : logger_(logger), io_(io), port_(port), backlog_(backlog) {}
 
     private:
 
         /// A Service to manage app logs
         std::weak_ptr<ezserver::shared::services::ILogger> logger_;
 
+        /// The application main io intraction object
+        boost::asio::io_context& io_;
+
         /// The port to listen on
         const unsigned short& port_;
 
         /// The listener backlog
         const int& backlog_;
+
+        /// The low level tcp acceptor object
+        std::shared_ptr<boost::asio::ip::tcp::acceptor> acceptor_;
+
+        /*          Private Methods     */
+
+        /// Listens for a new connection
+        bool AcceptNext();
     };
 
     /**

@@ -32,7 +32,7 @@ namespace ezserver
         std::weak_ptr<ezserver::shared::services::ILogger> logger_;
 
         /// The application's main tcp listener
-        std::weak_ptr<ezserver::shared::net::ITcpListener> listener_;
+        std::shared_ptr<ezserver::shared::net::ITcpListener> listener_;
     };
 
     /**

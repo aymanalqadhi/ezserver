@@ -24,21 +24,21 @@ int main(int argc, const char *argv[])
 {
     // Process command line arguments
     auto map_ptr = ParseOptions(argc, argv);
-    auto io_ptr = std::make_shared<boost::asio::io_context>();
+    boost::asio::io_context io;
 
     // Create the DI injector
     const auto inj = boost::di::make_injector(
-            // Binds the main app configuration
-            boost::di::bind<boost::program_options::variables_map>.to(map_ptr),
-            boost::di::bind<boost::asio::io_context>.to(io_ptr).in(boost::di::singleton),
+        // Binds the main app configuration
+        boost::di::bind<boost::program_options::variables_map>.to(map_ptr),
+        boost::di::bind<boost::asio::io_context>.to(io),
 
-            ezserver::introp::plugins_loader_module(),
-            ezserver::services::services_manager_module(),
-            ezserver::services::consolelogger_module(),
-            ezserver::services::filesystem_module(),
-            ezserver::application_module(),
-            ezserver::net::async_tcp_listener_module(),
-            ezserver::config::named::config_module(*map_ptr)
+        ezserver::introp::plugins_loader_module(),
+        ezserver::services::services_manager_module(),
+        ezserver::services::consolelogger_module(),
+        ezserver::services::filesystem_module(),
+        ezserver::application_module(),
+        ezserver::net::async_tcp_listener_module(),
+        ezserver::config::named::config_module(*map_ptr)
     );
 
     // Show the splash screen
@@ -59,6 +59,9 @@ int main(int argc, const char *argv[])
 
         // Run the application's bootstrapper
         bootstrapper.Run();
+
+        // Dummy stop
+        int x; std::cin >> x;
     }
     catch (const std::exception &ex)
     {

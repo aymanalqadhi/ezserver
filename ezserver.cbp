@@ -108,6 +108,9 @@
 		<Unit filename="/home/ayman/Projects/ezserver/include/introp/plugins_loader.h">
 			<Option target="ezserver"/>
 		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/include/net/async_tcp_client.h">
+			<Option target="ezserver"/>
+		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/include/net/async_tcp_listener.h">
 			<Option target="ezserver"/>
 		</Unit>
@@ -166,6 +169,9 @@
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/src/main.cc">
+			<Option target="ezserver"/>
+		</Unit>
+		<Unit filename="/home/ayman/Projects/ezserver/src/net/async_tcp_client.cc">
 			<Option target="ezserver"/>
 		</Unit>
 		<Unit filename="/home/ayman/Projects/ezserver/src/net/async_tcp_listener.cc">
