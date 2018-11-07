@@ -1,7 +1,6 @@
 #include "application.h"
 
 #include <boost/asio/io_context.hpp>
-#include <boost/bind/bind.hpp>
 #include <termcolor/termcolor.hpp>
 #include <iostream>
 
@@ -12,16 +11,20 @@ bool ezserver::Application::Startup()
 
     // Initialize the thread pool
     LOG(logger_.lock(), Debug) << "Initializing thread pool with " << threads_count_ << " threads..." << std::endl;
-    for (std::size_t i = 0; i < threads_count_; ++i)
-        thread_pool_.create_thread(boost::bind(&boost::asio::io_context::run, &io_));
+    boost::asio::io_context::work w(io_);
 
-    // Start the listener
+    for (std::size_t i = 0; i < threads_count_; ++i)
+    {
+        thread_pool_.push_back(std::async(std::launch::async, [this] {
+            this->io_.run();
+        }));
+    }
+
     if (!listener_->Initialize() || !listener_->Start())
     {
         LOG(logger_.lock(), Error) << "Could not start the TCP listener!" << std::endl;
         return false;
     }
-
 
     // Subscribe to new connections acceptance event
     listener_->OnConnectionAccepted += [&](auto l, auto c) { NewClientsHandler(l,c); };

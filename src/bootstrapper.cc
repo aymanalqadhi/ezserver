@@ -105,6 +105,6 @@ void ezserver::Bootstrapper::Run()
     LOG(logger_.lock(), Information) << "Bootstrapping Completed!" << std::endl;
 
     // Startup the application
-    if (!this->application_.lock()->Startup())
+    if (!this->application_->Startup())
         throw std::runtime_error("Could not startup application!");
 }

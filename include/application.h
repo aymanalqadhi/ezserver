@@ -3,12 +3,13 @@
 
 #include "iapplication.h"
 
+#include <config/named_config.h>
 #include <services/ilogger.h>
 #include <net/itcp_listener.h>
 
 #include <boost/di.hpp>
-#include <boost/thread/thread.hpp>
-#include <config/named_config.h>
+#include <vector>
+#include <future>
 
 namespace ezserver
 {
@@ -29,7 +30,7 @@ namespace ezserver
             boost::asio::io_context& io,
             const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
             (named = ezserver::config::named::ThreadsCount) const std::size_t& threads_count)
-        : logger_(logger), io_(io), listener_(listener), thread_pool_(io), threads_count_(threads_count) {}
+        : logger_(logger), io_(io), listener_(listener), threads_count_(threads_count) {}
 
     private:
         /// A Service to manage app logs
@@ -42,10 +43,8 @@ namespace ezserver
         std::shared_ptr<ezserver::shared::net::ITcpListener> listener_;
 
         /// The application thread pool
-        boost::thread_group thread_pool_;
-
-        /// The threads pool threads count
         const std::size_t& threads_count_;
+        std::vector<std::future<void>> thread_pool_;
 
         /*      Private Mehods      */
         void NewClientsHandler(

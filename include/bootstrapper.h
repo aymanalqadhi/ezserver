@@ -25,12 +25,13 @@ namespace ezserver
          * Default dependency injection constructor
          */
         BOOST_DI_INJECT(Bootstrapper,
-            const std::shared_ptr<ezserver::shared::IApplication>& app,
+            const std::shared_ptr<ezserver::shared::IApplication> app,
             const std::shared_ptr<ezserver::shared::services::IServicesManager>& services_manager,
             const std::shared_ptr<ezserver::shared::services::ILogger>& logger,
             const std::shared_ptr<ezserver::shared::services::IFilesystem>& filesystem,
             const std::shared_ptr<ezserver::shared::introp::IPluginsLoader>& plugins_loader)
-        : services_manager_(services_manager), application_(app), logger_(logger), filesystem_(filesystem), plugins_loader_(plugins_loader){
+        : services_manager_(services_manager), application_(app),
+          logger_(logger), filesystem_(filesystem), plugins_loader_(plugins_loader){
 
             if (!services_manager_.lock()->Initialize()) {
                 throw new std::runtime_error("Could not initialize services manager!");
@@ -59,7 +60,7 @@ namespace ezserver
         std::weak_ptr<ezserver::shared::services::IServicesManager> services_manager_;
 
         /// The main application object
-        std::weak_ptr<ezserver::shared::IApplication> application_;
+        std::shared_ptr<ezserver::shared::IApplication> application_;
 
         /// A service to manage app logs
         std::weak_ptr<ezserver::shared::services::ILogger> logger_;

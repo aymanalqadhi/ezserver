@@ -22,7 +22,7 @@ set(SHARED_FILES shared/introp/iplugin.h shared/services/iservice.h include/serv
 # Definitions
 add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY)
 
-add_executable(ezserver ${SOURCE_FILES} ${INCLUDE_FILES} ${SHARED_FILES})
+add_executable(ezserver ${SOURCE_FILES} ${INCLUDE_FILES} ${SHARED_FILES} ${LIBS_FILES})
 
 find_package(Boost COMPONENTS program_options filesystem thread system REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
