@@ -50,7 +50,7 @@ namespace ezserver::net
     private:
 
         /// A Service to manage app logs
-        std::weak_ptr<ezserver::shared::services::ILogger> logger_;
+        std::shared_ptr<ezserver::shared::services::ILogger> logger_;
 
         /// The application main io intraction object
         boost::asio::io_context& io_;

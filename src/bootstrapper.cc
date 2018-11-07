@@ -8,12 +8,14 @@
 bool ezserver::Bootstrapper::Bootstrap()
 {
     // Start by initializing the application core services
+    // and throw a fatal exception in case of failure
     std::cout << termcolor::bold << termcolor::cyan << "[+] Initializing Services..." << termcolor::reset << std::endl;
     if (!LoadServices())
         throw std::runtime_error("Could not load services!");
 
-    // Load plugins
-    LOG(logger_.lock(), Information) << "Loading Plugins..." << std::endl;
+    // Load plugins. and throw a
+    // fatal exception in case of failure
+    LOG(logger_, Information) << "Loading Plugins..." << std::endl;
     if (!LoadPlugins())
         throw std::runtime_error("Could not load plugins!");
 
@@ -33,14 +35,15 @@ bool ezserver::Bootstrapper::LoadPlugins()
     try
     {
         // Load plugins
-        auto plugins = plugins_loader_.lock()->LoadPlugins();
+        auto plugins = plugins_loader_->LoadPlugins();
 
         // Initialize plugins
-        LOG(logger_.lock(), Information) << "Initializing Plugins..." << std::endl;
+        LOG(logger_, Information) << "Initializing Plugins..." << std::endl;
     }
     catch (const std::exception& ex)
     {
-        LOG(logger_.lock(), Trace) << ex.what();
+        // log the exception message, and exit
+        LOG(logger_, Trace) << ex.what();
         return false;
     }
 
@@ -53,7 +56,7 @@ bool ezserver::Bootstrapper::LoadServices()
 {
     // Load every service registered in the service manager
 
-    for (const auto &svc : this->services_manager_.lock()->Services())
+    for (const auto &svc : this->services_manager_->Services())
     {
         // Log the name of the current service to be initialized
         // using the standard way because we don't have the logging
@@ -102,7 +105,7 @@ void ezserver::Bootstrapper::Run()
         throw new std::runtime_error("Could not bootstrap application!");
 
     // Notify completion
-    LOG(logger_.lock(), Information) << "Bootstrapping Completed!" << std::endl;
+    LOG(logger_, Information) << "Bootstrapping Completed!" << std::endl;
 
     // Startup the application
     if (!this->application_->Startup())

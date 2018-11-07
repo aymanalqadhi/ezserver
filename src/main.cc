@@ -59,14 +59,11 @@ int main(int argc, const char *argv[])
 
         // Run the application's bootstrapper
         bootstrapper.Run();
-
-        // Dummy stop
-        int x; std::cin >> x;
     }
     catch (const std::exception &ex)
     {
         if (logger != nullptr)
-            logger->Log(ezserver::shared::services::LoggingLevel::kFatal) << ex.what() << std::endl;
+            LOG(logger, Fatal) << ex.what() << std::endl;
         else
             std::cout << termcolor::red << termcolor::bold << "[Fatal] " << termcolor::reset << ex.what() << std::endl;
 

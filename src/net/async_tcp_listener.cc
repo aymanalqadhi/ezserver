@@ -6,15 +6,39 @@
 #include <boost/asio/placeholders.hpp>
 #include <boost/bind.hpp>
 
+
+// ==================================================== //
+
+bool ezserver::net::AsyncTcpListener::Initialize()
+{
+    // Logs a debug message showing that the listener
+    // is being initialized
+    LOG(logger_, Debug) << "Creating & initializing TCP listener... " << std::endl;
+
+    // Create a low level acceptor
+    acceptor_ = std::make_shared<boost::asio::ip::tcp::acceptor>(io_);
+
+    return true;
+}
+
+
 // ==================================================== //
 
 bool ezserver::net::AsyncTcpListener::Start()
 {
+    // Return if the listener was already started
     if (IsStarted())
     {
-        LOG(logger_.lock(), Debug) << "Listener is already started!" << std::endl;
+        // Log a debug message before exiting
+        LOG(logger_, Debug) << "Listener is already started!" << std::endl;
         return true;
     }
+
+    // Logs an information message showing the port & the backtrace
+    // of the listener
+    LOG(logger_, Information)
+            << "Starting listener on port " << port_
+            << ", with a backlog of " << backlog_ << std::endl;
 
     try
     {
@@ -27,20 +51,27 @@ bool ezserver::net::AsyncTcpListener::Start()
         acceptor_->bind(listen_on);
         acceptor_->listen(backlog_);
 
-        LOG(logger_.lock(), Debug) << "Listening On: " << listen_on << std::endl;
+        // Log a debug message showing the address
+        // and port that the listener is listening on
+        LOG(logger_, Debug) << "Listening On: " << listen_on << std::endl;
 
+        // Update the starting status value
         is_started_.store(true);
+
+        // Accept a new connection
         return AcceptNext();
     }
     catch(const std::exception& ex)
     {
-        LOG(logger_.lock(), Error) << ex.what() << std::endl;
+        // Log the error message, and exit
+        LOG(logger_, Error) << ex.what() << std::endl;
         return false;
     }
 }
 
 // ==================================================== //
 
+/// TODO: Implement this
 bool ezserver::net::AsyncTcpListener::Stop(bool force)
 {
     return false;
@@ -50,28 +81,20 @@ bool ezserver::net::AsyncTcpListener::Stop(bool force)
 
 bool ezserver::net::AsyncTcpListener::AcceptNext()
 {
+    // Throw an exception if the listener is
+    // not started yet
     if (!IsStarted())
         throw std::runtime_error("Cannot accept connections, Listener is not started!");
 
+    // Create a new socket
     auto socket = std::make_shared<boost::asio::ip::tcp::socket>(io_);
+
+    // Accept a connection asynchronously, and then
+    // store it in the `socket` variable
     acceptor_->async_accept(
         *socket,
         boost::bind(&AsyncTcpListener::HandleAcceptedConnections, this, socket, boost::asio::placeholders::error)
     );
-
-    return true;
-}
-
-// ==================================================== //
-
-bool ezserver::net::AsyncTcpListener::Initialize()
-{
-    LOG(logger_.lock(), Debug) << "Creating & initializing TCP listener... " << std::endl;
-    acceptor_ = std::make_shared<boost::asio::ip::tcp::acceptor>(io_);
-
-    LOG(logger_.lock(), Information)
-        << "Starting listener on port " << port_
-        << ", with a backlog of " << backlog_ << std::endl;
 
     return true;
 }
@@ -82,12 +105,17 @@ void ezserver::net::AsyncTcpListener::HandleAcceptedConnections(
     std::shared_ptr<boost::asio::ip::tcp::socket>& socket,
     const boost::system::error_code& error)
 {
+    // If there was an error, log the error
+    // message and exit
     if (error)
     {
-        LOG(logger_.lock(), Error) << error.message() << std::endl;
+        LOG(logger_, Error) << error.message() << std::endl;
         return;
     }
-std::cout << "LOLOLOLOL" << std::endl;
+
+    // Invoke the associated event handlers with
+    // a pointer to the current listener & the
+    // accepted socket
     ezserver::shared::net::ITcpListener::OnConnectionAccepted.Invoke(
         shared_from_this(),
         socket

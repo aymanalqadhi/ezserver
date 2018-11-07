@@ -6,6 +6,7 @@
 #include <config/named_config.h>
 #include <services/ilogger.h>
 #include <net/itcp_listener.h>
+#include <net/itcp_client.h>
 
 #include <boost/di.hpp>
 #include <vector>
@@ -26,31 +27,48 @@ namespace ezserver
          * Default DI constrcutor
          */
         BOOST_DI_INJECT(Application,
-            const std::shared_ptr<ezserver::shared::services::ILogger>& logger,
             boost::asio::io_context& io,
+            const std::shared_ptr<ezserver::shared::services::ILogger>& logger,
             const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
             (named = ezserver::config::named::ThreadsCount) const std::size_t& threads_count)
-        : logger_(logger), io_(io), listener_(listener), threads_count_(threads_count) {}
+        : io_(io), logger_(logger), listener_(listener), threads_count_(threads_count) {}
+
+        // Destructor
+        virtual ~Application();
 
     private:
-        /// A Service to manage app logs
-        std::weak_ptr<ezserver::shared::services::ILogger> logger_;
 
         /// The application io access service
         boost::asio::io_context& io_;
 
+        /// A Service to manage app logs
+        std::shared_ptr<ezserver::shared::services::ILogger> logger_;
+
         /// The application's main tcp listener
         std::shared_ptr<ezserver::shared::net::ITcpListener> listener_;
 
-        /// The application thread pool
+        /// The currently connected clients
+        std::vector<std::shared_ptr<ezserver::shared::net::ITcpClient>> clients_;
+
+        //region Thread Pool
+
+        // The user selected threads count
         const std::size_t& threads_count_;
+
+        // The thread pool threads container
         std::vector<std::future<void>> thread_pool_;
 
-        /*      Private Mehods      */
+        //endregion
+
+        //region Private Methods
+
+        /// Exectued upon new connection acceptance
         void NewClientsHandler(
             const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
             std::shared_ptr<boost::asio::ip::tcp::socket>& client
         );
+
+        //endregion
     };
 
     /**

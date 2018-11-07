@@ -33,7 +33,7 @@ namespace ezserver
         : services_manager_(services_manager), application_(app),
           logger_(logger), filesystem_(filesystem), plugins_loader_(plugins_loader){
 
-            if (!services_manager_.lock()->Initialize()) {
+            if (!services_manager_->Initialize()) {
                 throw new std::runtime_error("Could not initialize services manager!");
             }
 
@@ -57,20 +57,21 @@ namespace ezserver
 
     private:
         /// A service to manage app services
-        std::weak_ptr<ezserver::shared::services::IServicesManager> services_manager_;
+        std::shared_ptr<ezserver::shared::services::IServicesManager> services_manager_;
 
         /// The main application object
         std::shared_ptr<ezserver::shared::IApplication> application_;
 
         /// A service to manage app logs
-        std::weak_ptr<ezserver::shared::services::ILogger> logger_;
+        std::shared_ptr<ezserver::shared::services::ILogger> logger_;
 
         /// A service to app filesystem tasks
-        std::weak_ptr<ezserver::shared::services::IFilesystem> filesystem_;
+        std::shared_ptr<ezserver::shared::services::IFilesystem> filesystem_;
 
         /// The plugins loader object
-        std::weak_ptr<ezserver::shared::introp::IPluginsLoader> plugins_loader_;
+        std::shared_ptr<ezserver::shared::introp::IPluginsLoader> plugins_loader_;
 
+        /// The plugins container
         std::shared_ptr<std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>> plugins_;
     };
 }
