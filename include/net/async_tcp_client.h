@@ -16,10 +16,7 @@ namespace ezserver::net
          * @param client_socket The socket to use
          */
         AsyncTcpClient(std::shared_ptr<boost::asio::ip::tcp::socket> client_socket)
-            : client_socket_(client_socket), io_(client_socket->get_io_context())
-        {
-            std::cout << "Created socket: " << client_socket->remote_endpoint() << std::endl;
-        }
+            : client_socket_(client_socket), io_(client_socket->get_io_context()) {}
 
         /**
          * Alternative constructor to construct a new socket

@@ -1,8 +1,13 @@
 #include "application.h"
 
+#include <net/async_tcp_client.h>
+
 #include <boost/asio/io_context.hpp>
 #include <termcolor/termcolor.hpp>
+
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 bool ezserver::Application::Startup()
 {
@@ -39,15 +44,15 @@ bool ezserver::Application::Startup()
  * Executed when a new valid connection is accepted
  *
  * @param listener  The listener that accepted the connection
- * @param client    The accepted client socket
+ * @param socket    The accepted client socket
  */
 void ezserver::Application::NewClientsHandler(
     const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
-    std::shared_ptr<boost::asio::ip::tcp::socket>& client)
+    std::shared_ptr<boost::asio::ip::tcp::socket>& socket)
 {
     // Log an information message showing the
     // endpoint of the accepted connection
-    LOG(logger_, Information) << "Got Connection From: " << client->remote_endpoint() << std::endl;
+    LOG(logger_, Information) << "Got Connection From: " << socket->remote_endpoint() << std::endl;
 
     // Start a new acceptance job
     if (!listener->AcceptNext())
@@ -63,9 +68,6 @@ void ezserver::Application::NewClientsHandler(
  */
 ezserver::Application::~Application()
 {
-    LOG(logger_, Information) << "Closing opened connections..." << std::endl;
-    LOG(logger_, Information) << "Cleaning..." << std::endl;
-
     // Clear all threads
     thread_pool_.clear();
 }

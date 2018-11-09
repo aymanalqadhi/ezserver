@@ -27,16 +27,6 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/ayman/Projects/ezserver"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="ezserver">
 				<Option output="/home/ayman/Projects/ezserver/bin/ezserver" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ayman/Projects/ezserver/bin"/>
@@ -84,6 +74,16 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 ezserver/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/ayman/Projects/ezserver"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 edit_cache"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ayman/Projects/ezserver/Makefile&quot;  VERBOSE=1 clean"/>

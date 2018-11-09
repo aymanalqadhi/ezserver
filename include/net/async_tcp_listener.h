@@ -44,8 +44,7 @@ namespace ezserver::net
          * Gets whether the listener is started or not
          * @return The listener listening status
          */
-        virtual inline const bool IsStarted() const noexcept override
-        { return is_started_; }
+        virtual inline const bool IsStarted() const noexcept override { return is_started_; }
 
     private:
 
