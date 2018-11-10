@@ -59,6 +59,8 @@ int main(int argc, const char *argv[])
 
         // Run the application's bootstrapper
         bootstrapper.Run();
+
+        int x; std::cin >> x;
     }
     catch (const std::exception &ex)
     {

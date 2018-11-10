@@ -72,7 +72,7 @@ namespace ezserver::net
         bool AcceptNext();
 
         /// Handles incoming connections
-        void HandleAcceptedConnections(std::shared_ptr<boost::asio::ip::tcp::socket>&, const boost::system::error_code&);
+        void HandleAcceptedConnections(std::shared_ptr<boost::asio::ip::tcp::socket>, const boost::system::error_code&);
     };
 
     /**

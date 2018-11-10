@@ -17,12 +17,11 @@ bool ezserver::Application::Startup()
     // Initialize the thread pool
     LOG(logger_, Debug) << "Initializing thread pool with " << threads_count_ << " threads..." << std::endl;
     boost::asio::io_context::work w(io_);
+
     for (std::size_t i = 0; i < threads_count_; ++i)
     {
         // Add a new asynchronous job to the pool
-        thread_pool_.push_back(std::async(std::launch::async, [this] {
-            this->io_.run();
-        }));
+        thread_pool_.push_back(std::async(std::launch::async, [&] { this->io_.run(); }));
     }
 
     // Initialize & Start the listener
@@ -34,7 +33,6 @@ bool ezserver::Application::Startup()
 
     // Subscribe to new connections acceptance event
     listener_->OnConnectionAccepted += [&](auto l, auto c) { NewClientsHandler(l,c); };
-
     return true;
 }
 
@@ -48,7 +46,7 @@ bool ezserver::Application::Startup()
  */
 void ezserver::Application::NewClientsHandler(
     const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
-    std::shared_ptr<boost::asio::ip::tcp::socket>& socket)
+    std::shared_ptr<boost::asio::ip::tcp::socket> socket)
 {
     // Log an information message showing the
     // endpoint of the accepted connection

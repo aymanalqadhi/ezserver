@@ -14,8 +14,8 @@ namespace ezserver::shared::utils
     template<typename TSender, typename TPayload>
     class EventHandler
     {
-    public:
 
+    public:
         /**
          * Registers a handler to this event
          * @param callback The handler to register
@@ -30,7 +30,7 @@ namespace ezserver::shared::utils
 
         /**
          * Invokes all registerd handlers
-         * @param payload
+         * @param payload The data to post on all handlers
          */
         virtual void Invoke(TSender sender, TPayload payload)
         {

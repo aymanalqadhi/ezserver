@@ -49,7 +49,7 @@ namespace ezserver::shared::net
 
         /// An event handler to be invoked when a new connection is accpeted
         ezserver::shared::utils::EventHandler<const std::shared_ptr<ITcpListener>&,
-            std::shared_ptr<boost::asio::ip::tcp::socket>&> OnConnectionAccepted;
+            std::shared_ptr<boost::asio::ip::tcp::socket>> OnConnectionAccepted;
     };
 }
 

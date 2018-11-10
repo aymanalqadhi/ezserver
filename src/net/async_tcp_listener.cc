@@ -102,7 +102,7 @@ bool ezserver::net::AsyncTcpListener::AcceptNext()
 // =================================================== //
 
 void ezserver::net::AsyncTcpListener::HandleAcceptedConnections(
-    std::shared_ptr<boost::asio::ip::tcp::socket>& socket,
+    std::shared_ptr<boost::asio::ip::tcp::socket> socket,
     const boost::system::error_code& error)
 {
     // If there was an error, log the error

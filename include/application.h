@@ -65,7 +65,7 @@ namespace ezserver
         /// Exectued upon new connection acceptance
         void NewClientsHandler(
             const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
-            std::shared_ptr<boost::asio::ip::tcp::socket>& socket
+            std::shared_ptr<boost::asio::ip::tcp::socket> socket
         );
 
         //endregion
