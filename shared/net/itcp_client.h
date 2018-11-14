@@ -51,7 +51,10 @@ namespace ezserver::shared::net
         //region Events
 
         /// An event handler to be invoked when the connection closes
-        ezserver::shared::utils::EventHandler<const std::shared_ptr<ITcpClient>&, const boost::system::error_code&> OnConnectionClosed;
+        ezserver::shared::utils::EventHandler<const std::shared_ptr<ITcpClient>&, const boost::system::error_code&> ConnectionClosed;
+
+        /// An event handler to be invoked when a new message is recieved
+        ezserver::shared::utils::EventHandler<const std::shared_ptr<ITcpClient>&, std::string> MessageRecieved;
 
         //endregion
     };

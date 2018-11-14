@@ -65,15 +65,21 @@ namespace ezserver
         //region Private Methods
 
         /// Exectued upon new connection acceptance
-        void NewClientsHandler(
-            const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
+        void OnNewClientAccepted(
+            const std::shared_ptr<ezserver::shared::net::ITcpListener> &listener,
             std::shared_ptr<boost::asio::ip::tcp::socket> socket
         );
 
         /// Exectued upon a connection close
-        void ConnectionClosed(
-            const std::shared_ptr<ezserver::shared::net::ITcpClient>& client,
-            const boost::system::error_code& err
+        void OnConnectionClosed(
+            const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
+            const boost::system::error_code &err
+        );
+
+        /// Exectued upon a new message receiving
+        void OnMessageReceived(
+            const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
+            std::string message
         );
 
         //endregion

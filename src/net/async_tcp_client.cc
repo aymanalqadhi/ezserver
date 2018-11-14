@@ -61,14 +61,18 @@ void ezserver::net::AsyncTcpClient::StartRead()
             if (err)
             {
                 // Raise the connection loss event, and then return
-                OnConnectionClosed.Invoke(client, err);
+                ConnectionClosed.Invoke(client, err);
                 return;
             }
 
+            // Get the message string from the buffer
             std::stringstream ss;
             ss << &buffer;
 
-            std::cout << "[+] Read `" << ss.str() << " [" << rec << "] " << "` From: " << client_socket_->remote_endpoint() << std::endl;
+            // Raise the receiving event
+            MessageRecieved.Invoke(client, std::move(ss.str()));
+
+            // Restart the reading loop
             StartRead();
         }
     );

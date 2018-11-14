@@ -33,7 +33,7 @@ bool ezserver::Application::Startup()
 
     // Subscribe to new connections acceptance event
     listener_->NewConnectionAccepted += std::bind(
-        &ezserver::Application::NewClientsHandler, this,
+            &ezserver::Application::OnNewClientAccepted, this,
         std::placeholders::_1,
         std::placeholders::_2
     );
@@ -49,7 +49,7 @@ bool ezserver::Application::Startup()
  * @param listener  The listener that accepted the connection
  * @param scket    The accepted client socket
  */
-void ezserver::Application::NewClientsHandler(
+void ezserver::Application::OnNewClientAccepted(
         const std::shared_ptr<ezserver::shared::net::ITcpListener> &listener,
         std::shared_ptr<boost::asio::ip::tcp::socket> socket)
 {
@@ -65,8 +65,13 @@ void ezserver::Application::NewClientsHandler(
     client->Id(++clients_counter);
 
     // Subscribe to event handlers
-    client->OnConnectionClosed += std::bind(
-        &ezserver::Application::ConnectionClosed, this,
+    client->ConnectionClosed += std::bind(
+        &ezserver::Application::OnConnectionClosed, this,
+        std::placeholders::_1,
+        std::placeholders::_2
+    );
+    client->MessageRecieved += std::bind(
+        &ezserver::Application::OnMessageReceived, this,
         std::placeholders::_1,
         std::placeholders::_2
     );
@@ -84,7 +89,7 @@ void ezserver::Application::NewClientsHandler(
 
 // ======================================================== //
 
-void ezserver::Application::ConnectionClosed(
+void ezserver::Application::OnConnectionClosed(
     const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
     const boost::system::error_code &err)
 {
@@ -101,6 +106,16 @@ void ezserver::Application::ConnectionClosed(
     }
 
     client->Stop();
+}
+
+// ======================================================== //
+
+void ezserver::Application::OnMessageReceived(
+    const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
+    std::string message)
+{
+    std::cout << "[+] Read `" << message << " [" << message.length()
+              << "] " << "` From: " << client->Socket()->remote_endpoint() << std::endl;
 }
 
 // ======================================================== //
