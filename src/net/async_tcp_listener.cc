@@ -116,7 +116,7 @@ void ezserver::net::AsyncTcpListener::HandleAcceptedConnections(
     // Invoke the associated event handlers with
     // a pointer to the current listener & the
     // accepted socket
-    ezserver::shared::net::ITcpListener::OnConnectionAccepted.Invoke(
+    ezserver::shared::net::ITcpListener::NewConnectionAccepted.Invoke(
         shared_from_this(),
         socket
     );

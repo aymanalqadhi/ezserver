@@ -10,6 +10,8 @@
 
 #include <boost/di.hpp>
 #include <vector>
+#include <unordered_map>
+#include <chrono>
 #include <future>
 
 namespace ezserver
@@ -48,7 +50,7 @@ namespace ezserver
         std::shared_ptr<ezserver::shared::net::ITcpListener> listener_;
 
         /// The currently connected clients
-        std::vector<std::shared_ptr<ezserver::shared::net::ITcpClient>> clients_;
+        std::unordered_map<std::uint64_t, std::weak_ptr<ezserver::shared::net::ITcpClient>> clients_;
 
         //region Thread Pool
 
@@ -66,6 +68,12 @@ namespace ezserver
         void NewClientsHandler(
             const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
             std::shared_ptr<boost::asio::ip::tcp::socket> socket
+        );
+
+        /// Exectued upon a connection close
+        void ConnectionClosed(
+            const std::shared_ptr<ezserver::shared::net::ITcpClient>& client,
+            const boost::system::error_code& err
         );
 
         //endregion
