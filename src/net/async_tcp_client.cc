@@ -43,11 +43,6 @@ void ezserver::net::AsyncTcpClient::StartRead()
     // to keep the object alive
     auto client = shared_from_this();
 
-    // Create a boost buffer
-    // TODO:
-    // * Find another solution, since this
-    // may cause buffer-overflow errors
-
     // Start an asynchronous read job
     boost::asio::async_read_until(
         *client_socket_, buffer_, '\n',
