@@ -4,6 +4,7 @@
 #include "net/itcp_client.h"
 #include <boost/asio/io_context_strand.hpp>
 #include <boost/asio/ip/tcp.hpp>
+#include <boost/asio/streambuf.hpp>
 
 namespace ezserver::net
 {
@@ -64,11 +65,13 @@ namespace ezserver::net
         /// The synchronization object for this connection
         boost::asio::io_context::strand strand_;
 
+        /// The client buffer
+        boost::asio::streambuf buffer_;
+
         /// The client ID
         std::int64_t id_;
 
         void StartRead();
-
         void StartWrite();
     };
 }

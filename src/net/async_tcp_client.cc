@@ -3,7 +3,6 @@
 #include <boost/asio/deadline_timer.hpp>
 #include <boost/asio/write.hpp>
 #include <boost/asio/read_until.hpp>
-#include <boost/asio/streambuf.hpp>
 #include <boost/asio/buffer.hpp>
 #include <boost/system/error_code.hpp>
 #include <boost/asio/io_context_strand.hpp>
@@ -48,12 +47,11 @@ void ezserver::net::AsyncTcpClient::StartRead()
     // TODO:
     // * Find another solution, since this
     // may cause buffer-overflow errors
-    boost::asio::streambuf buffer;
 
     // Start an asynchronous read job
     boost::asio::async_read_until(
-        *client_socket_, buffer, '\n',
-        [this, client, &buffer] (const boost::system::error_code& err, const std::size_t& rec) {
+        *client_socket_, buffer_, '\n',
+        [this, client] (const boost::system::error_code& err, const std::size_t& rec) {
 
             // If an error was found, fire the connection loss
             // event handler, and close the connection
@@ -66,7 +64,7 @@ void ezserver::net::AsyncTcpClient::StartRead()
 
             // Get the message string from the buffer
             std::stringstream ss;
-            ss << &buffer;
+            ss << &buffer_;
 
             // Raise the receiving event
             MessageRecieved.Invoke(client, std::move(ss.str()));
