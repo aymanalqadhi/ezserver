@@ -9,6 +9,8 @@
 #include <thread>
 #include <chrono>
 
+// ======================================================== //
+
 bool ezserver::Application::Startup()
 {
     // Show welcome message
@@ -50,8 +52,8 @@ bool ezserver::Application::Startup()
  * @param scket    The accepted client socket
  */
 void ezserver::Application::OnNewClientAccepted(
-        const std::shared_ptr<ezserver::shared::net::ITcpListener> &listener,
-        std::shared_ptr<boost::asio::ip::tcp::socket> socket)
+    const std::shared_ptr<ezserver::shared::net::ITcpListener> &listener,
+    std::shared_ptr<boost::asio::ip::tcp::socket> socket)
 {
     // Global atomic clients counter
     static std::atomic_uint64_t clients_counter(0);
@@ -95,17 +97,27 @@ void ezserver::Application::OnConnectionClosed(
 {
     // Remove the corrosponding weak_ptr from the clients map
     clients_.erase(client->Id());
-    auto ep = client->Socket()->remote_endpoint();
 
-    if (err == boost::asio::error::eof) {
-        LOG(logger_, Information) << "Connection to " << ep
-                                  << " was closed." << std::endl;
-    } else {
-        LOG(logger_, Warning) << "Connection to " << client->Socket()->remote_endpoint()
-                              << "was unexpectedly closed" << err.message() << "!" << std::endl;
+    if (client->Socket()->is_open())
+    {
+        if (err == boost::asio::error::eof)
+        {
+            LOG(logger_, Information)
+                << "Connection to " << client->Socket()->remote_endpoint()
+                << " was closed." << std::endl;
+        }
+        else
+        {
+            LOG(logger_, Warning)
+                << "Connection to " << client->Socket()->remote_endpoint()
+                << "was unexpectedly closed" << err.message() << "!" << std::endl;
+        }
+        client->Stop();
     }
-
-    client->Stop();
+    else
+    {
+        LOG(logger_, Information) << "Connection to client #" << client->Id() << " was closed." << std::endl;
+    }
 }
 
 // ======================================================== //

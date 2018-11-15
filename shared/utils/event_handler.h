@@ -20,13 +20,17 @@ namespace ezserver::shared::utils
          * Registers a handler to this event
          * @param callback The handler to register
          */
-        virtual void RegisterHandler(const std::function<void(TSender, TPayload)>& callback) { callbacks_.push_back(callback); }
+        virtual void RegisterHandler(const std::function<void(TSender, TPayload)>& callback) {
+            callbacks_.push_back(callback);
+        }
 
         /**
          * Registers a handler in C# way
          * @param handler The handler to register
          */
-        virtual void operator+=(const std::function<void(TSender, TPayload)>& handler) { RegisterHandler(handler);  }
+        virtual void operator+=(const std::function<void(TSender, TPayload)>& handler) {
+            RegisterHandler(handler);
+        }
 
         /**
          * Invokes all registerd handlers
