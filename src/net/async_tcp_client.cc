@@ -8,14 +8,12 @@
 #include <boost/asio/io_context_strand.hpp>
 
 #include <sstream>
-#include <iostream>
 
 // ============================================================== //
 
 bool ezserver::net::AsyncTcpClient::Start()
 {
-    strand_.post(std::bind(&ezserver::net::AsyncTcpClient::StartRead, this));
-
+    StartRead();
     return true;
 }
 
@@ -43,15 +41,10 @@ void ezserver::net::AsyncTcpClient::StartRead()
     // to keep the object alive
     auto client = shared_from_this();
 
-    // Create a boost buffer
-    // TODO:
-    // * Find another solution, since this
-    // may cause buffer-overflow errors
-
     // Start an asynchronous read job
     boost::asio::async_read_until(
         *client_socket_, buffer_, '\n',
-        [this, client] (const boost::system::error_code& err, const std::size_t& rec) {
+        strand_.wrap([this, client] (const boost::system::error_code& err, const std::size_t& rec) {
 
             // If an error was found, fire the connection loss
             // event handler, and close the connection
@@ -62,16 +55,15 @@ void ezserver::net::AsyncTcpClient::StartRead()
                 return;
             }
 
-            // Get the message string from the buffer
-            std::stringstream ss;
-            ss << &buffer_;
-
             // Raise the receiving event
-            MessageRecieved.Invoke(client, std::move(ss.str()));
+            MessageRecieved.Invoke(
+                client,
+                std::move(std::string(std::istreambuf_iterator<char>(&buffer_), std::istreambuf_iterator<char>()))
+            );
 
             // Restart the reading loop
             StartRead();
-        }
+        })
     );
 }
 

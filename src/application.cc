@@ -114,8 +114,8 @@ void ezserver::Application::OnMessageReceived(
     const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
     std::string message)
 {
-    std::cout << "[+] Read `" << message << " [" << message.length()
-              << "] " << "` From: " << client->Socket()->remote_endpoint() << std::endl;
+    std::cout << "[+] Read `" << message << "` [" << message.length()
+              << "],  From: " << client->Socket()->remote_endpoint() << std::endl;
 }
 
 // ======================================================== //
