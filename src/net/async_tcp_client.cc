@@ -38,7 +38,6 @@ bool ezserver::net::AsyncTcpClient::Stop()
 
 // ============================================================== //
 
-
 void ezserver::net::AsyncTcpClient::StartRead()
 {
     // Create a shared pointer of this in order
@@ -54,7 +53,7 @@ void ezserver::net::AsyncTcpClient::StartRead()
     // Start an asynchronous read job
     boost::asio::async_read_until(
         *client_socket_, buffer, '\n',
-        [this, client, &buffer] (const boost::system::error_code& err, auto rec) {
+        [this, client, &buffer] (const boost::system::error_code& err, const std::size_t& rec) {
 
             // If an error was found, fire the connection loss
             // event handler, and close the connection
