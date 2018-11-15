@@ -3,6 +3,13 @@ bin/
 CMakeFiles/
 cmake-build-debug/
 
+# Ignore build files
+CMakeCache.txt
+CMakeLists.txt.user
+Makefile
+cmake_install.cmake
+
 # Ignore IDE files
 .vscode/
 .idea/
+ezserver.cbp
