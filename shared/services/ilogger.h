@@ -9,7 +9,7 @@
 namespace ezserver::shared::services
 {
     /// Service unique id
-    const std::string kLoggerService = "eztech.com/ezserver/services/loggor";
+    const std::string kLoggerService = "eztech.com/ezserver/services/logger";
 
     /**
      * An enum to represent the application logging level

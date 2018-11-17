@@ -10,6 +10,16 @@
 #include <unordered_map>
 #include <memory>
 
+/// Used to name the export function
+#define PLUGIN_FACTORY_NAME get_plugin
+
+#ifndef QUOTE
+  #define QUOTE(str) #str
+#endif
+#ifndef EXPAND_AND_QUOTE
+  #define EXPAND_AND_QUOTE(str) QUOTE(str)
+#endif
+
 /// Shared Namespace
 namespace ezserver::shared::introp
 {
@@ -47,20 +57,19 @@ namespace ezserver::shared::introp
         virtual bool RegisterServices(std::shared_ptr<ezserver::shared::services::IServicesManager>& services_manager) = 0;
 
         /**
-         * An operator overload to execute the underlaying
-         * factory variable
-         * @return A unique pointer to the plugin
+         * Sets the factory variable
+         * @param val
          */
-        std::unique_ptr<ezserver::shared::introp::IPlugin> operator()()
+        void Lib(boost::dll::shared_library&& val)
         {
-            return Factory();
+            lib_ = std::move(val);
         }
 
-
+    private:
         /**
          * A Factory method intialized only once
          */
-        boost::dll::detail::library_function<std::unique_ptr<ezserver::shared::introp::IPlugin>()> Factory;
+        boost::dll::shared_library lib_;
     };
 
     /**
@@ -83,13 +92,20 @@ namespace ezserver::shared::introp
          * @param full_name     The fullname of the plugin (used internally)
          * @param author        The author of the plugin
          */
-        PluginInfo(const std::string& name, const std::string& description, const std::string& version, const std::string& full_name, const std::string& author, unsigned int priority) {
-            this->name = name;
-            this->description = description;
-            this->version = version;
-            this->full_name = full_name;
-            this->author = author;
-            this->priority = priority;
+        PluginInfo(
+            const std::string&& name,
+            const std::string&& description,
+            const std::string&& version,
+            const std::string&& full_name,
+            const std::string&& author,
+            std::uint16_t priority
+        ) {
+            this->name        = std::move(name);
+            this->description = std::move(description);
+            this->version     = std::move(version);
+            this->full_name   = std::move(full_name);
+            this->author      = std::move(author);
+            this->priority    = std::move(priority);
         }
 
         /// Gets the name of the plugin

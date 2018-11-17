@@ -23,15 +23,18 @@ void ezserver::introp::PluginsLoader::LoadPlugins(
         // user.
         try
         {
+            // Open the shared library, and get a reference to it
+            boost::dll::shared_library lib(plugin_path);
+
             // Get an aliased factory fucntion that produces a
             // unique smart pointer to the plugin.
             // If not found, an exception is thrown
-            auto plugin_factory = boost::dll::import_alias<std::unique_ptr<ezserver::shared::introp::IPlugin>()>(
-                plugin_path, "get_plugin"
+            auto factory = lib.get_alias<std::unique_ptr<ezserver::shared::introp::IPlugin>()>(
+                EXPAND_AND_QUOTE(PLUGIN_FACTORY_NAME)
             );
 
             // Try to create the plugin from the factory function
-            auto plugin = plugin_factory();
+            auto plugin = factory();
 
             // Check if the plugin is valid, if it is not,
             // throw a runtime error to be catched by the
@@ -42,7 +45,7 @@ void ezserver::introp::PluginsLoader::LoadPlugins(
             // Set the factory method
             // *[IMPORTANT]*: this line of code is what keeps
             // the plugin alive
-            plugin->Factory(std::move(plugin_factory));
+            plugin->Lib(std::move(lib));
 
             // Get the information of the loaded plugin.
             // This information contains the name of the
