@@ -47,6 +47,17 @@ namespace ezserver::shared::introp
         virtual bool RegisterServices(std::shared_ptr<ezserver::shared::services::IServicesManager>& services_manager) = 0;
 
         /**
+         * An operator overload to execute the underlaying
+         * factory variable
+         * @return A unique pointer to the plugin
+         */
+        std::unique_ptr<ezserver::shared::introp::IPlugin> operator()()
+        {
+            return Factory();
+        }
+
+
+        /**
          * A Factory method intialized only once
          */
         boost::dll::detail::library_function<std::unique_ptr<ezserver::shared::introp::IPlugin>()> Factory;

@@ -6,8 +6,7 @@
 #include <termcolor/termcolor.hpp>
 
 #include <iostream>
-#include <thread>
-#include <chrono>
+#include <string_view>
 
 // ======================================================== //
 
@@ -123,11 +122,27 @@ void ezserver::Application::OnConnectionClosed(
 // ======================================================== //
 
 void ezserver::Application::OnMessageReceived(
-    const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
+    const std::shared_ptr<ezserver::shared::net::ITcpClient>& client,
     std::string message)
 {
-    std::cout << "[+] Read `" << message << "` [" << message.length()
-              << "],  From: " << client->Socket()->remote_endpoint() << std::endl;
+    std::smatch matches;
+    if (!std::regex_search(message, matches, request_pattern_))
+    {
+        LOG(logger_, Error) << "Invalid Command `" << message << "` Received From: " << client->Socket()->remote_endpoint() << std::endl;
+        client->Socket()->send(boost::asio::buffer("!Invalid Command"));
+        return;
+    }
+
+    auto path = matches[1].str();
+    auto cmd  = matches[2].str();
+    auto args = matches[3].str();
+
+    LOG (logger_, Information) << "[" << path << "]:[" << cmd << "] (" << args << ");" << std::endl;
+//
+//    std::string_view command{message.begin(), command_separator};
+//
+//    std::cout << "[+] Read `" << command << "` [" << command.length()
+//              << "],  From: " << client->Socket()->remote_endpoint() << std::endl;
 }
 
 // ======================================================== //

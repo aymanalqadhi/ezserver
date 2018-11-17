@@ -9,13 +9,16 @@
 #include <net/itcp_client.h>
 
 #include <boost/di.hpp>
+
 #include <vector>
-#include <unordered_map>
-#include <chrono>
+#include <map>
 #include <future>
+#include <regex>
 
 namespace ezserver
 {
+    const std::string kRequestPattern = R"(^((?:\/[\w\-\.]+)+):(\w+)\s+(.*?)\n?$)";
+
     /**
      * Main application class
      */
@@ -33,10 +36,26 @@ namespace ezserver
             const std::shared_ptr<ezserver::shared::services::ILogger>& logger,
             const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
             (named = ezserver::config::named::ThreadsCount) const std::size_t& threads_count)
-        : io_(io), logger_(logger), listener_(listener), threads_count_(threads_count) {}
+        : io_(io), logger_(logger), listener_(listener), threads_count_(threads_count),
+          request_pattern_(kRequestPattern) {}
 
         // Destructor
         virtual ~Application();
+
+        /**
+         * Gets a reference to the plugins map
+         * @return A reference to the plugins map
+         */
+        std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& Plugins()
+            override
+        { return std::ref(plugins_); }
+
+        /**
+         * Gets the currently connected clients list
+         * @return The clients list
+         */
+        virtual std::map<std::uint64_t, std::weak_ptr<ezserver::shared::net::ITcpClient>>& Clients() override
+        { return std::ref(clients_); }
 
     private:
 
@@ -50,7 +69,10 @@ namespace ezserver
         std::shared_ptr<ezserver::shared::net::ITcpListener> listener_;
 
         /// The currently connected clients
-        std::unordered_map<std::uint64_t, std::weak_ptr<ezserver::shared::net::ITcpClient>> clients_;
+        std::map<std::uint64_t, std::weak_ptr<ezserver::shared::net::ITcpClient>> clients_;
+
+        /// The plugins imported by the application
+        std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> plugins_;
 
         //region Thread Pool
 
@@ -59,6 +81,14 @@ namespace ezserver
 
         // The thread pool threads container
         std::vector<std::future<void>> thread_pool_;
+
+        //endregion
+
+        //region Patterns
+
+        /// The regular expression pattern to be matched
+        /// with requests strings
+        std::regex request_pattern_;
 
         //endregion
 

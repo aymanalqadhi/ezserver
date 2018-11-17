@@ -11,7 +11,8 @@ namespace ezserver::services
     /**
      * A Logger that logs into the console
      */
-    class ConsoleLogger : public ezserver::shared::services::ILogger {
+    class ConsoleLogger : public ezserver::shared::services::ILogger
+    {
     public:
 
         /// Base class method override
@@ -27,13 +28,14 @@ namespace ezserver::services
          * Default constructor.
          * Sets the writing stream to the standard output stream
          */
-         ConsoleLogger() : writing_stream_(&std::cout) {
+         ConsoleLogger() : writing_stream_(std::ref(std::cout))
+         {
              IncludeTime(true);
          }
 
     private:
         /// The stream to write to
-        std::ostream* writing_stream_;
+        std::ostream& writing_stream_;
     };
 
     /**

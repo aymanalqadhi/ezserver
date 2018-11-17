@@ -3,6 +3,8 @@
 #include <utils/time.h>
 #include <termcolor/termcolor.hpp>
 
+#include <map>
+
 //===========================================================================//
 
 void ezserver::Bootstrapper::Bootstrap()
@@ -30,7 +32,7 @@ bool ezserver::Bootstrapper::LoadPlugins()
     try
     {
         // Load plugins
-        auto plugins = plugins_loader_->LoadPlugins();
+        plugins_loader_->LoadPlugins(application_->Plugins());
 
         // Initialize plugins
         LOG(logger_, Information) << "Initializing Plugins..." << std::endl;
