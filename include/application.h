@@ -9,11 +9,21 @@
 #include <net/itcp_client.h>
 
 #include <boost/di.hpp>
+#include <boost/multi_index_container.hpp>
+#include <boost/multi_index/ordered_index.hpp>
+#include <boost/multi_index/identity.hpp>
+#include <boost/multi_index/member.hpp>
 
 #include <vector>
 #include <map>
 #include <future>
 #include <regex>
+
+using ezserver::shared::introp::ExportedCommand;
+
+using boost::multi_index::ordered_non_unique;
+using boost::multi_index::indexed_by;
+using boost::multi_index::member;
 
 namespace ezserver
 {
@@ -57,6 +67,15 @@ namespace ezserver
         virtual std::map<std::uint64_t, std::weak_ptr<ezserver::shared::net::ITcpClient>>& Clients() override
         { return std::ref(clients_); }
 
+
+        /**
+         * Gets the imported commands from plugins by the applications
+         * @return
+         */
+        virtual ezserver::shared::CommandsContainer& Commands () override {
+            return std::ref(commands_);
+        }
+
     private:
 
         /// The application io access service
@@ -73,6 +92,9 @@ namespace ezserver
 
         /// The plugins imported by the application
         std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> plugins_;
+
+        /// The commands exported by the application
+        ezserver::shared::CommandsContainer commands_;
 
         //region Thread Pool
 

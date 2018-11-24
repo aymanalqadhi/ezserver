@@ -5,6 +5,7 @@
 #include <boost/dll/shared_library.hpp>
 #include <memory>
 #include <map>
+#include <unordered_map>
 
 namespace ezserver::shared::introp
 {

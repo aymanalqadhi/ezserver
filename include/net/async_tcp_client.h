@@ -6,6 +6,8 @@
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
 
+using ezserver::shared::net::ResponseCode;
+
 namespace ezserver::net
 {
     class AsyncTcpClient : public ezserver::shared::net::ITcpClient
@@ -19,6 +21,9 @@ namespace ezserver::net
 
         /// Base class method override
         virtual bool Stop() override;
+
+        /// Base class method override
+        virtual void Respond(ResponseCode code, std::string_view message, std::int8_t flags) override;
 
         /// Base class method override
         virtual inline const std::uint64_t Id() const noexcept override { return id_; }

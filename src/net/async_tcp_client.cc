@@ -1,11 +1,11 @@
 #include "net/async_tcp_client.h"
 
-#include <boost/asio/deadline_timer.hpp>
 #include <boost/asio/write.hpp>
 #include <boost/asio/read_until.hpp>
 #include <boost/asio/buffer.hpp>
 #include <boost/system/error_code.hpp>
 #include <boost/asio/io_context_strand.hpp>
+#include <boost/asio/placeholders.hpp>
 
 #include <sstream>
 
@@ -31,6 +31,28 @@ bool ezserver::net::AsyncTcpClient::Stop()
     }
 
     return err == boost::system::errc::success;
+}
+
+// ============================================================== //
+
+void ezserver::net::AsyncTcpClient::Respond(ResponseCode code, std::string_view message, std::int8_t flags)
+{
+    char header[8];
+
+    // Upper part
+    header[0] = static_cast<std::int8_t>(code);
+    header[1] = flags;
+
+    // Lower part
+    header[5] = message.length() & 0x000000FF;
+    header[6] = message.length() & 0x0000FF00;
+    header[7] = message.length() & 0x00FF0000;
+    header[8] = message.length() & 0xFF000000;
+
+    // Send the header
+    client_socket_->send(boost::asio::buffer(header, 8));
+    // Send the message itself
+    client_socket_->send(boost::asio::buffer(message));
 }
 
 // ============================================================== //

@@ -35,8 +35,8 @@ bool ezserver::Application::Startup()
     // Subscribe to new connections acceptance event
     listener_->NewConnectionAccepted += std::bind(
             &ezserver::Application::OnNewClientAccepted, this,
-        std::placeholders::_1,
-        std::placeholders::_2
+            std::placeholders::_1,
+            std::placeholders::_2
     );
 
     return true;
@@ -51,8 +51,8 @@ bool ezserver::Application::Startup()
  * @param scket    The accepted client socket
  */
 void ezserver::Application::OnNewClientAccepted(
-    const std::shared_ptr<ezserver::shared::net::ITcpListener> &listener,
-    std::shared_ptr<boost::asio::ip::tcp::socket> socket)
+        const std::shared_ptr<ezserver::shared::net::ITcpListener> &listener,
+        std::shared_ptr<boost::asio::ip::tcp::socket> socket)
 {
     // Global atomic clients counter
     static std::atomic_uint64_t clients_counter(0);
@@ -91,8 +91,8 @@ void ezserver::Application::OnNewClientAccepted(
 // ======================================================== //
 
 void ezserver::Application::OnConnectionClosed(
-    const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
-    const boost::system::error_code &err)
+        const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
+        const boost::system::error_code &err)
 {
     // Remove the corrosponding weak_ptr from the clients map
     clients_.erase(client->Id());
@@ -102,14 +102,14 @@ void ezserver::Application::OnConnectionClosed(
         if (err == boost::asio::error::eof)
         {
             LOG(logger_, Information)
-                << "Connection to " << client->Socket()->remote_endpoint()
-                << " was closed." << std::endl;
+                    << "Connection to " << client->Socket()->remote_endpoint()
+                    << " was closed." << std::endl;
         }
         else
         {
             LOG(logger_, Warning)
-                << "Connection to " << client->Socket()->remote_endpoint()
-                << "was unexpectedly closed" << err.message() << "!" << std::endl;
+                    << "Connection to " << client->Socket()->remote_endpoint()
+                    << "was unexpectedly closed" << err.message() << "!" << std::endl;
         }
         client->Stop();
     }
@@ -122,27 +122,24 @@ void ezserver::Application::OnConnectionClosed(
 // ======================================================== //
 
 void ezserver::Application::OnMessageReceived(
-    const std::shared_ptr<ezserver::shared::net::ITcpClient>& client,
+    const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
     std::string message)
 {
     std::smatch matches;
     if (!std::regex_search(message, matches, request_pattern_))
     {
-        LOG(logger_, Error) << "Invalid Command `" << message << "` Received From: " << client->Socket()->remote_endpoint() << std::endl;
-        client->Socket()->send(boost::asio::buffer("!Invalid Command"));
+        LOG(logger_, Error) << "Invalid Command `" << message << "` Received From: "
+                            << client->Socket()->remote_endpoint() << std::endl;
+        client->Socket()->send(boost::asio::buffer("!Invalid Command `" + std::move(message) + "`!\n"));
         return;
     }
 
-    auto path = matches[1].str();
-    auto cmd  = matches[2].str();
-    auto args = matches[3].str();
+    auto commands_in_path = commands_.get<ezserver::shared::path>().find(matches[1].str());
+    if (commands_in_path == commands_.get<ezserver::shared::path>().end())
+    {
 
-    LOG (logger_, Information) << "[" << path << "]:[" << cmd << "] (" << args << ");" << std::endl;
-//
-//    std::string_view command{message.begin(), command_separator};
-//
-//    std::cout << "[+] Read `" << command << "` [" << command.length()
-//              << "],  From: " << client->Socket()->remote_endpoint() << std::endl;
+    }
+//    command(client, "Ayman");
 }
 
 // ======================================================== //
@@ -156,4 +153,13 @@ ezserver::Application::~Application()
 {
     // Clear all threads
     thread_pool_.clear();
+
+    // Unload loaded plugins
+    for (const auto &plugin : plugins_)
+    {
+        LOG(logger_, Debug) << "Unloading `" << plugin.first.Name() << "`..." << std::endl;
+
+        plugin.second->Lib().unload();
+        plugins_.erase(plugin.first);
+    }
 }

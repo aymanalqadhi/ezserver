@@ -3,6 +3,7 @@
 #include <utils/time.h>
 #include <termcolor/termcolor.hpp>
 
+#include <string_view>
 #include <map>
 
 //===========================================================================//
@@ -39,6 +40,22 @@ bool ezserver::Bootstrapper::LoadPlugins()
 
         /// TODO:
         /// * Load services provieded by plugins
+
+        /// Load commands
+        for(auto& plugin : application_->Plugins())
+        {
+            try
+            {
+                for (auto& command : plugin.second->GetCommands())
+                    application_->Commands().insert(command);
+            }
+            catch(const std::exception& ex)
+            {
+                LOG(logger_, Trace) << ex.what() << std::endl;
+                continue;
+            }
+        }
+
     }
     catch (const std::exception& ex)
     {
