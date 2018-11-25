@@ -21,13 +21,9 @@
 
 using ezserver::shared::introp::ExportedCommand;
 
-using boost::multi_index::ordered_non_unique;
-using boost::multi_index::indexed_by;
-using boost::multi_index::member;
-
 namespace ezserver
 {
-    const std::string kRequestPattern = R"(^((?:\/[\w\-\.]+)+):(\w+)\s+(.*?)\n?$)";
+    const std::string kRequestPattern = R"(^((?:\/[\w\-\.]+)+:\w+)\s+(.*?)\n?$)";
 
     /**
      * Main application class
@@ -72,7 +68,7 @@ namespace ezserver
          * Gets the imported commands from plugins by the applications
          * @return
          */
-        virtual ezserver::shared::CommandsContainer& Commands () override {
+        virtual std::map<std::string, ExportedCommand>& Commands () override {
             return std::ref(commands_);
         }
 
@@ -94,7 +90,7 @@ namespace ezserver
         std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> plugins_;
 
         /// The commands exported by the application
-        ezserver::shared::CommandsContainer commands_;
+        std::map<std::string, ExportedCommand> commands_;
 
         //region Thread Pool
 

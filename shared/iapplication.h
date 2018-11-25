@@ -4,37 +4,13 @@
 #include <introp/iplugin.h>
 #include <net/itcp_client.h>
 
-#include <boost/multi_index_container.hpp>
-#include <boost/multi_index/member.hpp>
-#include <boost/multi_index/hashed_index.hpp>
-#include <boost/multi_index/tag.hpp>
-
 #include <map>
 
 using ezserver::shared::introp::ExportedCommand;
 
-using boost::multi_index::hashed_non_unique;
-using boost::multi_index::member;
-using boost::multi_index::tag;
-
 /// Shared Namespace
 namespace ezserver::shared
 {
-    /// `commands_set` tag
-    struct path{};
-    struct name{};
-
-    /// A Type definition for the command multi-indexed container.
-    /// The first index is the path of the command, and the
-    /// second index is the command name.
-    typedef boost::multi_index_container<
-    ezserver::shared::introp::ExportedCommand,
-        boost::multi_index::indexed_by<
-            hashed_non_unique<tag<path>, member<ExportedCommand, std::string, &ExportedCommand::path>>,
-            hashed_non_unique<tag<name>, member<ExportedCommand, std::string, &ExportedCommand::name>>
-        >
-    > CommandsContainer;
-
     /**
      * The main application base class
      */
@@ -58,7 +34,7 @@ namespace ezserver::shared
          * Gets the imported commands from plugins by the applications
          * @return
          */
-        virtual CommandsContainer& Commands() = 0;
+        virtual std::map<std::string, ExportedCommand>& Commands() = 0;
 
         /**
          * Gets the currently connected clients list

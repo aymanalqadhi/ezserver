@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string_view>
 
+using ezserver::shared::net::ResponseCode;
+
 // ======================================================== //
 
 bool ezserver::Application::Startup()
@@ -128,18 +130,16 @@ void ezserver::Application::OnMessageReceived(
     std::smatch matches;
     if (!std::regex_search(message, matches, request_pattern_))
     {
-        LOG(logger_, Error) << "Invalid Command `" << message << "` Received From: "
-                            << client->Socket()->remote_endpoint() << std::endl;
-        client->Socket()->send(boost::asio::buffer("!Invalid Command `" + std::move(message) + "`!\n"));
+        client->Respond(ResponseCode::kInvalidRequest, "Invalid Command `" + message + "`!");
         return;
     }
 
-    auto commands_in_path = commands_.get<ezserver::shared::path>().find(matches[1].str());
-    if (commands_in_path == commands_.get<ezserver::shared::path>().end())
+    auto command_itr = commands_.find(matches[1].str());
+    if (command_itr == commands_.end())
     {
-
+        client->Respond(ResponseCode::kCommandNotFound, matches[1].str() + ": No such command!");
+        return;
     }
-//    command(client, "Ayman");
 }
 
 // ======================================================== //

@@ -18,6 +18,15 @@ namespace ezserver::shared::introp
         virtual void LoadPlugins(
             std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins
         ) = 0;
+
+        /**
+         * Load commands from the imported plugins
+         * @param commands The map into which the commands get imported
+         */
+        virtual void LoadCommands(
+            std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins,
+            std::unordered_map<std::string, ezserver::shared::introp::ExportedCommand>& commands
+        ) = 0;
     };
 }
 

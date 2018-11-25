@@ -42,19 +42,9 @@ bool ezserver::Bootstrapper::LoadPlugins()
         /// * Load services provieded by plugins
 
         /// Load commands
-        for(auto& plugin : application_->Plugins())
-        {
-            try
-            {
-                for (auto& command : plugin.second->GetCommands())
-                    application_->Commands().insert(command);
-            }
-            catch(const std::exception& ex)
-            {
-                LOG(logger_, Trace) << ex.what() << std::endl;
-                continue;
-            }
-        }
+
+        // Validates imported commands
+
 
     }
     catch (const std::exception& ex)

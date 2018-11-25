@@ -3,7 +3,9 @@
 #include <boost/dll.hpp>
 #include <memory>
 #include <map>
+#include <unordered_map>
 #include <vector>
+#include <regex>
 
 // ========================================================= //
 
@@ -12,7 +14,7 @@ void ezserver::introp::PluginsLoader::LoadPlugins(
 ) {
     // Load plugins one by one
     // TODO:
-    // * Do this in a some parrallel way
+    // * Do this in a parrallel way
     for (auto &&plugin_path : filesystem_->ListDirectory(ezserver::shared::services::CommonDirectories::Plugins))
     {
         // Move to the next plugin if the current plugin_path was not
@@ -66,6 +68,56 @@ void ezserver::introp::PluginsLoader::LoadPlugins(
         {
             LOG(logger_, Warning) << "Could not load plugin " << plugin_path << std::endl;;
             LOG(logger_, Trace) << ex.what() << std::endl;;
+        }
+    }
+}
+
+// ========================================================= //
+
+void ezserver::introp::PluginsLoader::LoadCommands(
+    std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins,
+    std::unordered_map<std::string, ezserver::shared::introp::ExportedCommand> &commands)
+{
+    // Static RegularExpression object to match the commands paths and names
+    static const std::regex commands_pattern(R"(^(\/[\w-\.]+)+:\w+$)");
+
+    // Iterate through all imported plugins, and try to imported commands one by one
+    // TODO:
+    // Improve this to utilize multi core processors, and use
+    // a multi-threaded approach
+    for(auto& plugin : plugins)
+    {
+        try
+        {
+            // Iterate through all commands in the current plugin
+            // TODO:
+            // Improve this to utilize multi core processors, and use
+            // a multi-threaded approach
+            for (auto& command : plugin.second->GetCommands())
+            {
+                // Shape a full command specifier from the command's path
+                // and name
+                auto command_key = command.Path() + ":" + command.Name();
+
+                // Try to match the command specifier with the commands validation
+                // regular expression pattern. And if failed, just ignore the command,
+                // and go to the next iteration (or exit if no more)
+                if (!std::regex_match(command_key, commands_pattern))
+                {
+                    LOG(logger_, Debug) << "Ignored Invalid Command: " << command_key
+                                        << " From: " << plugin.first.Name() << std::endl;
+                    continue;
+                }
+
+                // Finally, add the command alogside with its specifier to the
+                // commands map
+                commands.emplace(std::make_pair(std::move(command_key), command));
+            }
+        }
+        catch(const std::exception& ex)
+        {
+            // Print any exception message in trace level
+            LOG(logger_, Trace) << ex.what() << std::endl;
         }
     }
 }

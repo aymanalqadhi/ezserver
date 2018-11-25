@@ -191,10 +191,13 @@ namespace ezserver::shared::introp
      * A structur to hold the exported commands from a plugin
      */
     struct ExportedCommand {
+    private:
         std::int32_t flags;
         std::string path, name;
         std::function<CommandResultStatus(const std::shared_ptr<ezserver::shared::net::ITcpClient> &,
                                           std::string_view)> command;
+
+    public:
         /**
          * Default constructor
          * @param path      The command path
@@ -236,6 +239,9 @@ namespace ezserver::shared::introp
         ) {
             return command(client, std::move(args));
         }
+
+        inline const std::string& Path() const noexcept { return path; }
+        inline const std::string& Name() const noexcept { return name; }
     };
 }
 
