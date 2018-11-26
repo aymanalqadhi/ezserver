@@ -4,6 +4,7 @@
 #include <introp/iplugin.h>
 #include <net/itcp_client.h>
 
+#include <unordered_map>
 #include <map>
 
 using ezserver::shared::introp::ExportedCommand;
@@ -34,7 +35,7 @@ namespace ezserver::shared
          * Gets the imported commands from plugins by the applications
          * @return
          */
-        virtual std::map<std::string, ExportedCommand>& Commands() = 0;
+        virtual std::unordered_map<std::string, ExportedCommand>& Commands() = 0;
 
         /**
          * Gets the currently connected clients list

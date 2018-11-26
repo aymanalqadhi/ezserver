@@ -11,6 +11,9 @@
 
 namespace ezserver::shared::net
 {
+    /**
+     * An enum to represent response codes
+     */
     enum class ResponseCode : std::uint8_t {
         kSuccess = 0x0, kFailure = 0x1, kInvalidRequest = 0x3,
         kCommandNotFound = 0x4
@@ -65,13 +68,13 @@ namespace ezserver::shared::net
         //region Events
 
         /// An event handler to be invoked when the connection closes
-        ezserver::shared::utils::EventHandler<const std::shared_ptr<ITcpClient>&, const boost::system::error_code&> ConnectionClosed;
+        ezserver::shared::utils::EventHandler<
+            const std::shared_ptr<ITcpClient>&,
+            const boost::system::error_code&
+        > ConnectionClosed;
 
         /// An event handler to be invoked when a new message is recieved
         ezserver::shared::utils::EventHandler<const std::shared_ptr<ITcpClient>&, std::string> MessageRecieved;
-
-        /// An event handler to be invoked when a new message is recieved
-        ezserver::shared::utils::EventHandler<const std::shared_ptr<ITcpClient>&, std::size_t> MessageSent;
 
         //endregion
     };

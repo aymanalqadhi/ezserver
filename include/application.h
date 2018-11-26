@@ -16,6 +16,7 @@
 
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <future>
 #include <regex>
 
@@ -23,7 +24,11 @@ using ezserver::shared::introp::ExportedCommand;
 
 namespace ezserver
 {
-    const std::string kRequestPattern = R"(^((?:\/[\w\-\.]+)+:\w+)\s+(.*?)\n?$)";
+    /// The pattern which is used to test the received command
+    /// from users.
+    /// It has two main groups. The first one is the command path & name
+    /// and the second one is the command parameters
+    const std::string kRequestPattern = R"(^((?:\/[\w\-\.]+)+:\w+)\s+(.*)\n?$)";
 
     /**
      * Main application class
@@ -68,7 +73,7 @@ namespace ezserver
          * Gets the imported commands from plugins by the applications
          * @return
          */
-        virtual std::map<std::string, ExportedCommand>& Commands () override {
+        virtual std::unordered_map<std::string, ExportedCommand>& Commands () override {
             return std::ref(commands_);
         }
 
@@ -90,7 +95,7 @@ namespace ezserver
         std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> plugins_;
 
         /// The commands exported by the application
-        std::map<std::string, ExportedCommand> commands_;
+        std::unordered_map<std::string, ExportedCommand> commands_;
 
         //region Thread Pool
 

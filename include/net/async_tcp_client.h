@@ -43,7 +43,9 @@ namespace ezserver::net
          */
         AsyncTcpClient(std::shared_ptr<boost::asio::ip::tcp::socket> client_socket)
             : client_socket_(client_socket), strand_(client_socket->get_io_context())
-        {}
+        {
+            is_running_.store(false);
+        }
 
         /**
          * Alternative constructor to construct a new socket
@@ -76,8 +78,15 @@ namespace ezserver::net
         /// The client ID
         std::int64_t id_;
 
+        /// An atomic variable to determine if the
+        /// socket is running or not
+        std::atomic_bool is_running_;
+
+        /// Strart a reading process
         void StartRead();
-        void StartWrite();
+
+        /// The respond method async callback
+        void HandleWrite(const boost::system::error_code& err, const std::size_t& sent, const std::size_t expected);
     };
 }
 

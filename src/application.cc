@@ -4,9 +4,7 @@
 
 #include <boost/asio/io_context.hpp>
 #include <termcolor/termcolor.hpp>
-
 #include <iostream>
-#include <string_view>
 
 using ezserver::shared::net::ResponseCode;
 
@@ -36,9 +34,9 @@ bool ezserver::Application::Startup()
 
     // Subscribe to new connections acceptance event
     listener_->NewConnectionAccepted += std::bind(
-            &ezserver::Application::OnNewClientAccepted, this,
-            std::placeholders::_1,
-            std::placeholders::_2
+        &ezserver::Application::OnNewClientAccepted, this,
+        std::placeholders::_1,
+        std::placeholders::_2
     );
 
     return true;
@@ -92,15 +90,60 @@ void ezserver::Application::OnNewClientAccepted(
 
 // ======================================================== //
 
+void ezserver::Application::OnMessageReceived(
+    const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
+    std::string message)
+{
+    // RegularExpression matches array
+    std::smatch matches;
+
+    // Try to match the received message with the commands pattern,
+    // If faild, respond with an InvalidRequest error and return
+    if (!std::regex_search(message, matches, request_pattern_))
+    {
+        client->Respond(ResponseCode::kInvalidRequest, "Invalid Command `" + message + "`!");
+        return;
+    }
+
+    // Try to find the requested command
+    auto command_itr = commands_.find(std::move(matches[1].str()));
+
+    // If no command was found, respond with a CommandNotFound error
+    // and return
+    if (command_itr == commands_.end())
+    {
+        client->Respond(ResponseCode::kCommandNotFound, matches[1].str() + ": No such command!");
+        return;
+    }
+
+    // Try to execute hte requested command
+    try
+    {
+        command_itr->second(client, std::move(matches[2].str()));
+    }
+    catch(const std::exception& ex)
+    {
+        // Log the exception message with a trace level
+        LOG(logger_, Trace) << ex.what();
+    }
+}
+
+// ======================================================== //
+
 void ezserver::Application::OnConnectionClosed(
-        const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
-        const boost::system::error_code &err)
+    const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
+    const boost::system::error_code &err)
 {
     // Remove the corrosponding weak_ptr from the clients map
     clients_.erase(client->Id());
 
+    // Check if the connection is still open
     if (client->Socket()->is_open())
     {
+        // If the error indicates that the connection was
+        // close normally, log this to the user, else, log
+        // a message to show that the connection was
+        // unexpectedly closed
         if (err == boost::asio::error::eof)
         {
             LOG(logger_, Information)
@@ -118,27 +161,6 @@ void ezserver::Application::OnConnectionClosed(
     else
     {
         LOG(logger_, Information) << "Connection to client #" << client->Id() << " was closed." << std::endl;
-    }
-}
-
-// ======================================================== //
-
-void ezserver::Application::OnMessageReceived(
-    const std::shared_ptr<ezserver::shared::net::ITcpClient> &client,
-    std::string message)
-{
-    std::smatch matches;
-    if (!std::regex_search(message, matches, request_pattern_))
-    {
-        client->Respond(ResponseCode::kInvalidRequest, "Invalid Command `" + message + "`!");
-        return;
-    }
-
-    auto command_itr = commands_.find(matches[1].str());
-    if (command_itr == commands_.end())
-    {
-        client->Respond(ResponseCode::kCommandNotFound, matches[1].str() + ": No such command!");
-        return;
     }
 }
 
