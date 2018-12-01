@@ -3,21 +3,19 @@
 #include <boost/dll.hpp>
 #include <memory>
 #include <map>
+#include <unordered_map>
 #include <vector>
+#include <regex>
 
-std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>
-ezserver::introp::PluginsLoader::LoadPlugins()
-{
-    // The plugins map.
-    // Holds the plugins and their corrosponding libraries
-    // references.
-    std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> plugins;
+// ========================================================= //
 
+void ezserver::introp::PluginsLoader::LoadPlugins(
+    std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins
+) {
     // Load plugins one by one
-    //
     // TODO:
-    // * Do this in a some parrallel way
-    for (auto &&plugin_path : filesystem_.lock()->ListDirectory(ezserver::shared::services::CommonDirectories::Plugins))
+    // * Do this in a parrallel way
+    for (auto &&plugin_path : filesystem_->ListDirectory(ezserver::shared::services::CommonDirectories::Plugins))
     {
         // Move to the next plugin if the current plugin_path was not
         // a valid plugin binary file
@@ -29,13 +27,18 @@ ezserver::introp::PluginsLoader::LoadPlugins()
         // user.
         try
         {
+            // Open the shared library, and get a reference to it
+            boost::dll::shared_library lib(plugin_path);
+
             // Get an aliased factory fucntion that produces a
             // unique smart pointer to the plugin.
             // If not found, an exception is thrown
-            auto plugin_factory =  boost::dll::import_alias<std::unique_ptr<ezserver::shared::introp::IPlugin>()>(plugin_path, "get_plugin");
+            auto factory = lib.get_alias<std::unique_ptr<ezserver::shared::introp::IPlugin>()>(
+                EXPAND_AND_QUOTE(PLUGIN_FACTORY_NAME)
+            );
 
             // Try to create the plugin from the factory function
-            auto plugin = plugin_factory();
+            auto plugin = factory();
 
             // Check if the plugin is valid, if it is not,
             // throw a runtime error to be catched by the
@@ -43,10 +46,10 @@ ezserver::introp::PluginsLoader::LoadPlugins()
             if (!plugin)
                 throw std::runtime_error("Invalid Plugin " + plugin_path.string());
 
-            // Set the refrence to the factory method
+            // Set the factory method
             // *[IMPORTANT]*: this line of code is what keeps
             // the plugin alive
-            plugin->Factory = std::move(plugin_factory);
+            plugin->Lib(std::move(lib));
 
             // Get the information of the loaded plugin.
             // This information contains the name of the
@@ -55,17 +58,66 @@ ezserver::introp::PluginsLoader::LoadPlugins()
             // display name, the version of the plugins, the author,
             // and the initializing priority of the plugin
             auto info = plugin->Info();
-            LOG(logger_.lock(), Debug) << "Loaded " << info.Name() << ", " << info.Version() << ". Written By: " << info.Author() << std::endl;
+            LOG(logger_, Debug) << "Loaded " << info.Name() << ", " << info.Version()
+                                << ". Written By: " << info.Author() << std::endl;
 
             // Finally, add the loaded plugin to the plugins contatiner
             plugins.emplace(std::make_pair(std::move(info), std::move(plugin)));
         }
         catch (const std::exception& ex)
         {
-            LOG(logger_.lock(), Warning) << "Could not load plugin " << plugin_path << std::endl;;
-            LOG(logger_.lock(), Trace) << ex.what() << std::endl;;
+            LOG(logger_, Warning) << "Could not load plugin " << plugin_path << std::endl;;
+            LOG(logger_, Trace) << ex.what() << std::endl;;
         }
     }
+}
 
-    return plugins;
+// ========================================================= //
+
+void ezserver::introp::PluginsLoader::LoadCommands(
+    std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins,
+    std::unordered_map<std::string, ezserver::shared::introp::ExportedCommand> &commands)
+{
+    // Static RegularExpression object to match the commands paths and names
+    static const std::regex commands_pattern(R"(^(\/[\w-\.]+)+:\w+$)");
+
+    // Iterate through all imported plugins, and try to imported commands one by one
+    // TODO:
+    // Improve this to utilize multi core processors, and use
+    // a multi-threaded approach
+    for(auto& plugin : plugins)
+    {
+        try
+        {
+            // Iterate through all commands in the current plugin
+            // TODO:
+            // Improve this to utilize multi core processors, and use
+            // a multi-threaded approach
+            for (auto& command : plugin.second->GetCommands())
+            {
+                // Shape a full command specifier from the command's path
+                // and name
+                auto command_key = command.Path() + ":" + command.Name();
+
+                // Try to match the command specifier with the commands validation
+                // regular expression pattern. And if failed, just ignore the command,
+                // and go to the next iteration (or exit if no more)
+                if (!std::regex_match(command_key, commands_pattern))
+                {
+                    LOG(logger_, Debug) << "Ignored Invalid Command: " << command_key
+                                        << " From: " << plugin.first.Name() << std::endl;
+                    continue;
+                }
+
+                // Finally, add the command alogside with its specifier to the
+                // commands map
+                commands.emplace(std::make_pair(std::move(command_key), command));
+            }
+        }
+        catch(const std::exception& ex)
+        {
+            // Print any exception message in trace level
+            LOG(logger_, Trace) << ex.what() << std::endl;
+        }
+    }
 }

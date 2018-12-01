@@ -9,13 +9,13 @@ namespace ezserver::shared
      * It initializes the application's services
      * and then startups the application
      */
-    class IBootstrapper {
+    class IBootstrapper
+    {
     protected:
         /**
          * Bootstraps application's serviceses
-         * @return
          */
-        virtual bool Bootstrap() = 0;
+        virtual void Bootstrap() = 0;
 
         /**
          * Loads plugins in the plugins directory
@@ -28,6 +28,7 @@ namespace ezserver::shared
          * @return The operation result
          */
         virtual bool LoadServices() = 0;
+
     public:
         /**
          * Runs the application

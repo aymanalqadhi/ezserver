@@ -47,7 +47,7 @@ namespace ezserver
     protected:
 
         /// Base class method override
-        virtual bool Bootstrap() override;
+        virtual void Bootstrap() override;
 
         /// Base class method override
         virtual bool LoadPlugins() override;

@@ -6,6 +6,8 @@
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
 
+using ezserver::shared::net::ResponseCode;
+
 namespace ezserver::net
 {
     class AsyncTcpClient : public ezserver::shared::net::ITcpClient
@@ -19,6 +21,9 @@ namespace ezserver::net
 
         /// Base class method override
         virtual bool Stop() override;
+
+        /// Base class method override
+        virtual void Respond(ResponseCode code, std::string_view message, std::int8_t flags) override;
 
         /// Base class method override
         virtual inline const std::uint64_t Id() const noexcept override { return id_; }
@@ -38,7 +43,9 @@ namespace ezserver::net
          */
         AsyncTcpClient(std::shared_ptr<boost::asio::ip::tcp::socket> client_socket)
             : client_socket_(client_socket), strand_(client_socket->get_io_context())
-        {}
+        {
+            is_running_.store(false);
+        }
 
         /**
          * Alternative constructor to construct a new socket
@@ -71,8 +78,15 @@ namespace ezserver::net
         /// The client ID
         std::int64_t id_;
 
+        /// An atomic variable to determine if the
+        /// socket is running or not
+        std::atomic_bool is_running_;
+
+        /// Strart a reading process
         void StartRead();
-        void StartWrite();
+
+        /// The respond method async callback
+        void HandleWrite(const boost::system::error_code& err, const std::size_t& sent, const std::size_t expected);
     };
 }
 

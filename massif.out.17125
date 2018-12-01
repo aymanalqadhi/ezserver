@@ -1,0 +1,1199 @@
+desc: (none)
+cmd: ./bin/ezserver
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=3671317
+mem_heap_B=72704
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=3681644
+mem_heap_B=72810
+mem_heap_extra_B=46
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=3815819
+mem_heap_B=72846
+mem_heap_extra_B=66
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=3832324
+mem_heap_B=74782
+mem_heap_extra_B=322
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=3846764
+mem_heap_B=75004
+mem_heap_extra_B=388
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=3862014
+mem_heap_B=76634
+mem_heap_extra_B=878
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=3881605
+mem_heap_B=78580
+mem_heap_extra_B=1340
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=3894629
+mem_heap_B=78785
+mem_heap_extra_B=1287
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=3910159
+mem_heap_B=79233
+mem_heap_extra_B=1367
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=3923812
+mem_heap_B=76614
+mem_heap_extra_B=642
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=3941299
+mem_heap_B=77638
+mem_heap_extra_B=650
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=3960478
+mem_heap_B=77662
+mem_heap_extra_B=666
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=3972718
+mem_heap_B=78458
+mem_heap_extra_B=950
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=3991495
+mem_heap_B=78821
+mem_heap_extra_B=1083
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=4013665
+mem_heap_B=78852
+mem_heap_extra_B=1092
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=4035072
+mem_heap_B=78843
+mem_heap_extra_B=1093
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=4049307
+mem_heap_B=78615
+mem_heap_extra_B=1025
+mem_stacks_B=0
+heap_tree=detailed
+n5: 78615 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 3032 in 51 places, all below massif's threshold (1.00%)
+ n1: 1040 0x5CD52FD: __new_exitfn (cxa_atexit.c:109)
+  n1: 1040 0x5CD5487: __cxa_atexit (cxa_atexit.c:40)
+   n1: 1040 0x1DED20: __static_initialization_and_destruction_0(int, int) (ilogger.h:12)
+    n1: 1040 0x1DF580: _GLOBAL__sub_I__ZN8ezserver11Application7StartupEv (application.cc:132)
+     n1: 1040 0x214BAB: __libc_csu_init (in /home/ayman/Projects/ezserver/bin/ezserver)
+      n0: 1040 0x5CB3B26: (below main) (libc-start.c:266)
+ n1: 1024 0x5D1018A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 1024 0x5D20377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x5D1F496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x5D1D9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x5D11975: fwrite (iofwrite.c:39)
+      n1: 1024 0x5804E92: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+       n1: 1024 0x5805205: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+        n1: 1024 0x1CD48F: termcolor::blue(std::ostream&) (termcolor.hpp:248)
+         n0: 1024 0x1C61B2: main (main.cc:45)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 815 0x1D1FB6: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 815 0x1CFD8A: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (alloc_traits.h:436)
+   n1: 815 0x1D42BC: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long) (basic_string.tcc:153)
+    n0: 815 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=18
+#-----------
+time=4069391
+mem_heap_B=115798
+mem_heap_extra_B=1138
+mem_stacks_B=0
+heap_tree=peak
+n4: 115798 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 32816 0x5D719B4: opendir (opendir.c:216)
+  n1: 32816 0x50C0ECB: boost::filesystem::detail::directory_iterator_construct(boost::filesystem::directory_iterator&, boost::filesystem::path const&, boost::system::error_code*) (in /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.65.1)
+   n1: 32816 0x1F34CF: boost::filesystem::directory_iterator::directory_iterator(boost::filesystem::path const&) (operations.hpp:903)
+    n1: 32816 0x1F2A10: ezserver::services::Filesystem::ListDirectory(ezserver::shared::services::CommonDirectories const&) (filesystem.cc:87)
+     n1: 32816 0x1F5741: ezserver::introp::PluginsLoader::LoadPlugins() (plugins_loader.cc:20)
+      n1: 32816 0x1DA5E8: ezserver::Bootstrapper::LoadPlugins() (bootstrapper.cc:38)
+       n1: 32816 0x1DA51C: ezserver::Bootstrapper::Bootstrap() (bootstrapper.cc:19)
+        n1: 32816 0x1DAE0F: ezserver::Bootstrapper::Run() (bootstrapper.cc:104)
+         n0: 32816 0x1C62C1: main (main.cc:61)
+ n0: 6157 in 56 places, all below massif's threshold (1.00%)
+ n1: 4121 0x50C1017: boost::filesystem::detail::directory_iterator_construct(boost::filesystem::directory_iterator&, boost::filesystem::path const&, boost::system::error_code*) (in /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.65.1)
+  n1: 4121 0x1F34CF: boost::filesystem::directory_iterator::directory_iterator(boost::filesystem::path const&) (operations.hpp:903)
+   n1: 4121 0x1F2A10: ezserver::services::Filesystem::ListDirectory(ezserver::shared::services::CommonDirectories const&) (filesystem.cc:87)
+    n1: 4121 0x1F5741: ezserver::introp::PluginsLoader::LoadPlugins() (plugins_loader.cc:20)
+     n1: 4121 0x1DA5E8: ezserver::Bootstrapper::LoadPlugins() (bootstrapper.cc:38)
+      n1: 4121 0x1DA51C: ezserver::Bootstrapper::Bootstrap() (bootstrapper.cc:19)
+       n1: 4121 0x1DAE0F: ezserver::Bootstrapper::Run() (bootstrapper.cc:104)
+        n0: 4121 0x1C62C1: main (main.cc:61)
+#-----------
+snapshot=19
+#-----------
+time=4081326
+mem_heap_B=115804
+mem_heap_extra_B=1132
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=4094814
+mem_heap_B=78615
+mem_heap_extra_B=1025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=4107638
+mem_heap_B=78615
+mem_heap_extra_B=1025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=4122329
+mem_heap_B=78615
+mem_heap_extra_B=1025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=4134643
+mem_heap_B=78710
+mem_heap_extra_B=1058
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=4145390
+mem_heap_B=79046
+mem_heap_extra_B=1098
+mem_stacks_B=0
+heap_tree=detailed
+n5: 79046 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 3463 in 60 places, all below massif's threshold (1.00%)
+ n1: 1040 0x5CD52FD: __new_exitfn (cxa_atexit.c:109)
+  n1: 1040 0x5CD5487: __cxa_atexit (cxa_atexit.c:40)
+   n1: 1040 0x1DED20: __static_initialization_and_destruction_0(int, int) (ilogger.h:12)
+    n1: 1040 0x1DF580: _GLOBAL__sub_I__ZN8ezserver11Application7StartupEv (application.cc:132)
+     n1: 1040 0x214BAB: __libc_csu_init (in /home/ayman/Projects/ezserver/bin/ezserver)
+      n0: 1040 0x5CB3B26: (below main) (libc-start.c:266)
+ n1: 1024 0x5D1018A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 1024 0x5D20377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x5D1F496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x5D1D9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x5D11975: fwrite (iofwrite.c:39)
+      n1: 1024 0x5804E92: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+       n1: 1024 0x5805205: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+        n1: 1024 0x1CD48F: termcolor::blue(std::ostream&) (termcolor.hpp:248)
+         n0: 1024 0x1C61B2: main (main.cc:45)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 815 0x1D1FB6: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 815 0x1CFD8A: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (alloc_traits.h:436)
+   n1: 815 0x1D42BC: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long) (basic_string.tcc:153)
+    n0: 815 in 9 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=25
+#-----------
+time=4158908
+mem_heap_B=79062
+mem_heap_extra_B=1106
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=4172890
+mem_heap_B=80358
+mem_heap_extra_B=1234
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=4184918
+mem_heap_B=81254
+mem_heap_extra_B=1298
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=4205622
+mem_heap_B=82758
+mem_heap_extra_B=1402
+mem_stacks_B=0
+heap_tree=detailed
+n5: 82758 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 5254 in 61 places, all below massif's threshold (1.00%)
+ n1: 2736 0x40134A5: _dl_allocate_tls (dl-tls.c:286)
+  n1: 2736 0x52D6226: pthread_create@@GLIBC_2.2.5 (allocatestack.c:627)
+   n1: 2736 0x57AE833: std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+    n1: 2736 0x1DE437: std::thread::thread<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}>(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}&&) (thread:126)
+     n1: 2736 0x1DE0B5: std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (future:1664)
+      n1: 2736 0x1DDCEF: void __gnu_cxx::new_allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (new_allocator.h:136)
+       n1: 2736 0x1DDAA2: void std::allocator_traits<std::allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>&, std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (alloc_traits.h:475)
+        n1: 2736 0x1DD6C0: std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:526)
+         n1: 2736 0x1DD2A0: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:637)
+          n1: 2736 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+           n1: 2736 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+            n1: 2736 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+             n1: 2736 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+              n1: 2736 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+               n1: 2736 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+                n1: 2736 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+                 n1: 2736 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                  n0: 2736 0x1C62C1: main (main.cc:61)
+ n1: 1040 0x5CD52FD: __new_exitfn (cxa_atexit.c:109)
+  n1: 1040 0x5CD5487: __cxa_atexit (cxa_atexit.c:40)
+   n1: 1040 0x1DED20: __static_initialization_and_destruction_0(int, int) (ilogger.h:12)
+    n1: 1040 0x1DF580: _GLOBAL__sub_I__ZN8ezserver11Application7StartupEv (application.cc:132)
+     n1: 1040 0x214BAB: __libc_csu_init (in /home/ayman/Projects/ezserver/bin/ezserver)
+      n0: 1040 0x5CB3B26: (below main) (libc-start.c:266)
+ n1: 1024 0x5D1018A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 1024 0x5D20377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x5D1F496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x5D1D9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x5D11975: fwrite (iofwrite.c:39)
+      n1: 1024 0x5804E92: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+       n1: 1024 0x5805205: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+        n1: 1024 0x1CD48F: termcolor::blue(std::ostream&) (termcolor.hpp:248)
+         n0: 1024 0x1C61B2: main (main.cc:45)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=29
+#-----------
+time=4220086
+mem_heap_B=83126
+mem_heap_extra_B=1434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=4232269
+mem_heap_B=84374
+mem_heap_extra_B=1530
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=4243597
+mem_heap_B=85206
+mem_heap_extra_B=1594
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=4260543
+mem_heap_B=86214
+mem_heap_extra_B=1650
+mem_stacks_B=0
+heap_tree=detailed
+n6: 86214 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 5168 0x40134A5: _dl_allocate_tls (dl-tls.c:286)
+  n1: 5168 0x52D6226: pthread_create@@GLIBC_2.2.5 (allocatestack.c:627)
+   n1: 5168 0x57AE833: std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+    n1: 5168 0x1DE437: std::thread::thread<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}>(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}&&) (thread:126)
+     n1: 5168 0x1DE0B5: std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (future:1664)
+      n1: 5168 0x1DDCEF: void __gnu_cxx::new_allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (new_allocator.h:136)
+       n1: 5168 0x1DDAA2: void std::allocator_traits<std::allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>&, std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (alloc_traits.h:475)
+        n1: 5168 0x1DD6C0: std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:526)
+         n1: 5168 0x1DD2A0: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:637)
+          n1: 5168 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+           n1: 5168 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+            n1: 5168 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+             n1: 5168 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+              n1: 5168 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+               n1: 5168 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+                n1: 5168 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+                 n1: 5168 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                  n0: 5168 0x1C62C1: main (main.cc:61)
+ n0: 4918 in 60 places, all below massif's threshold (1.00%)
+ n1: 1360 0x1DDC36: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 1360 0x1DD99F: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>&, unsigned long) (alloc_traits.h:436)
+   n1: 1360 0x1DD548: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >(std::__allocated_ptr&) (allocated_ptr.h:104)
+    n1: 1360 0x1DD23D: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:635)
+     n1: 1360 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+      n1: 1360 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+       n1: 1360 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+        n1: 1360 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+         n1: 1360 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+          n1: 1360 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+           n1: 1360 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+            n1: 1360 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+             n0: 1360 0x1C62C1: main (main.cc:61)
+ n1: 1040 0x5CD52FD: __new_exitfn (cxa_atexit.c:109)
+  n1: 1040 0x5CD5487: __cxa_atexit (cxa_atexit.c:40)
+   n1: 1040 0x1DED20: __static_initialization_and_destruction_0(int, int) (ilogger.h:12)
+    n1: 1040 0x1DF580: _GLOBAL__sub_I__ZN8ezserver11Application7StartupEv (application.cc:132)
+     n1: 1040 0x214BAB: __libc_csu_init (in /home/ayman/Projects/ezserver/bin/ezserver)
+      n0: 1040 0x5CB3B26: (below main) (libc-start.c:266)
+ n1: 1024 0x5D1018A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 1024 0x5D20377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x5D1F496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x5D1D9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x5D11975: fwrite (iofwrite.c:39)
+      n1: 1024 0x5804E92: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+       n1: 1024 0x5805205: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+        n1: 1024 0x1CD48F: termcolor::blue(std::ostream&) (termcolor.hpp:248)
+         n0: 1024 0x1C61B2: main (main.cc:45)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=33
+#-----------
+time=4279747
+mem_heap_B=87542
+mem_heap_extra_B=1754
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=4291075
+mem_heap_B=88374
+mem_heap_extra_B=1818
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=4302403
+mem_heap_B=89206
+mem_heap_extra_B=1882
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=4315334
+mem_heap_B=90038
+mem_heap_extra_B=1946
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=4334784
+mem_heap_B=91702
+mem_heap_extra_B=2074
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=4351396
+mem_heap_B=93894
+mem_heap_extra_B=2170
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=4370502
+mem_heap_B=93878
+mem_heap_extra_B=2202
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=4381830
+mem_heap_B=94710
+mem_heap_extra_B=2266
+mem_stacks_B=0
+heap_tree=detailed
+n7: 94710 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 10944 0x40134A5: _dl_allocate_tls (dl-tls.c:286)
+  n1: 10944 0x52D6226: pthread_create@@GLIBC_2.2.5 (allocatestack.c:627)
+   n1: 10944 0x57AE833: std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+    n1: 10944 0x1DE437: std::thread::thread<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}>(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}&&) (thread:126)
+     n1: 10944 0x1DE0B5: std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (future:1664)
+      n1: 10944 0x1DDCEF: void __gnu_cxx::new_allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (new_allocator.h:136)
+       n1: 10944 0x1DDAA2: void std::allocator_traits<std::allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>&, std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (alloc_traits.h:475)
+        n1: 10944 0x1DD6C0: std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:526)
+         n1: 10944 0x1DD2A0: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:637)
+          n1: 10944 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+           n1: 10944 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+            n1: 10944 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+             n1: 10944 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+              n1: 10944 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+               n1: 10944 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+                n1: 10944 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+                 n1: 10944 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                  n0: 10944 0x1C62C1: main (main.cc:61)
+ n0: 5014 in 59 places, all below massif's threshold (1.00%)
+ n1: 2960 0x1DDC36: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 2960 0x1DD99F: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>&, unsigned long) (alloc_traits.h:436)
+   n1: 2960 0x1DD548: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >(std::__allocated_ptr&) (allocated_ptr.h:104)
+    n1: 2960 0x1DD23D: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:635)
+     n1: 2960 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+      n1: 2960 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+       n1: 2960 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+        n1: 2960 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+         n1: 2960 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+          n1: 2960 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+           n1: 2960 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+            n1: 2960 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+             n0: 2960 0x1C62C1: main (main.cc:61)
+ n1: 1040 0x5CD52FD: __new_exitfn (cxa_atexit.c:109)
+  n1: 1040 0x5CD5487: __cxa_atexit (cxa_atexit.c:40)
+   n1: 1040 0x1DED20: __static_initialization_and_destruction_0(int, int) (ilogger.h:12)
+    n1: 1040 0x1DF580: _GLOBAL__sub_I__ZN8ezserver11Application7StartupEv (application.cc:132)
+     n1: 1040 0x214BAB: __libc_csu_init (in /home/ayman/Projects/ezserver/bin/ezserver)
+      n0: 1040 0x5CB3B26: (below main) (libc-start.c:266)
+ n1: 1024 0x1EC0F4: __gnu_cxx::new_allocator<std::future<void> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 1024 0x1EAF1E: std::allocator_traits<std::allocator<std::future<void> > >::allocate(std::allocator<std::future<void> >&, unsigned long) (alloc_traits.h:436)
+   n1: 1024 0x1E9646: std::_Vector_base<std::future<void>, std::allocator<std::future<void> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+    n1: 1024 0x1E7B70: void std::vector<std::future<void>, std::allocator<std::future<void> > >::_M_realloc_insert<std::future<void> >(__gnu_cxx::__normal_iterator<std::future<void>*, std::vector<std::future<void>, std::allocator<std::future<void> > > >, std::future<void>&&) (vector.tcc:406)
+     n1: 1024 0x1E6064: std::future<void>& std::vector<std::future<void>, std::allocator<std::future<void> > >::emplace_back<std::future<void> >(std::future<void>&&) (vector.tcc:105)
+      n1: 1024 0x1E4928: std::vector<std::future<void>, std::allocator<std::future<void> > >::push_back(std::future<void>&&) (stl_vector.h:954)
+       n1: 1024 0x1DBD7C: ezserver::Application::Startup() (application.cc:24)
+        n1: 1024 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+         n0: 1024 0x1C62C1: main (main.cc:61)
+ n1: 1024 0x5D1018A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 1024 0x5D20377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x5D1F496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x5D1D9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x5D11975: fwrite (iofwrite.c:39)
+      n1: 1024 0x5804E92: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+       n1: 1024 0x5805205: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+        n1: 1024 0x1CD48F: termcolor::blue(std::ostream&) (termcolor.hpp:248)
+         n0: 1024 0x1C61B2: main (main.cc:45)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=4394761
+mem_heap_B=95542
+mem_heap_extra_B=2330
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=4414211
+mem_heap_B=97206
+mem_heap_extra_B=2458
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=4425539
+mem_heap_B=98038
+mem_heap_extra_B=2522
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=4444134
+mem_heap_B=99286
+mem_heap_extra_B=2618
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=4458668
+mem_heap_B=100118
+mem_heap_extra_B=2682
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=4476515
+mem_heap_B=101782
+mem_heap_extra_B=2810
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=4485385
+mem_heap_B=102198
+mem_heap_extra_B=2842
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=4499171
+mem_heap_B=103446
+mem_heap_extra_B=2938
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=4512102
+mem_heap_B=104278
+mem_heap_extra_B=3002
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=4523430
+mem_heap_B=105110
+mem_heap_extra_B=3066
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=4537964
+mem_heap_B=105942
+mem_heap_extra_B=3130
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=4556417
+mem_heap_B=106326
+mem_heap_extra_B=3162
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=4578495
+mem_heap_B=106758
+mem_heap_extra_B=3202
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=4648806
+mem_heap_B=107012
+mem_heap_extra_B=3212
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=4658890
+mem_heap_B=107050
+mem_heap_extra_B=3238
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=4668314
+mem_heap_B=106758
+mem_heap_extra_B=3202
+mem_stacks_B=0
+heap_tree=detailed
+n4: 106758 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 19456 0x40134A5: _dl_allocate_tls (dl-tls.c:286)
+  n1: 19456 0x52D6226: pthread_create@@GLIBC_2.2.5 (allocatestack.c:627)
+   n1: 19456 0x57AE833: std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+    n1: 19456 0x1DE437: std::thread::thread<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}>(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}&&) (thread:126)
+     n1: 19456 0x1DE0B5: std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (future:1664)
+      n1: 19456 0x1DDCEF: void __gnu_cxx::new_allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (new_allocator.h:136)
+       n1: 19456 0x1DDAA2: void std::allocator_traits<std::allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>&, std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (alloc_traits.h:475)
+        n1: 19456 0x1DD6C0: std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:526)
+         n1: 19456 0x1DD2A0: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:637)
+          n1: 19456 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+           n1: 19456 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+            n1: 19456 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+             n1: 19456 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+              n1: 19456 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+               n1: 19456 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+                n1: 19456 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+                 n1: 19456 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                  n0: 19456 0x1C62C1: main (main.cc:61)
+ n0: 9478 in 68 places, all below massif's threshold (1.00%)
+ n1: 5120 0x1DDC36: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 5120 0x1DD99F: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>&, unsigned long) (alloc_traits.h:436)
+   n1: 5120 0x1DD548: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >(std::__allocated_ptr&) (allocated_ptr.h:104)
+    n1: 5120 0x1DD23D: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:635)
+     n1: 5120 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+      n1: 5120 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+       n1: 5120 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+        n1: 5120 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+         n1: 5120 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+          n1: 5120 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+           n1: 5120 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+            n1: 5120 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+             n0: 5120 0x1C62C1: main (main.cc:61)
+#-----------
+snapshot=57
+#-----------
+time=4690870
+mem_heap_B=106742
+mem_heap_extra_B=3178
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=4719716
+mem_heap_B=106926
+mem_heap_extra_B=3194
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=4732000
+mem_heap_B=106925
+mem_heap_extra_B=3195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=4744334
+mem_heap_B=106797
+mem_heap_extra_B=3147
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=4759975
+mem_heap_B=106701
+mem_heap_extra_B=3099
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=4771295
+mem_heap_B=106605
+mem_heap_extra_B=3051
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=4780342
+mem_heap_B=106541
+mem_heap_extra_B=3019
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=4796480
+mem_heap_B=106253
+mem_heap_extra_B=2939
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=4805362
+mem_heap_B=106189
+mem_heap_extra_B=2907
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=4814514
+mem_heap_B=106125
+mem_heap_extra_B=2875
+mem_stacks_B=0
+heap_tree=detailed
+n4: 106125 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 19456 0x40134A5: _dl_allocate_tls (dl-tls.c:286)
+  n1: 19456 0x52D6226: pthread_create@@GLIBC_2.2.5 (allocatestack.c:627)
+   n1: 19456 0x57AE833: std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+    n1: 19456 0x1DE437: std::thread::thread<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}>(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}&&) (thread:126)
+     n1: 19456 0x1DE0B5: std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (future:1664)
+      n1: 19456 0x1DDCEF: void __gnu_cxx::new_allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (new_allocator.h:136)
+       n1: 19456 0x1DDAA2: void std::allocator_traits<std::allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>&, std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (alloc_traits.h:475)
+        n1: 19456 0x1DD6C0: std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:526)
+         n1: 19456 0x1DD2A0: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:637)
+          n1: 19456 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+           n1: 19456 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+            n1: 19456 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+             n1: 19456 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+              n1: 19456 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+               n1: 19456 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+                n1: 19456 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+                 n1: 19456 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                  n0: 19456 0x1C62C1: main (main.cc:61)
+ n0: 9085 in 68 places, all below massif's threshold (1.00%)
+ n1: 4880 0x1DDC36: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 4880 0x1DD99F: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>&, unsigned long) (alloc_traits.h:436)
+   n1: 4880 0x1DD548: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >(std::__allocated_ptr&) (allocated_ptr.h:104)
+    n1: 4880 0x1DD23D: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:635)
+     n1: 4880 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+      n1: 4880 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+       n1: 4880 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+        n1: 4880 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+         n1: 4880 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+          n1: 4880 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+           n1: 4880 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+            n1: 4880 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+             n0: 4880 0x1C62C1: main (main.cc:61)
+#-----------
+snapshot=67
+#-----------
+time=4824199
+mem_heap_B=106093
+mem_heap_extra_B=2843
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=4833908
+mem_heap_B=105885
+mem_heap_extra_B=2755
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=4843465
+mem_heap_B=105805
+mem_heap_extra_B=2715
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=4852497
+mem_heap_B=105741
+mem_heap_extra_B=2683
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=4861964
+mem_heap_B=105661
+mem_heap_extra_B=2643
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=4871165
+mem_heap_B=104157
+mem_heap_extra_B=2563
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=4880199
+mem_heap_B=103629
+mem_heap_extra_B=2507
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=4889186
+mem_heap_B=103549
+mem_heap_extra_B=2467
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=4898312
+mem_heap_B=101149
+mem_heap_extra_B=2323
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=4907323
+mem_heap_B=98829
+mem_heap_extra_B=2187
+mem_stacks_B=0
+heap_tree=detailed
+n7: 98829 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x5780374: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 14288 0x40134A5: _dl_allocate_tls (dl-tls.c:286)
+  n1: 14288 0x52D6226: pthread_create@@GLIBC_2.2.5 (allocatestack.c:627)
+   n1: 14288 0x57AE833: std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+    n1: 14288 0x1DE437: std::thread::thread<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}>(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}&&) (thread:126)
+     n1: 14288 0x1DE0B5: std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (future:1664)
+      n1: 14288 0x1DDCEF: void __gnu_cxx::new_allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (new_allocator.h:136)
+       n1: 14288 0x1DDAA2: void std::allocator_traits<std::allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>&, std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (alloc_traits.h:475)
+        n1: 14288 0x1DD6C0: std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:526)
+         n1: 14288 0x1DD2A0: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:637)
+          n1: 14288 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+           n1: 14288 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+            n1: 14288 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+             n1: 14288 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+              n1: 14288 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+               n1: 14288 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+                n1: 14288 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+                 n1: 14288 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                  n0: 14288 0x1C62C1: main (main.cc:61)
+ n0: 5229 in 65 places, all below massif's threshold (1.00%)
+ n1: 3520 0x1DDC36: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 3520 0x1DD99F: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>&, unsigned long) (alloc_traits.h:436)
+   n1: 3520 0x1DD548: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2> > >(std::__allocated_ptr&) (allocated_ptr.h:104)
+    n1: 3520 0x1DD23D: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:635)
+     n1: 3520 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+      n1: 3520 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+       n1: 3520 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+        n1: 3520 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+         n1: 3520 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+          n1: 3520 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+           n1: 3520 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+            n1: 3520 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+             n0: 3520 0x1C62C1: main (main.cc:61)
+ n1: 1040 0x5CD52FD: __new_exitfn (cxa_atexit.c:109)
+  n1: 1040 0x5CD5487: __cxa_atexit (cxa_atexit.c:40)
+   n1: 1040 0x1DED20: __static_initialization_and_destruction_0(int, int) (ilogger.h:12)
+    n1: 1040 0x1DF580: _GLOBAL__sub_I__ZN8ezserver11Application7StartupEv (application.cc:132)
+     n1: 1040 0x214BAB: __libc_csu_init (in /home/ayman/Projects/ezserver/bin/ezserver)
+      n0: 1040 0x5CB3B26: (below main) (libc-start.c:266)
+ n1: 1024 0x1EC0F4: __gnu_cxx::new_allocator<std::future<void> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 1024 0x1EAF1E: std::allocator_traits<std::allocator<std::future<void> > >::allocate(std::allocator<std::future<void> >&, unsigned long) (alloc_traits.h:436)
+   n1: 1024 0x1E9646: std::_Vector_base<std::future<void>, std::allocator<std::future<void> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+    n1: 1024 0x1E7B70: void std::vector<std::future<void>, std::allocator<std::future<void> > >::_M_realloc_insert<std::future<void> >(__gnu_cxx::__normal_iterator<std::future<void>*, std::vector<std::future<void>, std::allocator<std::future<void> > > >, std::future<void>&&) (vector.tcc:406)
+     n1: 1024 0x1E6064: std::future<void>& std::vector<std::future<void>, std::allocator<std::future<void> > >::emplace_back<std::future<void> >(std::future<void>&&) (vector.tcc:105)
+      n1: 1024 0x1E4928: std::vector<std::future<void>, std::allocator<std::future<void> > >::push_back(std::future<void>&&) (stl_vector.h:954)
+       n1: 1024 0x1DBD7C: ezserver::Application::Startup() (application.cc:24)
+        n1: 1024 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+         n0: 1024 0x1C62C1: main (main.cc:61)
+ n1: 1024 0x5D1018A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 1024 0x5D20377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x5D1F496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x5D1D9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x5D11975: fwrite (iofwrite.c:39)
+      n1: 1024 0x5804E92: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+       n1: 1024 0x5805205: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+        n1: 1024 0x1CD48F: termcolor::blue(std::ostream&) (termcolor.hpp:248)
+         n0: 1024 0x1C61B2: main (main.cc:45)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=77
+#-----------
+time=4916240
+mem_heap_B=96445
+mem_heap_extra_B=2051
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=4925546
+mem_heap_B=94045
+mem_heap_extra_B=1907
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=4934852
+mem_heap_B=91645
+mem_heap_extra_B=1763
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=4944158
+mem_heap_B=89245
+mem_heap_extra_B=1619
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=4953464
+mem_heap_B=86845
+mem_heap_extra_B=1475
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=82
+#-----------
+time=4962770
+mem_heap_B=84445
+mem_heap_extra_B=1331
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=83
+#-----------
+time=4972076
+mem_heap_B=82045
+mem_heap_extra_B=1187
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=84
+#-----------
+time=4980951
+mem_heap_B=79556
+mem_heap_extra_B=796
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=85
+#-----------
+time=4995934
+mem_heap_B=77966
+mem_heap_extra_B=578
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=86
+#-----------
+time=5004818
+mem_heap_B=4143
+mem_heap_extra_B=497
+mem_stacks_B=0
+heap_tree=detailed
+n17: 4143 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1216 0x40134A5: _dl_allocate_tls (dl-tls.c:286)
+  n1: 1216 0x52D6226: pthread_create@@GLIBC_2.2.5 (allocatestack.c:627)
+   n1: 1216 0x57AE833: std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+    n1: 1216 0x1DE437: std::thread::thread<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}>(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&)::{lambda()#1}&&) (thread:126)
+     n1: 1216 0x1DE0B5: std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>::_Async_state_impl(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (future:1664)
+      n1: 1216 0x1DDCEF: void __gnu_cxx::new_allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (new_allocator.h:136)
+       n1: 1216 0x1DDAA2: void std::allocator_traits<std::allocator<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > >::construct<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>&, std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >*, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (alloc_traits.h:475)
+        n1: 1216 0x1DD6C0: std::_Sp_counted_ptr_inplace<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:526)
+         n1: 1216 0x1DD2A0: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>*, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:637)
+          n1: 1216 0x1DD0E6: std::__shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr_base.h:1295)
+           n1: 1216 0x1DD01B: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> >::shared_ptr<std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::_Sp_make_shared_tag, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:344)
+            n1: 1216 0x1DCE83: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::allocate_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::allocator<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > > const&, std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:691)
+             n1: 1216 0x1DCCAD: std::shared_ptr<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void> > std::make_shared<std::__future_base::_Async_state_impl<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >, void>, std::tuple<ezserver::Application::Startup()::{lambda()#1}> >(std::tuple<ezserver::Application::Startup()::{lambda()#1}>&&) (shared_ptr.h:707)
+              n1: 1216 0x1DCB63: std::shared_ptr<std::__future_base::_State_baseV2> std::__future_base::_S_make_async_state<std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> > >(std::thread::_Invoker<std::tuple<ezserver::Application::Startup()::{lambda()#1}> >&&) (future:1705)
+               n1: 1216 0x1DC881: std::future<std::result_of<std::decay<ezserver::Application::Startup()::{lambda()#1}>::type ()>::type> std::async<ezserver::Application::Startup()::{lambda()#1}>(std::launch, std::decay&&, (std::decay<ezserver::Application::Startup()::{lambda()#1}>::type&&)...) (future:1719)
+                n1: 1216 0x1DBD6D: ezserver::Application::Startup() (application.cc:24)
+                 n1: 1216 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                  n0: 1216 0x1C62C1: main (main.cc:61)
+ n1: 480 0x4E8837F: ??? (in /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.65.1)
+  n1: 480 0x4E8947B: boost::program_options::store(boost::program_options::basic_parsed_options<char> const&, boost::program_options::variables_map&, bool) (in /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.65.1)
+   n1: 480 0x1C65BC: ParseOptions(int, char const**) (main.cc:95)
+    n0: 480 0x1C608B: main (main.cc:26)
+ n1: 352 0x1FBC9F: boost::program_options::typed_value<unsigned long, char>* boost::program_options::value<unsigned long>(unsigned long*) (value_semantic.hpp:199)
+  n2: 352 0x1FB3DE: boost::program_options::typed_value<unsigned long, char>* boost::program_options::value<unsigned long>() (value_semantic.hpp:192)
+   n2: 176 0x1F9E8A: ezserver::config::GetGeneralOptions() (configuration.cc:10)
+    n1: 176 0x1FA413: ezserver::config::GetOptionsAggrgator() (configuration.cc:56)
+     n1: 176 0x1C6543: ParseOptions(int, char const**) (main.cc:90)
+      n0: 176 0x1C608B: main (main.cc:26)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n1: 176 0x1FA076: ezserver::config::GetConnectionOptions() (configuration.cc:26)
+    n1: 176 0x1FA455: ezserver::config::GetOptionsAggrgator() (configuration.cc:57)
+     n1: 176 0x1C6543: ParseOptions(int, char const**) (main.cc:90)
+      n0: 176 0x1C608B: main (main.cc:26)
+ n0: 256 in 55 places, all below massif's threshold (1.00%)
+ n1: 240 0x1CC17B: boost::asio::io_context::io_context() (io_context.ipp:38)
+  n0: 240 0x1C609A: main (main.cc:27)
+ n1: 208 0x20C9F9: boost::asio::execution_context::service* boost::asio::detail::service_registry::create<boost::asio::detail::epoll_reactor, boost::asio::io_context>(void*) (service_registry.hpp:87)
+  n1: 208 0x1DFCD1: boost::asio::detail::service_registry::do_use_service(boost::asio::execution_context::service::key const&, boost::asio::execution_context::service* (*)(void*), void*) (service_registry.ipp:132)
+   n1: 208 0x20C0F6: boost::asio::detail::epoll_reactor& boost::asio::detail::service_registry::use_service<boost::asio::detail::epoll_reactor>(boost::asio::io_context&) (service_registry.hpp:39)
+    n1: 208 0x20B89D: boost::asio::detail::epoll_reactor& boost::asio::use_service<boost::asio::detail::epoll_reactor>(boost::asio::io_context&) (io_context.hpp:39)
+     n1: 208 0x20A823: boost::asio::detail::reactive_socket_service_base::reactive_socket_service_base(boost::asio::io_context&) (reactive_socket_service_base.ipp:34)
+      n1: 208 0x20EF5F: boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>::reactive_socket_service(boost::asio::io_context&) (reactive_socket_service.hpp:79)
+       n1: 208 0x20EE7B: boost::asio::execution_context::service* boost::asio::detail::service_registry::create<boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>, boost::asio::io_context>(void*) (service_registry.hpp:87)
+        n1: 208 0x1DFCD1: boost::asio::detail::service_registry::do_use_service(boost::asio::execution_context::service::key const&, boost::asio::execution_context::service* (*)(void*), void*) (service_registry.ipp:132)
+         n1: 208 0x20ED82: boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>& boost::asio::detail::service_registry::use_service<boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp> >(boost::asio::io_context&) (service_registry.hpp:39)
+          n1: 208 0x20EB2E: boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>& boost::asio::use_service<boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp> >(boost::asio::io_context&) (io_context.hpp:39)
+           n1: 208 0x20E99E: boost::asio::basic_io_object<boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>, true>::basic_io_object(boost::asio::io_context&) (basic_io_object.hpp:224)
+            n1: 208 0x20E8BD: boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>::basic_socket_acceptor(boost::asio::io_context&) (basic_socket_acceptor.hpp:105)
+             n1: 208 0x20E7E3: void __gnu_cxx::new_allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >::construct<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, boost::asio::io_context&>(boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>*, boost::asio::io_context&) (new_allocator.h:136)
+              n1: 208 0x20E48C: void std::allocator_traits<std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > >::construct<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, boost::asio::io_context&>(std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >&, boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>*, boost::asio::io_context&) (alloc_traits.h:475)
+               n1: 208 0x20E0A4: std::_Sp_counted_ptr_inplace<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<boost::asio::io_context&>(std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&) (shared_ptr_base.h:526)
+                n1: 208 0x20D89E: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&>(std::_Sp_make_shared_tag, boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>*, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > const&, boost::asio::io_context&) (shared_ptr_base.h:637)
+                 n1: 208 0x20D090: std::__shared_ptr<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&>(std::_Sp_make_shared_tag, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > const&, boost::asio::io_context&) (shared_ptr_base.h:1295)
+                  n1: 208 0x20CAF1: std::shared_ptr<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >::shared_ptr<std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&>(std::_Sp_make_shared_tag, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > const&, boost::asio::io_context&) (shared_ptr.h:344)
+                   n1: 208 0x20C201: std::shared_ptr<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > std::allocate_shared<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&>(std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > const&, boost::asio::io_context&) (shared_ptr.h:691)
+                    n1: 208 0x20B996: std::shared_ptr<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > std::make_shared<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, boost::asio::io_context&>(boost::asio::io_context&) (shared_ptr.h:707)
+                     n1: 208 0x2074CB: ezserver::net::AsyncTcpListener::Initialize() (async_tcp_listener.cc:19)
+                      n1: 208 0x1DBDAD: ezserver::Application::Startup() (application.cc:28)
+                       n1: 208 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                        n0: 208 0x1C62C1: main (main.cc:61)
+ n1: 176 0x1D7BFC: __gnu_cxx::new_allocator<std::_Sp_counted_ptr_inplace<boost::program_options::variables_map, std::allocator<boost::program_options::variables_map>, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+  n1: 176 0x1D7559: std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<boost::program_options::variables_map, std::allocator<boost::program_options::variables_map>, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::allocator<std::_Sp_counted_ptr_inplace<boost::program_options::variables_map, std::allocator<boost::program_options::variables_map>, (__gnu_cxx::_Lock_policy)2> >&, unsigned long) (alloc_traits.h:436)
+   n1: 176 0x1D6CA0: std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<boost::program_options::variables_map, std::allocator<boost::program_options::variables_map>, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<boost::program_options::variables_map, std::allocator<boost::program_options::variables_map>, (__gnu_cxx::_Lock_policy)2> > >(std::allocator<std::_Sp_counted_ptr_inplace<boost::program_options::variables_map, std::allocator<boost::program_options::variables_map>, (__gnu_cxx::_Lock_policy)2> >&) (allocated_ptr.h:104)
+    n1: 176 0x1D60F9: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<boost::program_options::variables_map, std::allocator<boost::program_options::variables_map>>(std::_Sp_make_shared_tag, boost::program_options::variables_map*, std::allocator<boost::program_options::variables_map> const&) (shared_ptr_base.h:635)
+     n1: 176 0x1D4F24: std::__shared_ptr<boost::program_options::variables_map, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<boost::program_options::variables_map>>(std::_Sp_make_shared_tag, std::allocator<boost::program_options::variables_map> const&) (shared_ptr_base.h:1295)
+      n1: 176 0x1D38EA: std::shared_ptr<boost::program_options::variables_map>::shared_ptr<std::allocator<boost::program_options::variables_map>>(std::_Sp_make_shared_tag, std::allocator<boost::program_options::variables_map> const&) (shared_ptr.h:344)
+       n1: 176 0x1D1651: std::shared_ptr<boost::program_options::variables_map> std::allocate_shared<boost::program_options::variables_map, std::allocator<boost::program_options::variables_map>>(std::allocator<boost::program_options::variables_map> const&) (shared_ptr.h:691)
+        n1: 176 0x1CF61D: std::shared_ptr<boost::program_options::variables_map> std::make_shared<boost::program_options::variables_map>() (shared_ptr.h:707)
+         n1: 176 0x1C6552: ParseOptions(int, char const**) (main.cc:91)
+          n0: 176 0x1C608B: main (main.cc:26)
+ n1: 176 0x1FBDBC: boost::program_options::typed_value<unsigned short, char>* boost::program_options::value<unsigned short>(unsigned short*) (value_semantic.hpp:199)
+  n1: 176 0x1FB493: boost::program_options::typed_value<unsigned short, char>* boost::program_options::value<unsigned short>() (value_semantic.hpp:192)
+   n1: 176 0x1F9FE9: ezserver::config::GetConnectionOptions() (configuration.cc:23)
+    n1: 176 0x1FA455: ezserver::config::GetOptionsAggrgator() (configuration.cc:57)
+     n1: 176 0x1C6543: ParseOptions(int, char const**) (main.cc:90)
+      n0: 176 0x1C608B: main (main.cc:26)
+ n1: 176 0x1FBED8: boost::program_options::typed_value<int, char>* boost::program_options::value<int>(int*) (value_semantic.hpp:199)
+  n1: 176 0x1FB549: boost::program_options::typed_value<int, char>* boost::program_options::value<int>() (value_semantic.hpp:192)
+   n1: 176 0x1FA026: ezserver::config::GetConnectionOptions() (configuration.cc:24)
+    n1: 176 0x1FA455: ezserver::config::GetOptionsAggrgator() (configuration.cc:57)
+     n1: 176 0x1C6543: ParseOptions(int, char const**) (main.cc:90)
+      n0: 176 0x1C608B: main (main.cc:26)
+ n1: 176 0x1FBFF4: boost::program_options::typed_value<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>* boost::program_options::value<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*) (value_semantic.hpp:199)
+  n1: 176 0x1FB5FF: boost::program_options::typed_value<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>* boost::program_options::value<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >() (value_semantic.hpp:192)
+   n1: 176 0x1FA2B6: ezserver::config::GetPluginsOptions() (configuration.cc:45)
+    n1: 176 0x1FA4D9: ezserver::config::GetOptionsAggrgator() (configuration.cc:59)
+     n1: 176 0x1C6543: ParseOptions(int, char const**) (main.cc:90)
+      n0: 176 0x1C608B: main (main.cc:26)
+ n1: 168 0x20BFC3: boost::asio::detail::epoll_reactor::descriptor_state* boost::asio::detail::object_pool_access::create<boost::asio::detail::epoll_reactor::descriptor_state, bool>(bool) (object_pool.hpp:41)
+  n1: 168 0x20B659: boost::asio::detail::epoll_reactor::descriptor_state* boost::asio::detail::object_pool<boost::asio::detail::epoll_reactor::descriptor_state>::alloc<bool>(bool) (object_pool.hpp:114)
+   n1: 168 0x2095B7: boost::asio::detail::epoll_reactor::allocate_descriptor_state() (epoll_reactor.ipp:629)
+    n1: 168 0x208CEA: boost::asio::detail::epoll_reactor::register_descriptor(int, boost::asio::detail::epoll_reactor::descriptor_state*&) (epoll_reactor.ipp:154)
+     n1: 168 0x20AA13: boost::asio::detail::reactive_socket_service_base::do_open(boost::asio::detail::reactive_socket_service_base::base_implementation_type&, int, int, int, boost::system::error_code&) (reactive_socket_service_base.ipp:186)
+      n1: 168 0x20C350: boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>::open(boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>::implementation_type&, boost::asio::ip::tcp const&, boost::system::error_code&) (reactive_socket_service.hpp:127)
+       n1: 168 0x20BADA: boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>::open(boost::asio::ip::tcp const&) (basic_socket_acceptor.hpp:349)
+        n1: 168 0x207677: ezserver::net::AsyncTcpListener::Start() (async_tcp_listener.cc:47)
+         n1: 168 0x1DBDD6: ezserver::Application::Startup() (application.cc:28)
+          n1: 168 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+           n0: 168 0x1C62C1: main (main.cc:61)
+ n2: 144 0x578283E: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 144 0x1DAED3: ezserver::Bootstrapper::Run() (bootstrapper.cc:112)
+   n0: 144 0x1C62C1: main (main.cc:61)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 120 0x4E71592: boost::program_options::option_description::option_description(char const*, boost::program_options::value_semantic const*, char const*) (in /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.65.1)
+  n1: 120 0x4E72774: boost::program_options::options_description_easy_init::operator()(char const*, boost::program_options::value_semantic const*, char const*) (in /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.65.1)
+   n0: 120 in 5 places, all below massif's threshold (1.00%)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 80 0x5D66B98: __tzfile_read (tzfile.c:279)
+  n1: 80 0x5D665C6: __tz_convert (tzset.c:406)
+   n1: 80 0x1F9909: ezserver::utils::time::GetTimeString(long const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (time.cc:10)
+    n1: 80 0x1DA854: ezserver::Bootstrapper::LoadServices() (bootstrapper.cc:66)
+     n1: 80 0x1DA478: ezserver::Bootstrapper::Bootstrap() (bootstrapper.cc:13)
+      n1: 80 0x1DAE0F: ezserver::Bootstrapper::Run() (bootstrapper.cc:104)
+       n0: 80 0x1C62C1: main (main.cc:61)
+ n1: 64 0x1CB5F7: boost::asio::execution_context::execution_context() (execution_context.ipp:28)
+  n1: 64 0x1CC171: boost::asio::io_context::io_context() (io_context.ipp:38)
+   n0: 64 0x1C609A: main (main.cc:27)
+ n1: 56 0x20EE69: boost::asio::execution_context::service* boost::asio::detail::service_registry::create<boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>, boost::asio::io_context>(void*) (service_registry.hpp:87)
+  n1: 56 0x1DFCD1: boost::asio::detail::service_registry::do_use_service(boost::asio::execution_context::service::key const&, boost::asio::execution_context::service* (*)(void*), void*) (service_registry.ipp:132)
+   n1: 56 0x20ED82: boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>& boost::asio::detail::service_registry::use_service<boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp> >(boost::asio::io_context&) (service_registry.hpp:39)
+    n1: 56 0x20EB2E: boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>& boost::asio::use_service<boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp> >(boost::asio::io_context&) (io_context.hpp:39)
+     n1: 56 0x20E99E: boost::asio::basic_io_object<boost::asio::detail::reactive_socket_service<boost::asio::ip::tcp>, true>::basic_io_object(boost::asio::io_context&) (basic_io_object.hpp:224)
+      n1: 56 0x20E8BD: boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>::basic_socket_acceptor(boost::asio::io_context&) (basic_socket_acceptor.hpp:105)
+       n1: 56 0x20E7E3: void __gnu_cxx::new_allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >::construct<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, boost::asio::io_context&>(boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>*, boost::asio::io_context&) (new_allocator.h:136)
+        n1: 56 0x20E48C: void std::allocator_traits<std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > >::construct<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, boost::asio::io_context&>(std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >&, boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>*, boost::asio::io_context&) (alloc_traits.h:475)
+         n1: 56 0x20E0A4: std::_Sp_counted_ptr_inplace<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<boost::asio::io_context&>(std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&) (shared_ptr_base.h:526)
+          n1: 56 0x20D89E: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&>(std::_Sp_make_shared_tag, boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>*, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > const&, boost::asio::io_context&) (shared_ptr_base.h:637)
+           n1: 56 0x20D090: std::__shared_ptr<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&>(std::_Sp_make_shared_tag, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > const&, boost::asio::io_context&) (shared_ptr_base.h:1295)
+            n1: 56 0x20CAF1: std::shared_ptr<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >::shared_ptr<std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&>(std::_Sp_make_shared_tag, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > const&, boost::asio::io_context&) (shared_ptr.h:344)
+             n1: 56 0x20C201: std::shared_ptr<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > std::allocate_shared<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> >, boost::asio::io_context&>(std::allocator<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > const&, boost::asio::io_context&) (shared_ptr.h:691)
+              n1: 56 0x20B996: std::shared_ptr<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp> > std::make_shared<boost::asio::basic_socket_acceptor<boost::asio::ip::tcp>, boost::asio::io_context&>(boost::asio::io_context&) (shared_ptr.h:707)
+               n1: 56 0x2074CB: ezserver::net::AsyncTcpListener::Initialize() (async_tcp_listener.cc:19)
+                n1: 56 0x1DBDAD: ezserver::Application::Startup() (application.cc:28)
+                 n1: 56 0x1DAEC2: ezserver::Bootstrapper::Run() (bootstrapper.cc:111)
+                  n0: 56 0x1C62C1: main (main.cc:61)
+ n1: 55 0x57C4AC7: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 55 0x57C4BE5: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+   n1: 55 0x57C69EE: std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+    n2: 55 0x57A8AC4: std::runtime_error::runtime_error(char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+     n1: 55 0x1DAEE5: ezserver::Bootstrapper::Run() (bootstrapper.cc:112)
+      n0: 55 0x1C62C1: main (main.cc:61)
+     n0: 0 in 1 place, below massif's threshold (1.00%)

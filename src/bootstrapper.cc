@@ -3,9 +3,12 @@
 #include <utils/time.h>
 #include <termcolor/termcolor.hpp>
 
+#include <string_view>
+#include <map>
+
 //===========================================================================//
 
-bool ezserver::Bootstrapper::Bootstrap()
+void ezserver::Bootstrapper::Bootstrap()
 {
     // Start by initializing the application core services
     // and throw a fatal exception in case of failure
@@ -18,11 +21,6 @@ bool ezserver::Bootstrapper::Bootstrap()
     LOG(logger_, Information) << "Loading Plugins..." << std::endl;
     if (!LoadPlugins())
         throw std::runtime_error("Could not load plugins!");
-
-    /// TODO:
-    /// * Load services provieded by plugins
-
-    return true;
 }
 
 //===========================================================================//
@@ -35,10 +33,16 @@ bool ezserver::Bootstrapper::LoadPlugins()
     try
     {
         // Load plugins
-        auto plugins = plugins_loader_->LoadPlugins();
+        plugins_loader_->LoadPlugins(application_->Plugins());
 
         // Initialize plugins
         LOG(logger_, Information) << "Initializing Plugins..." << std::endl;
+
+        /// TODO:
+        /// * Load services provieded by plugins
+
+        /// Load commands
+        plugins_loader_->LoadCommands(application_->Plugins(), application_->Commands());
     }
     catch (const std::exception& ex)
     {
@@ -101,8 +105,7 @@ bool ezserver::Bootstrapper::LoadServices()
 void ezserver::Bootstrapper::Run()
 {
     // Bootstrap app main pieces
-    if (!this->Bootstrap())
-        throw new std::runtime_error("Could not bootstrap application!");
+    this->Bootstrap();
 
     // Notify completion
     LOG(logger_, Information) << "Bootstrapping Completed!" << std::endl;

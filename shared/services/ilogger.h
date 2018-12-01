@@ -9,7 +9,7 @@
 namespace ezserver::shared::services
 {
     /// Service unique id
-    const std::string kLoggerService = "eztech.com/ezserver/services/loggor";
+    const std::string kLoggerService = "eztech.com/ezserver/services/logger";
 
     /**
      * An enum to represent the application logging level
@@ -21,7 +21,8 @@ namespace ezserver::shared::services
      * kDebug       More verbouse messages, used for debugging
      * kTrace       The trace calls of exceptions
      */
-    enum class LoggingLevel : int {
+    enum class LoggingLevel : int
+    {
         kFatal = 0, kError = 1, kWarning = 2,
         kInformation = 3, kDebug = 4, kTrace = 5
     };
@@ -29,7 +30,8 @@ namespace ezserver::shared::services
     /**
      * Loggers Base class
      */
-    class ILogger : public ezserver::shared::services::IService {
+    class ILogger : public ezserver::shared::services::IService
+    {
     public:
         /**
          * Logs a messgae to an output stream

@@ -5,6 +5,7 @@
 #include <boost/dll/shared_library.hpp>
 #include <memory>
 #include <map>
+#include <unordered_map>
 
 namespace ezserver::shared::introp
 {
@@ -12,10 +13,20 @@ namespace ezserver::shared::introp
     public:
         /**
          * Loads the plugins from the specified directories in the app options
-         * @param    sort If true, the plugins get sorted by the loading priority
-         * @returns  A map with the plugins and their inforamtion
+         * @param plugins The plugins map into which the plugins get loaded
          */
-        virtual std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> LoadPlugins() = 0;
+        virtual void LoadPlugins(
+            std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins
+        ) = 0;
+
+        /**
+         * Load commands from the imported plugins
+         * @param commands The map into which the commands get imported
+         */
+        virtual void LoadCommands(
+            std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins,
+            std::unordered_map<std::string, ezserver::shared::introp::ExportedCommand>& commands
+        ) = 0;
     };
 }
 

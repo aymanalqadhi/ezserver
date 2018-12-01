@@ -9,13 +9,27 @@
 #include <net/itcp_client.h>
 
 #include <boost/di.hpp>
+#include <boost/multi_index_container.hpp>
+#include <boost/multi_index/ordered_index.hpp>
+#include <boost/multi_index/identity.hpp>
+#include <boost/multi_index/member.hpp>
+
 #include <vector>
+#include <map>
 #include <unordered_map>
-#include <chrono>
 #include <future>
+#include <regex>
+
+using ezserver::shared::introp::ExportedCommand;
 
 namespace ezserver
 {
+    /// The pattern which is used to test the received command
+    /// from users.
+    /// It has two main groups. The first one is the command path & name
+    /// and the second one is the command parameters
+    const std::string kRequestPattern = R"(^((?:\/[\w\-\.]+)+:\w+)\s+(.*)\n?$)";
+
     /**
      * Main application class
      */
@@ -33,10 +47,35 @@ namespace ezserver
             const std::shared_ptr<ezserver::shared::services::ILogger>& logger,
             const std::shared_ptr<ezserver::shared::net::ITcpListener>& listener,
             (named = ezserver::config::named::ThreadsCount) const std::size_t& threads_count)
-        : io_(io), logger_(logger), listener_(listener), threads_count_(threads_count) {}
+        : io_(io), logger_(logger), listener_(listener), threads_count_(threads_count),
+          request_pattern_(kRequestPattern) {}
 
         // Destructor
         virtual ~Application();
+
+        /**
+         * Gets a reference to the plugins map
+         * @return A reference to the plugins map
+         */
+        std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& Plugins()
+            override
+        { return std::ref(plugins_); }
+
+        /**
+         * Gets the currently connected clients list
+         * @return The clients list
+         */
+        virtual std::map<std::uint64_t, std::weak_ptr<ezserver::shared::net::ITcpClient>>& Clients() override
+        { return std::ref(clients_); }
+
+
+        /**
+         * Gets the imported commands from plugins by the applications
+         * @return
+         */
+        virtual std::unordered_map<std::string, ExportedCommand>& Commands () override {
+            return std::ref(commands_);
+        }
 
     private:
 
@@ -50,7 +89,13 @@ namespace ezserver
         std::shared_ptr<ezserver::shared::net::ITcpListener> listener_;
 
         /// The currently connected clients
-        std::unordered_map<std::uint64_t, std::weak_ptr<ezserver::shared::net::ITcpClient>> clients_;
+        std::map<std::uint64_t, std::weak_ptr<ezserver::shared::net::ITcpClient>> clients_;
+
+        /// The plugins imported by the application
+        std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> plugins_;
+
+        /// The commands exported by the application
+        std::unordered_map<std::string, ExportedCommand> commands_;
 
         //region Thread Pool
 
@@ -59,6 +104,14 @@ namespace ezserver
 
         // The thread pool threads container
         std::vector<std::future<void>> thread_pool_;
+
+        //endregion
+
+        //region Patterns
+
+        /// The regular expression pattern to be matched
+        /// with requests strings
+        std::regex request_pattern_;
 
         //endregion
 

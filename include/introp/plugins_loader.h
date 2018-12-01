@@ -6,9 +6,11 @@
 #include <introp/iplugin.h>
 #include <services/ilogger.h>
 #include <services/ifilesystem.h>
+
 #include <boost/di.hpp>
 #include <boost/dll/shared_library.hpp>
 #include <boost/program_options/variables_map.hpp>
+
 #include <memory>
 #include <map>
 
@@ -28,17 +30,25 @@ namespace ezserver::introp
         : options_(options), logger_(logger), filesystem_(filesystem) {}
 
         /// Base class method override
-        virtual std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> LoadPlugins() override;
+        virtual void LoadPlugins(
+            std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins
+        ) override;
+
+        /// Base class method override
+        virtual void LoadCommands(
+            std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins,
+            std::unordered_map<std::string, ezserver::shared::introp::ExportedCommand> &commands
+        ) override;
 
     private:
         /// The options of the application
         boost::program_options::variables_map& options_;
 
         /// The logging service of the application
-        std::weak_ptr<ezserver::shared::services::ILogger> logger_;
+        std::shared_ptr<ezserver::shared::services::ILogger> logger_;
 
         /// The filesystem service of the application
-        std::weak_ptr<ezserver::shared::services::IFilesystem> filesystem_;
+        std::shared_ptr<ezserver::shared::services::IFilesystem> filesystem_;
     };
 
     /**
