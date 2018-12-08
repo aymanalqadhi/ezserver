@@ -53,7 +53,7 @@ bool ezserver::net::AsyncTcpClient::Stop()
 
 void ezserver::net::AsyncTcpClient::Respond(ResponseCode code, std::string_view message, std::int8_t flags)
 {
-    char header[8]
+    std::int8_t header[8]
     {
         // Response code and response flags
         static_cast<std::int8_t>(code), flags,

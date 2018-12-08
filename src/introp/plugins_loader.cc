@@ -74,6 +74,15 @@ void ezserver::introp::PluginsLoader::LoadPlugins(
 
 // ========================================================= //
 
+void ezserver::introp::PluginsLoader::InitializePlugins(
+    std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>> &plugins,
+    std::shared_ptr<ezserver::shared::services::IServicesManager> &services_manager
+) {
+
+}
+
+// ========================================================= //
+
 void ezserver::introp::PluginsLoader::LoadCommands(
     std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins,
     std::unordered_map<std::string, ezserver::shared::introp::ExportedCommand> &commands)

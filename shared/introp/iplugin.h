@@ -12,15 +12,15 @@
 #include <memory>
 
 /// Used to name the export function
-#define PLUGIN_FACTORY_NAME         get_plugin
-#define COMMANDS_FACTORY_NAME       get_commands
+# define PLUGIN_FACTORY_NAME         get_plugin
+# define COMMANDS_FACTORY_NAME       get_commands
 
-#ifndef QUOTE
-#define QUOTE(str) #str
-#endif
-#ifndef EXPAND_AND_QUOTE
-#define EXPAND_AND_QUOTE(str) QUOTE(str)
-#endif
+# ifndef QUOTE
+#   define QUOTE(str) #str
+# endif
+# ifndef EXPAND_AND_QUOTE
+#   define EXPAND_AND_QUOTE(str) QUOTE(str)
+# endif
 
 /// Shared Namespace
 namespace ezserver::shared::introp

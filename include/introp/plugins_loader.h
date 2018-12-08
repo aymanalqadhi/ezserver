@@ -35,6 +35,12 @@ namespace ezserver::introp
         ) override;
 
         /// Base class method override
+        virtual void InitializePlugins(
+            std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins,
+            std::shared_ptr<ezserver::shared::services::IServicesManager>& services_manager
+        ) override;
+
+        /// Base class method override
         virtual void LoadCommands(
             std::map<ezserver::shared::introp::PluginInfo, std::unique_ptr<ezserver::shared::introp::IPlugin>>& plugins,
             std::unordered_map<std::string, ezserver::shared::introp::ExportedCommand> &commands
