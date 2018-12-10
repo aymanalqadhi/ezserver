@@ -83,6 +83,9 @@ void ezserver::introp::PluginsLoader::InitializePlugins(
     // * Do this in a parrallel way
     for (auto plugin_itr = plugins.begin(); plugin_itr != plugins.end(); ++plugin_itr)
     {
+        // Log a debug message showing that the current plugin is being initialized
+        LOG(logger_, Debug) << "Initializing plugin: " << plugin_itr->first.Name() << std::endl;
+
         try
         {
             // Try to resolve the requested dependencies
@@ -125,6 +128,9 @@ void ezserver::introp::PluginsLoader::LoadCommands(
     // a multi-threaded approach
     for(auto& plugin : plugins)
     {
+        // Log a debug message showing that the commands are being loaded from the current plugin
+        LOG(logger_, Debug) << "Loading commands from plugin: " << plugin.first.Name() << std::endl;
+
         try
         {
             // Iterate through all commands in the current plugin
@@ -146,6 +152,10 @@ void ezserver::introp::PluginsLoader::LoadCommands(
                                         << " From: " << plugin.first.Name() << std::endl;
                     continue;
                 }
+
+                // Log a debug message showing that the commands are being loaded from the current plugin
+                LOG(logger_, Debug) << "Loaded command: " << command_key
+                                    << ", from plugin: " << plugin.first.Name() << std::endl;
 
                 // Finally, add the command alogside with its specifier to the
                 // commands map
