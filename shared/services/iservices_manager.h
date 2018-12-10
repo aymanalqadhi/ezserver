@@ -2,7 +2,9 @@
 #define EZSERVER_ISERVICEMANAGER_H
 
 #include "services/iservice.h"
+
 #include <string>
+#include <vector>
 #include <memory>
 #include <unordered_map>
 
@@ -65,6 +67,17 @@ namespace ezserver::shared::services
          * @return The map of the services
          */
         virtual std::unordered_map<std::string, std::shared_ptr<ezserver::shared::services::IService>> Services() = 0;
+
+        /**
+         * Creates a dependencies map of a services names vector
+         *
+         * @param deps The dependencies vector
+         * @return     The resolved dependencies map
+         *
+         * @throws     std::runtime_error If any dependency cannot be resolved
+         */
+        virtual std::unordered_map<std::string, std::shared_ptr<ezserver::shared::services::IService>>
+            ResolveDependencies(const std::vector<std::string>& deps) = 0;
     };
 }
 

@@ -33,14 +33,15 @@ bool ezserver::Bootstrapper::LoadPlugins()
     try
     {
         // Load plugins
-        LOG(logger_, Information) << "Loading Plugins..." << std::endl;
+        LOG(logger_, Debug) << "Loading Plugins..." << std::endl;
         plugins_loader_->LoadPlugins(application_->Plugins());
 
         // Initialize plugins
-        LOG(logger_, Information) << "Initializing Plugins..." << std::endl;
+        LOG(logger_, Debug) << "Initializing Plugins..." << std::endl;
         plugins_loader_->InitializePlugins(application_->Plugins(), services_manager_);
 
-        /// Load commands
+        // Load commands
+        LOG(logger_, Debug) << "Loading Commands..." << std::endl;
         plugins_loader_->LoadCommands(application_->Plugins(), application_->Commands());
     }
     catch (const std::exception& ex)

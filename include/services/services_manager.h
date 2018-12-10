@@ -31,6 +31,10 @@ namespace ezserver::services
         /// Base class method override
         virtual void RegisterService(const std::string& key, std::shared_ptr<ezserver::shared::services::IService>& service) override;
 
+        /// Base class method override
+        virtual std::unordered_map<std::string, std::shared_ptr<ezserver::shared::services::IService>>
+            ResolveDependencies(const std::vector<std::string>& deps) override;
+
         /// Gets the services map
         virtual std::unordered_map<std::string, std::shared_ptr<ezserver::shared::services::IService>> Services() override { return this->services_; }
 
