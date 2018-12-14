@@ -93,22 +93,21 @@ void ezserver::introp::PluginsLoader::InitializePlugins(
 
             // Try to initialize the plugin, if failed, abort and remove the plugin
             if (!plugin_itr->second->Initialize(std::move(deps)))
-                throw;
+                throw nullptr;
 
             // Try to import services from plugin, if failed, log a warning message
             if (!plugin_itr->second->RegisterServices(services_manager))
                 LOG(logger_, Warning) << "Could not import services from plugin: "
                                       << plugin_itr->first.Name() << std::endl;
         }
-        catch(const std::exception& ex)
+        catch(...)
         {
             // Remove the plugin from the plugins list
             plugins.erase(plugin_itr);
 
             // Log a warning & trace messages
             LOG(logger_, Warning) << "Could not initialize plugin: " << plugin_itr->first.Name()
-                                  << ", so it will not be loaded!" << std::endl;
-            LOG(logger_, Trace) << ex.what() << std::endl;
+                                  << ", so it will be unloaded!" << std::endl;
         }
     }
 }
