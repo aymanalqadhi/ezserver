@@ -12,8 +12,7 @@ namespace ezserver::services
     using CommonDirectories = ezserver::shared::services::CommonDirectories;
     using FileMode = ezserver::shared::services::FileMode;
 
-    class Filesystem : public ezserver::shared::services::IFilesystem
-    {
+    class Filesystem : public ezserver::shared::services::IFilesystem {
     public:
         /// Base class method override
         virtual const std::string Name() const noexcept override
@@ -23,35 +22,41 @@ namespace ezserver::services
         virtual const bool IsRequired() const noexcept override
         { return true; }
 
-        /// Base class method override
-        virtual bool Initialize() override;
 
         /// Base class method override
         virtual boost::filesystem::path GetPath(const CommonDirectories &cd) override;
 
         /// Base class method override
-        virtual std::unique_ptr<std::fstream> OpenFile(const CommonDirectories &cd, const boost::filesystem::path &path,
-                                                       const FileMode &mode = FileMode::CreateOrAppend) override;
+        virtual std::unique_ptr<std::fstream> OpenFile(
+            const CommonDirectories &cd, const boost::filesystem::path &path,
+            const FileMode &mode = FileMode::CreateOrAppend
+        ) override;
 
         /// Base class method override
         virtual bool DeleteFile(const CommonDirectories &cd, const boost::filesystem::path &filename) override;
 
         /// Base class method override
-        virtual bool RenameFile(const CommonDirectories &cd, const boost::filesystem::path &old_name,
-                                const boost::filesystem::path &new_name) override;
+        virtual bool RenameFile(
+            const CommonDirectories &cd, const boost::filesystem::path &old_name,
+            const boost::filesystem::path &new_name
+        ) override;
 
         /// Base class method override
         virtual std::vector<boost::filesystem::path> ListDirectory(const CommonDirectories &cd) override;
 
         /// Default constructor
-        BOOST_DI_INJECT(Filesystem,
-                        const std::shared_ptr<ezserver::shared::services::ILogger> &logger
-        ) : logger_(logger)
-        {}
+        BOOST_DI_INJECT(
+            Filesystem,
+            const std::shared_ptr<ezserver::shared::services::ILogger> &logger
+        ) : logger_(logger) {}
+
+    protected:
+        /// Base class method override
+        virtual bool Initialize() override;
 
     private:
         /// A Service to manage app logs
-        std::weak_ptr<ezserver::shared::services::ILogger> logger_;
+        std::shared_ptr<ezserver::shared::services::ILogger> logger_;
 
         /// The application direcotry
         boost::filesystem::path app_main_dir_;

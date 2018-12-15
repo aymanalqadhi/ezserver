@@ -34,11 +34,12 @@ std::shared_ptr<ezserver::shared::services::IService>
 ezserver::services::ServicesManager::GetService(const std::string &key)
 {
     // Check if thw service is not registerd, if so, throw an exceotion
-    if (this->services_.find(key) == this->services_.end())
+    auto svc = this->services_.find(key);
+    if (svc == this->services_.end())
         throw std::out_of_range("Service is not registered!!");
 
     // Return the service with the given key
-    return this->services_[key];
+    return svc->second;
 }
 
 // ============================================================== //

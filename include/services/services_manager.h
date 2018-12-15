@@ -15,10 +15,6 @@ namespace ezserver::services
      */
     class ServicesManager : public ezserver::shared::services::IServicesManager {
     public:
-
-        /// Base class function override
-        virtual bool Initialize() override;
-
         /// Base class method override
         virtual std::shared_ptr<ezserver::shared::services::IService> GetService(const std::string& key) override;
 
@@ -29,14 +25,22 @@ namespace ezserver::services
         virtual std::shared_ptr<ezserver::shared::services::IService> operator[](const std::string& index) override;
 
         /// Base class method override
-        virtual void RegisterService(const std::string& key, std::shared_ptr<ezserver::shared::services::IService>& service) override;
+        virtual void RegisterService(
+            const std::string& key,
+            std::shared_ptr<ezserver::shared::services::IService>& service
+        ) override;
 
         /// Base class method override
         virtual std::unordered_map<std::string, std::shared_ptr<ezserver::shared::services::IService>>
             ResolveDependencies(const std::vector<std::string>& deps) override;
 
         /// Gets the services map
-        virtual std::unordered_map<std::string, std::shared_ptr<ezserver::shared::services::IService>> Services() override { return this->services_; }
+        virtual std::unordered_map<std::string, std::shared_ptr<ezserver::shared::services::IService>> Services()
+            override { return this->services_; }
+
+    protected:
+        /// Base class function override
+        virtual bool Initialize() override;
 
     private:
         /**

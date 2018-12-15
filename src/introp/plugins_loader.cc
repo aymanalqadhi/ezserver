@@ -66,8 +66,8 @@ void ezserver::introp::PluginsLoader::LoadPlugins(
         }
         catch (const std::exception& ex)
         {
-            LOG(logger_, Warning) << "Could not load plugin " << plugin_path << std::endl;;
-            LOG(logger_, Trace) << ex.what() << std::endl;;
+            LOG(logger_, Warning) << "Could not load plugin " << plugin_path << std::endl;
+            LOG(logger_, Trace) << ex.what() << std::endl;
         }
     }
 }

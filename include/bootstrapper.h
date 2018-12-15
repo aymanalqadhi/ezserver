@@ -33,13 +33,15 @@ namespace ezserver
         : services_manager_(services_manager), application_(app),
           logger_(logger), filesystem_(filesystem), plugins_loader_(plugins_loader){
 
-            if (!services_manager_->Initialize()) {
+            // Bootstrap services manager
+            if (!services_manager_->Bootstrap())
                 throw new std::runtime_error("Could not initialize services manager!");
-            }
 
+            /// Get services
             auto logsvc = std::shared_ptr<ezserver::shared::services::IService>(logger);
             auto fs     = std::shared_ptr<ezserver::shared::services::IService>(filesystem);
 
+            /// Register services
             services_manager->RegisterService(ezserver::shared::services::kLoggerService, logsvc);
             services_manager->RegisterService(ezserver::shared::services::kFilesystemService, fs);
         }

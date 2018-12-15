@@ -83,6 +83,9 @@ void ezserver::net::AsyncTcpClient::Respond(ResponseCode code, std::string_view 
 
 void ezserver::net::AsyncTcpClient::StartRead()
 {
+    // TODO:
+    // Change this to use the server approach
+
     // Return if the connection was closed
     if (!is_running_ || !client_socket_->is_open()) return;
 

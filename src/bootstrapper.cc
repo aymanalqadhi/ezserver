@@ -12,7 +12,7 @@ void ezserver::Bootstrapper::Bootstrap()
 {
     // Start by initializing the application core services
     // and throw a fatal exception in case of failure
-    std::cout << termcolor::bold << termcolor::cyan << "[+] Initializing Services..." << termcolor::reset << std::endl;
+    std::cout << termcolor::bold << termcolor::cyan << "[+] Bootstrapping Services..." << termcolor::reset << std::endl;
     if (!LoadServices())
         throw std::runtime_error("Could not load services!");
 
@@ -36,6 +36,9 @@ bool ezserver::Bootstrapper::LoadPlugins()
         LOG(logger_, Debug) << "Loading Plugins..." << std::endl;
         plugins_loader_->LoadPlugins(application_->Plugins());
 
+        // Return if there were no plugins
+        if (application_->Plugins().empty()) return true;
+
         // Initialize plugins
         LOG(logger_, Debug) << "Initializing Plugins..." << std::endl;
         plugins_loader_->InitializePlugins(application_->Plugins(), services_manager_);
@@ -47,7 +50,7 @@ bool ezserver::Bootstrapper::LoadPlugins()
     catch (const std::exception& ex)
     {
         // log the exception message, and exit
-        LOG(logger_, Trace) << ex.what();
+        LOG(logger_, Trace) << ex.what() << std::endl;
         return false;
     }
 
@@ -68,23 +71,26 @@ bool ezserver::Bootstrapper::LoadServices()
 
         std::cout << termcolor::bold << termcolor::cyan
                   << ezserver::utils::time::GetTimeString(std::time(0), "[%H:%M:%S] ") << termcolor::reset
-                  << "Initializing Service \"" << svc.second->Name() << "\"... " << std::flush;
+                  << "Bootstrapping Service: \"" << svc.second->Name() << "\"... " << std::endl;
 
 
         // Try to initialize the service. And if failed just abort the whole operation
         // if the service was required by the app, otherwise, just show a warning message
         // and continue the application execution
 
-        if (svc.second->Initialize())
-            std::cout << termcolor::bold << termcolor::green << "\r[  Done  ]" << termcolor::reset << std::endl;
+        if (svc.second->Bootstrap())
+            std::cout << termcolor::bold << termcolor::green << "\r[  Done  ] "
+                      << termcolor::reset << svc.second->Name() << std::endl;
         else
         {
-            std::cout << termcolor::bold << termcolor::red << "\r[  Fail  ]" << termcolor::reset << std::endl;
+            std::cout << termcolor::bold << termcolor::red << "\r[  Fail  ]"
+                      << termcolor::reset << svc.second->Name() << std::endl;
+
             if (svc.second->IsRequired())
             {
                 std::cout << termcolor::bold << termcolor::red
                           << ezserver::utils::time::GetTimeString(std::time(0), "[%H:%M:%S] ") << termcolor::reset
-                          << "Could not initialize required service: " << svc.second->Name() << "!" << std::flush;
+                          << "Could not bootstrap required service: " << svc.second->Name() << "!" << std::flush;
 
                 return false;
             }
@@ -92,7 +98,7 @@ bool ezserver::Bootstrapper::LoadServices()
             {
                 std::cout << termcolor::bold << termcolor::yellow
                           << ezserver::utils::time::GetTimeString(std::time(0), "[%H:%M:%S] ") << termcolor::reset
-                          << "Could not initialize service: " << svc.second->Name() << "!" << std::flush;
+                          << "Could not bootstrap service: " << svc.second->Name() << "!" << std::flush;
             }
         }
     }
