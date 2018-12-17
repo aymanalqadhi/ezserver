@@ -43,7 +43,7 @@ namespace ezserver::shared::net
          * @param message The response message
          * @return        The operation result
          */
-        virtual void Respond(ResponseCode code, std::string_view message, std::int8_t flags = 0) = 0;
+        virtual void Respond(ResponseCode code, std::string_view message, std::uint8_t flags = 0) = 0;
 
         /**
          * Gets the client ID

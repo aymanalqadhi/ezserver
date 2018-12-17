@@ -8,6 +8,8 @@
 #include <boost/asio/io_context_strand.hpp>
 #include <boost/asio/placeholders.hpp>
 
+#include <cstdio>
+
 using namespace std::placeholders;
 
 // ============================================================== //
@@ -51,21 +53,21 @@ bool ezserver::net::AsyncTcpClient::Stop()
 
 // ============================================================== //
 
-void ezserver::net::AsyncTcpClient::Respond(ResponseCode code, std::string_view message, std::int8_t flags)
+void ezserver::net::AsyncTcpClient::Respond(ResponseCode code, std::string_view message, std::uint8_t flags)
 {
-    std::int8_t header[8]
+    std::uint8_t header[8]
     {
         // Response code and response flags
-        static_cast<std::int8_t>(code), flags,
+        static_cast<std::uint8_t>(code), flags,
 
         // Preserved 2 bytes
         0x0, 0x0,
 
         // Message length distributed on 4 bytes
-        static_cast<std::int8_t>(message.length() & 0x000000FF),
-        static_cast<std::int8_t>(message.length() & 0x0000FF00),
-        static_cast<std::int8_t>(message.length() & 0x00FF0000),
-        static_cast<std::int8_t>(message.length() & 0xFF000000)
+        static_cast<std::uint8_t>((message.length() & 0x000000FF)),
+        static_cast<std::uint8_t>((message.length() & 0x0000FF00) >> 0x4),
+        static_cast<std::uint8_t>((message.length() & 0x00FF0000) >> 0x8),
+        static_cast<std::uint8_t>((message.length() & 0xFF000000) >> 0xC)
     };
 
     // Send the header
@@ -93,30 +95,75 @@ void ezserver::net::AsyncTcpClient::StartRead()
     // to keep the object alive
     auto client = shared_from_this();
 
-    // Start an asynchronous read job
-    boost::asio::async_read_until(
-        *client_socket_, buffer_, '\n',
-        strand_.wrap([this, client] (const boost::system::error_code& err, const std::size_t& rec) {
+    client_socket_->async_receive(boost::asio::buffer(header_buffer_, 8),
+        [this, client] (const boost::system::error_code& err, const std::size_t& rec) {
 
-            // If an error was found, fire the connection loss
-            // event handler, and close the connection
+            // Disconnect if there were any errors
             if (err)
             {
                 // Raise the connection loss event, and then return
-                ConnectionClosed.Invoke(client, err);
+                client->ConnectionClosed.Invoke(client, err);
                 return;
             }
 
-            // Raise the receiving event
-            MessageRecieved.Invoke(
-                client,
-                std::move(std::string(std::istreambuf_iterator<char>(&buffer_), std::istreambuf_iterator<char>()))
-            );
+            // Disconnect if the header size does not equal to 8
+            if (rec != 8)
+            {
+                client->ConnectionClosed.Invoke(client, boost::asio::error::message_size);
+                return;
+            }
 
-            // Restart the reading loop
-            StartRead();
-        })
+            // Get the message length
+            std::uint32_t msg_length =
+                static_cast<std::uint8_t>(header_buffer_[4])        |
+                static_cast<std::uint8_t>(header_buffer_[5]) << 0x4 |
+                static_cast<std::uint8_t>(header_buffer_[6]) << 0x8 |
+                static_cast<std::uint8_t>(header_buffer_[7]) << 0xC;
+
+            // A dynamically allocated buffer
+            auto buffer = new char[msg_length];
+
+            // Start an asynchronous receving task to recevie the message
+            // with the size of msg_length
+            client_socket_->async_receive(boost::asio::buffer(buffer, msg_length),
+                strand_.wrap([this, client, msg_length, buffer] (const boost::system::error_code& err, const std::size_t& rec) {
+
+                    // If an error was found, fire the connection loss
+                    // event handler, and close the connection
+                    if (err)
+                    {
+                        // Delete the buffer
+                        if (buffer) delete[] buffer;
+
+                        // Raise the connection loss event, and then return
+                        client->ConnectionClosed.Invoke(client, err);
+                        return;
+                    }
+
+                    // Disconnect if the received message size does not equal to the expected size
+                    if (msg_length != rec)
+                    {
+                        // Delete the buffer
+                        if (buffer) delete[] buffer;
+
+                        // Raise the connection loss event, and then return
+                        client->ConnectionClosed.Invoke(client, boost::asio::error::message_size);
+                        return;
+                    }
+
+                    // Raise the receiving event
+                    client->MessageRecieved.Invoke(
+                        client,
+                        std::move(std::string(buffer))
+                    );
+
+                    // Restart the reading loop
+                    StartRead();
+                })
+            );
+        }
     );
+
 }
 
 // ============================================================== //

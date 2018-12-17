@@ -2,6 +2,7 @@
 #define EZSERVER_ASYNC_TCP_CLIENT_H
 
 #include "net/itcp_client.h"
+
 #include <boost/asio/io_context_strand.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
@@ -23,7 +24,7 @@ namespace ezserver::net
         virtual bool Stop() override;
 
         /// Base class method override
-        virtual void Respond(ResponseCode code, std::string_view message, std::int8_t flags) override;
+        virtual void Respond(ResponseCode code, std::string_view message, std::uint8_t flags) override;
 
         /// Base class method override
         virtual inline const std::uint64_t Id() const noexcept override { return id_; }
@@ -72,8 +73,8 @@ namespace ezserver::net
         /// The synchronization object for this connection
         boost::asio::io_context::strand strand_;
 
-        /// The client buffer
-        boost::asio::streambuf buffer_;
+        /// A Buffer for storing incoming messages headers
+        std::uint8_t header_buffer_[8];
 
         /// The client ID
         std::int64_t id_;

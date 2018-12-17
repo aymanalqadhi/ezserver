@@ -71,7 +71,7 @@ bool ezserver::Bootstrapper::LoadServices()
 
         std::cout << termcolor::bold << termcolor::cyan
                   << ezserver::utils::time::GetTimeString(std::time(0), "[%H:%M:%S] ") << termcolor::reset
-                  << "Bootstrapping Service: \"" << svc.second->Name() << "\"... " << std::endl;
+                  << "Bootstrapping Service: " << svc.second->Name() << "... " << std::endl;
 
 
         // Try to initialize the service. And if failed just abort the whole operation
@@ -79,12 +79,12 @@ bool ezserver::Bootstrapper::LoadServices()
         // and continue the application execution
 
         if (svc.second->Bootstrap())
-            std::cout << termcolor::bold << termcolor::green << "\r[  Done  ] "
-                      << termcolor::reset << svc.second->Name() << std::endl;
+            std::cout << termcolor::bold << termcolor::green << "\r[  Done  ]"
+                      << termcolor::reset << " Bootstrapped service: " << svc.second->Name() << "." << std::endl;
         else
         {
             std::cout << termcolor::bold << termcolor::red << "\r[  Fail  ]"
-                      << termcolor::reset << svc.second->Name() << std::endl;
+                      << termcolor::reset << " Could not bootstrap service: " <<  svc.second->Name() << "." << std::endl;
 
             if (svc.second->IsRequired())
             {

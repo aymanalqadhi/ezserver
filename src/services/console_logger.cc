@@ -18,7 +18,7 @@ std::ostream& ezserver::services::ConsoleLogger::Log(const LoggingLevel &level)
     {
         // Trace level: used to log exception trace calls and messages
         case LoggingLevel::kTrace:
-            return this->writing_stream_ << termcolor::grey << timestamp << "[Trace] " << termcolor::reset;
+            return this->writing_stream_ << termcolor::dark << timestamp << "[Trace] " << termcolor::reset;
 
         // Debug level: used for debugging purposes
         case LoggingLevel::kDebug:

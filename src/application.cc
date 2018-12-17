@@ -13,7 +13,8 @@ using ezserver::shared::net::ResponseCode;
 bool ezserver::Application::Startup()
 {
     // Show welcome message
-    std::cout << std::endl << termcolor::cyan << "\t-<( Welcome to EZ-SERVER! )>-" << std::endl << std::endl;
+    std::cout << std::endl << termcolor::cyan << termcolor::blink
+              << "\t-<( Welcome to EZ-SERVER! )>-" << termcolor::reset << std::endl << std::endl;
 
     // Initialize the thread pool
     LOG(logger_, Debug) << "Initializing thread pool with " << threads_count_ << " threads..." << std::endl;
@@ -22,7 +23,7 @@ bool ezserver::Application::Startup()
     for (std::size_t i = 0; i < threads_count_; ++i)
     {
         // Add a new asynchronous job to the pool
-        thread_pool_.push_back(std::async(std::launch::async, [&] { this->io_.run(); }));
+        thread_pool_.push_back(std::async(std::launch::async, [this] { this->io_.run(); }));
     }
 
     // Initialize & Start the listener
@@ -147,15 +148,16 @@ void ezserver::Application::OnConnectionClosed(
         if (err == boost::asio::error::eof)
         {
             LOG(logger_, Information)
-                    << "Connection to " << client->Socket()->remote_endpoint()
-                    << " was closed." << std::endl;
+                << "Connection to " << client->Socket()->remote_endpoint()
+                << " was closed." << std::endl;
         }
         else
         {
             LOG(logger_, Warning)
-                    << "Connection to " << client->Socket()->remote_endpoint()
-                    << "was unexpectedly closed" << err.message() << "!" << std::endl;
+                << "Connection to client #" << client->Id()
+                << " was unexpectedly closed, " << err.message() << "!" << std::endl;
         }
+
         client->Stop();
     }
     else
