@@ -103,7 +103,7 @@ std::shared_ptr<boost::program_options::variables_map> ParseOptions(const int ar
     }
     catch (const std::exception &ex)
     {
-        std::cout << ex.what();
+        std::cout << ex.what() << std::endl;
         exit(EXIT_FAILURE);
     }
 

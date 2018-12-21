@@ -73,7 +73,8 @@ namespace ezserver::net
         /// The synchronization object for this connection
         boost::asio::io_context::strand strand_;
 
-        /// A Buffer for storing incoming messages headers
+        /// Client buffers
+        boost::asio::streambuf buffer_;
         std::uint8_t header_buffer_[8];
 
         /// The client ID

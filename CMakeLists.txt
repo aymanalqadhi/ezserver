@@ -1,10 +1,11 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 
 # Set Project's Name
 project(ezserver)
 
 # Set Flags
 set(CMAKE_CXX_FLAGS "-std=c++17 -Wall -g")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Set Directories
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)

@@ -1,0 +1,57 @@
+[
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/main.cc.o -c /home/ayman/Projects/ezserver/src/main.cc",
+  "file": "/home/ayman/Projects/ezserver/src/main.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/bootstrapper.cc.o -c /home/ayman/Projects/ezserver/src/bootstrapper.cc",
+  "file": "/home/ayman/Projects/ezserver/src/bootstrapper.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/application.cc.o -c /home/ayman/Projects/ezserver/src/application.cc",
+  "file": "/home/ayman/Projects/ezserver/src/application.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/services/console_logger.cc.o -c /home/ayman/Projects/ezserver/src/services/console_logger.cc",
+  "file": "/home/ayman/Projects/ezserver/src/services/console_logger.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/services/services_manager.cc.o -c /home/ayman/Projects/ezserver/src/services/services_manager.cc",
+  "file": "/home/ayman/Projects/ezserver/src/services/services_manager.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/services/filesystem.cc.o -c /home/ayman/Projects/ezserver/src/services/filesystem.cc",
+  "file": "/home/ayman/Projects/ezserver/src/services/filesystem.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/introp/plugins_loader.cc.o -c /home/ayman/Projects/ezserver/src/introp/plugins_loader.cc",
+  "file": "/home/ayman/Projects/ezserver/src/introp/plugins_loader.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/utils/time.cc.o -c /home/ayman/Projects/ezserver/src/utils/time.cc",
+  "file": "/home/ayman/Projects/ezserver/src/utils/time.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/config/configuration.cc.o -c /home/ayman/Projects/ezserver/src/config/configuration.cc",
+  "file": "/home/ayman/Projects/ezserver/src/config/configuration.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/net/async_tcp_listener.cc.o -c /home/ayman/Projects/ezserver/src/net/async_tcp_listener.cc",
+  "file": "/home/ayman/Projects/ezserver/src/net/async_tcp_listener.cc"
+},
+{
+  "directory": "/home/ayman/Projects/ezserver",
+  "command": "/usr/bin/c++  -DBOOST_ERROR_CODE_HEADER_ONLY -I/home/ayman/Projects/ezserver/include -I/home/ayman/Projects/ezserver/shared  -std=c++17 -Wall -g -g   -o CMakeFiles/ezserver.dir/src/net/async_tcp_client.cc.o -c /home/ayman/Projects/ezserver/src/net/async_tcp_client.cc",
+  "file": "/home/ayman/Projects/ezserver/src/net/async_tcp_client.cc"
+}
+]

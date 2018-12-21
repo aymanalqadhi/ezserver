@@ -15,8 +15,9 @@ namespace ezserver::shared::net
      * An enum to represent response codes
      */
     enum class ResponseCode : std::uint8_t {
-        kSuccess = 0x0, kFailure = 0x1, kInvalidRequest = 0x3,
-        kCommandNotFound = 0x4
+        kSuccess        = 0x0, kFailure         = 0x1,
+        kInvalidRequest = 0x3, kCommandNotFound = 0x4,
+        kEmptyMessage   = 0x5
     };
 
     class ITcpClient : public std::enable_shared_from_this<ITcpClient> {
